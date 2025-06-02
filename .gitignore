@@ -1,0 +1,6 @@
+/.vscode/
+/.bsp/
+/.idea/
+/.metals/
+/out/
+mill.*

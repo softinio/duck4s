@@ -1,0 +1,10 @@
+# https://numtide.github.io/devshell
+# https://numtide.github.io/devshell/getting_started.html
+[[commands]]
+package = "mill"
+
+[devshell]
+packages = [
+  "jdk",
+  "scala-cli"
+]
