@@ -17,11 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: actions/setup-java@v4
-      with:
-        distribution: 'temurin'
-        java-version: '17'
-
     - uses: cachix/install-nix-action@v31
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
@@ -66,8 +61,7 @@ jobs:
         retention-days: 7
 
     # Run nix checks
-    - name: Run nix checks
+    - name: Run nix flake check
       if: matrix.scala-version == '3.7.0'
       run: |
-        nix build
         nix flake check
