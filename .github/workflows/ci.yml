@@ -1,0 +1,73 @@
+name: "CI"
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+      - github-actions
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        scala-version: ["3.3.6", "3.7.0"]
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - uses: cachix/install-nix-action@v31
+      with:
+        github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+    # Cache Mill dependencies
+    - name: Cache Mill
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cache/mill
+          ~/.cache/coursier
+          out/
+        key: ${{ runner.os }}-mill-${{ hashFiles('build.sc') }}
+        restore-keys: |
+          ${{ runner.os }}-mill-
+
+    # Run tests for specific Scala version
+    - name: Run tests for Scala ${{ matrix.scala-version }}
+      run: |
+        nix develop --command mill "duck4s[${{ matrix.scala-version }}].test"
+
+    # Check code formatting
+    - name: Check code formatting
+      if: matrix.scala-version == '3.7.0'
+      run: |
+        nix develop --command mill mill.scalalib.scalafmt.ScalafmtModule/checkFormatAll __.sources
+
+    # Build documentation
+    - name: Generate documentation
+      if: matrix.scala-version == '3.7.0'
+      run: |
+        nix develop --command mill "duck4s[3.7.0].docJar"
+
+    # Upload test results
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results-${{ matrix.scala-version }}
+        path: |
+          out/duck4s/${{ matrix.scala-version }}/test/
+        retention-days: 7
+
+    # Run nix checks
+    - name: Run nix checks
+      if: matrix.scala-version == '3.7.0'
+      run: |
+        nix build
+        nix flake check

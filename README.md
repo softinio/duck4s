@@ -49,7 +49,7 @@ def ivyDeps = Agg(
 ### Prerequisites
 
 - Scala 3.3.6 or 3.7.0
-- Java 11 or higher
+- Java 17 or higher
 - Mill build tool (or use the provided Nix development environment)
 
 ### Development Setup
