@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-      - master
-      - github-actions
   workflow_dispatch:
 
 jobs:
@@ -20,6 +18,12 @@ jobs:
     - uses: cachix/install-nix-action@v31
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+    # Run nix checks
+    - name: Run nix flake check
+      if: matrix.scala-version == '3.7.0'
+      run: |
+        nix flake check
 
     # Cache Mill dependencies
     - name: Cache Mill
@@ -59,9 +63,3 @@ jobs:
         path: |
           out/duck4s/${{ matrix.scala-version }}/test/
         retention-days: 7
-
-    # Run nix checks
-    - name: Run nix flake check
-      if: matrix.scala-version == '3.7.0'
-      run: |
-        nix flake check
