@@ -18,7 +18,7 @@ libraryDependencies += "com.softinio" %% "duck4s" % "0.1.0"
 
 ### Mill
 
-Add duck4s to your `build.sc`:
+Add duck4s to your `build.mill`:
 
 ```scala sc:nocompile
 def ivyDeps = Agg(

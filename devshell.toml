@@ -5,6 +5,7 @@ package = "mill"
 
 [devshell]
 packages = [
-  "jdk",
+  "coursier",
+  "jdk17",
   "scala-cli"
 ]

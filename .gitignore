@@ -1,5 +1,6 @@
 /.vscode/
-/.bsp/
+.bsp
+.scala-build
 /.idea/
 /.metals/
 /out/
