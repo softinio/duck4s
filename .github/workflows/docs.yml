@@ -1,0 +1,66 @@
+name: "Documentation"
+on:
+  workflow_run:
+    workflows: ["Release"]
+    types:
+      - completed
+
+# Sets permissions of the GITHUB_TOKEN to allow pushing to gh-pages branch
+permissions:
+  contents: write
+
+jobs:
+  build-docs:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.workflow_run.head_sha }}
+
+    - uses: cachix/install-nix-action@v31
+      with:
+        github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+    # Cache Mill dependencies
+    - name: Cache Mill
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cache/mill
+          ~/.cache/coursier
+          out/
+        key: ${{ runner.os }}-mill-${{ hashFiles('build.mill') }}
+        restore-keys: |
+          ${{ runner.os }}-mill-
+
+    # Generate documentation
+    - name: Generate documentation
+      run: |
+        nix develop --command mill 'duck4s[3.7.0].docJar'
+
+    # Deploy to gh-pages branch
+    - name: Deploy to GitHub Pages
+      run: |
+        # Configure git
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+        # Create temporary directory
+        TEMP_DIR=$(mktemp -d)
+        cp -r out/duck4s/3.7.0/docJar.dest/javadoc/* "$TEMP_DIR/"
+
+        # Fetch gh-pages branch or create new orphan branch
+        git fetch origin gh-pages:gh-pages || git checkout --orphan gh-pages
+        git checkout gh-pages
+
+        # Clean and copy new docs
+        git rm -rf . || true
+        cp -r "$TEMP_DIR"/* .
+        touch .nojekyll
+
+        # Commit and push
+        git add -A
+        git commit -m "Update documentation for release ${{ github.event.workflow_run.head_sha }}"
+        git push origin gh-pages --force

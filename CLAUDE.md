@@ -32,6 +32,11 @@ This project supports multiple Scala versions: **3.3.6** and **3.7.0**
 - **Check formatting**: `mill mill.scalalib.scalafmt.ScalafmtModule/checkFormatAll __.sources`
 - **Clean build**: `mill clean`
 
+#### Publishing Commands
+- **Publish locally for all Scala versions**: `mill __.publishLocal`
+- **Publish locally for specific Scala version**: `mill 'duck4s[3.3.6].publishLocal'` or `mill 'duck4s[3.7.0].publishLocal'`
+- **Published artifacts location**: `~/.ivy2/local/com.softinio/duck4s_3.3.6/` and `~/.ivy2/local/com.softinio/duck4s_3.7.0/`
+
 ### Development Environment
 The project uses Nix flake for reproducible development environments. To enter the dev shell:
 - `nix develop` (if you have Nix with flakes enabled)
@@ -50,7 +55,7 @@ This is a Scala 3 wrapper library for DuckDB with the following structure:
     - `PreparedStatement.scala` - Prepared statement wrapper
     - `ResultSet.scala` - Result set wrapper
 - **Tests**: `duck4s/test/src/` - Tests using MUnit framework
-- **Build definition**: `build.sc` - Mill build configuration defining the project as a ScalaModule
+- **Build definition**: `build.mill` - Mill build configuration defining the project as a ScalaModule
 
 The project uses:
 - **Scala 3.3.6 and 3.7.0** with modern syntax features (optional braces, colon syntax)
@@ -93,9 +98,73 @@ The project includes comprehensive scaladoc documentation with a static website:
 
 Generate the complete documentation website with `mill 'duck4s[3.7.0].docJar'`.
 
+## Publishing and Release Process
+
+### Required GitHub Secrets
+To enable automatic publishing to Maven Central, configure these secrets in your GitHub repository:
+- `PGP_SECRET`: Base64-encoded PGP private key for signing artifacts
+- `PGP_PASSPHRASE`: Passphrase for the PGP key
+- `SONATYPE_USERNAME`: Sonatype (Maven Central) username
+- `SONATYPE_PASSWORD`: Sonatype (Maven Central) password
+
+### Release Process
+
+#### Using the release script (recommended):
+```bash
+./scripts/release.sh 0.1.0
+```
+
+This script will:
+1. Validate you're on the main branch with no uncommitted changes
+2. Create an annotated git tag (v0.1.0)
+3. Push the tag to GitHub, triggering the release workflow
+
+#### Manual process:
+```bash
+git tag -a v0.1.0 -m "Release 0.1.0"
+git push origin v0.1.0
+```
+
+The release workflow will then:
+1. Run CI tests
+2. Publish all Scala version artifacts to Maven Central
+3. Create a GitHub release with the artifacts
+4. Trigger documentation deployment to GitHub Pages
+
+### Documentation Deployment
+
+#### Automatic deployment
+The documentation is automatically published to GitHub Pages after a successful release. The docs workflow:
+1. Waits for the Release workflow to complete successfully
+2. Generates the Scala documentation using Mill
+3. Deploys to GitHub Pages at https://softinio.github.io/duck4s/
+
+#### Manual deployment
+To update documentation without creating a new release:
+```bash
+./scripts/publish-docs.sh          # Uses version from latest git tag
+./scripts/publish-docs.sh 0.1.0   # Uses specified version
+```
+
+This script will:
+1. Generate documentation with the specified version (or latest tag version)
+2. Push directly to the gh-pages branch
+3. Make it available at https://softinio.github.io/duck4s/
+
+This is useful for:
+- Fixing documentation typos without a new release
+- Updating examples or documentation content
+- Regenerating docs with the same version after documentation improvements
+
+**Note**: You must enable GitHub Pages in your repository settings:
+- Go to Settings → Pages
+- Source: Deploy from a branch
+- Branch: gh-pages
+- The documentation will be available after the first deployment
+
 ## Important Notes
 - The project follows standard Scala conventions with separate source and test directories
-- Mill builds are defined in `build.sc` using Scala syntax
+- Mill builds are defined in `build.mill` using Scala syntax
 - The `.scalafmt.conf` is configured to use modern Scala 3 syntax features
 - All public APIs include comprehensive scaladoc documentation for generated documentation websites
 - The build includes conditional scalac options (e.g., `-Xkind-projector:underscores` for Scala 3.7)

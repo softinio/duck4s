@@ -38,7 +38,7 @@ libraryDependencies += "com.softinio" %% "duck4s" % "0.1.0"
 
 #### Mill
 
-Add duck4s to your `build.sc`:
+Add duck4s to your `build.mill`:
 
 ```scala
 def ivyDeps = Agg(
@@ -121,7 +121,16 @@ result match
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+**GitHub Issues** are disabled to encourage direct community contribution. When you encounter bugs or documentation issues, please contribute fixes through Pull Requests instead.
+
+**How to contribute:** [Open a PR](https://github.com/softinio/duck4s/pulls) with your solution, draft changes, or a test reproducing the issue. We'll collaborate from there to refine and merge improvements.
+
+This approach creates faster fixes while building a stronger, community-driven project where everyone benefits from shared contributions.
+
+## Using AI Help to use or contribute to this project
+
+This project is optimized and setup for you to use [Claude Code](https://www.anthropic.com/claude-code) as your AI programming agent. It is recommended to use Claude Code.
+
 
 ## License
 

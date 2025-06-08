@@ -1,5 +1,5 @@
 {
-  description = "Nix Flake for duck3s Project";
+  description = "Nix Flake for duck4s Project";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
