@@ -1,3 +1,6 @@
+
+![tests](https://github.com/softinio/duck4s/actions/workflows/ci.yml/badge.svg) | ![release](https://github.com/softinio/duck4s/actions/workflows/release.yml/badge.svg)  | ![documentation](https://github.com/softinio/duck4s/actions/workflows/docs.yml/badge.svg)
+
 # Duck4s
 
 <p align="center">
