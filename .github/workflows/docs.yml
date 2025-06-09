@@ -59,12 +59,19 @@ jobs:
         TEMP_DIR=$(mktemp -d)
         cp -r out/duck4s/3.7.0/docJar.dest/javadoc/* "$TEMP_DIR/"
 
-        # Fetch gh-pages branch or create new orphan branch
-        git fetch origin gh-pages:gh-pages || git checkout --orphan gh-pages
-        git checkout gh-pages
+        # Check if gh-pages branch exists
+        if git ls-remote --heads origin gh-pages | grep -q gh-pages; then
+          # Fetch existing gh-pages branch
+          git fetch origin gh-pages
+          git checkout gh-pages
+        else
+          # Create new orphan branch
+          git checkout --orphan gh-pages
+        fi
 
         # Clean and copy new docs
         git rm -rf . || true
+        git clean -fd
         cp -r "$TEMP_DIR"/* .
         touch .nojekyll
 
