@@ -68,15 +68,20 @@ cp -r out/duck4s/3.7.0/docJar.dest/javadoc/* "$TEMP_DIR/"
 
 # Switch to gh-pages branch (create if doesn't exist)
 echo "Switching to gh-pages branch..."
-if git show-ref --verify --quiet refs/heads/gh-pages; then
+# Check if gh-pages exists remotely
+if git ls-remote --heads origin gh-pages | grep -q gh-pages; then
+    # Fetch and checkout existing gh-pages
+    git fetch origin gh-pages
     git checkout gh-pages
 else
+    # Create new orphan branch
+    echo "Creating new gh-pages branch..."
     git checkout --orphan gh-pages
-    git rm -rf .
 fi
 
 # Clean current directory
 git rm -rf . 2>/dev/null || true
+git clean -fd
 
 # Copy documentation from temp directory
 cp -r "$TEMP_DIR"/* .
