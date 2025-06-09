@@ -1,7 +1,7 @@
 
 ![tests](https://github.com/softinio/duck4s/actions/workflows/ci.yml/badge.svg) | ![release](https://github.com/softinio/duck4s/actions/workflows/release.yml/badge.svg)  | ![documentation](https://github.com/softinio/duck4s/actions/workflows/docs.yml/badge.svg) | [![Latest version](https://index.scala-lang.org/<organization>/<repository>/<artifact>/latest.svg)](https://index.scala-lang.org/softinio/duck4s/duck4s)
 
-# Duck4s
+# duck4s
 
 <p align="center">
   <img src="duck4s/docs/_assets/images/duck4s_logo.jpeg" alt="Duck4s Logo" width="400">
@@ -120,7 +120,6 @@ result match
 
 - [Getting Started Guide](https://softinio.github.io/duck4s/docs/getting-started.html) - Learn the basics of duck4s
 - [API Documentation](https://softinio.github.io/duck4s/) - Complete API reference
-- [Examples](https://github.com/softinio/duck4s/tree/main/examples) - Practical usage examples
 
 ## Contributing
 
