@@ -1,0 +1,275 @@
+<!DOCTYPE html><html data-pathToRoot="../" data-rawLocation="docs/getting-started" data-dynamicSideMenu="false"><head><meta charset="utf-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta><title>Getting Started</title><link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"></link><script type="text/javascript" src="../scripts/theme.js"></script><script type="text/javascript" src="../scripts/searchData.js" defer="true"></script><script type="text/javascript" src="../scripts/scastieConfiguration.js" defer="true"></script><link rel="stylesheet" href="../styles/theme/bundle.css"></link><link rel="stylesheet" href="../styles/theme/components/bundle.css"></link><link rel="stylesheet" href="../styles/theme/components/button/bundle.css"></link><link rel="stylesheet" href="../styles/theme/layout/bundle.css"></link><link rel="stylesheet" href="../styles/nord-light.css"></link><link rel="stylesheet" href="../styles/dotty-icons.css"></link><link rel="stylesheet" href="../styles/filter-bar.css"></link><link rel="stylesheet" href="../styles/code-snippets.css"></link><link rel="stylesheet" href="../styles/searchbar.css"></link><link rel="stylesheet" href="../styles/social-links.css"></link><link rel="stylesheet" href="../styles/versions-dropdown.css"></link><link rel="stylesheet" href="../styles/content-contributors.css"></link><link rel="stylesheet" href="../styles/fontawesome.css"></link><script type="text/javascript" src="../hljs/highlight.pack.js" defer="true"></script><script type="text/javascript" src="../scripts/hljs-scala3.js" defer="true"></script><script type="text/javascript" src="../scripts/ux.js" defer="true"></script><script type="text/javascript" src="../scripts/common/component.js" defer="true"></script><script type="text/javascript" src="../scripts/common/utils.js" defer="true"></script><script type="text/javascript" src="../scripts/components/FilterBar.js" defer="true"></script><script type="text/javascript" src="../scripts/components/DocumentableList.js" defer="true"></script><script type="text/javascript" src="../scripts/components/Input.js" defer="true"></script><script type="text/javascript" src="../scripts/components/FilterGroup.js" defer="true"></script><script type="text/javascript" src="../scripts/components/Filter.js" defer="true"></script><script type="text/javascript" src="../scripts/scaladoc-scalajs.js" defer="true"></script><script type="text/javascript" src="../scripts/contributors.js" defer="true"></script><script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js" defer="true"></script><script type="text/javascript" src="https://d3js.org/d3.v6.min.js" defer="true"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/graphlib-dot@0.6.2/dist/graphlib-dot.min.js" defer="true"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dagre-d3/0.6.1/dagre-d3.min.js" defer="true"></script><script type="text/javascript" src="https://scastie.scala-lang.org/embedded.js" defer="true"></script><script type="text/javascript" src="../scripts/data.js" defer="true"></script><link rel="stylesheet" href="../styles/staticsitestyles.css"></link><script>var pathToRoot = "../";</script></head><body><div id=""><div id="header" class="body-small"><div class="header-container-left"><a href="../" class="logo-container"><span class="project-name h300">Duck4s</span></a><span onclick="dropdownHandler(event)" class="text-button with-arrow" id="dropdown-trigger"><a><div class="projectVersion">0.1.1</div></a></span><div id="version-dropdown" class="dropdown-menu"></div></div><div class="header-container-right"><button id="search-toggle" class="icon-button"></button><span id="theme-toggle" class="icon-button"></span><span id="mobile-menu-toggle" class="icon-button hamburger"></span></div></div><div id="mobile-menu"><div class="mobile-menu-header body-small"><span class="mobile-menu-logo"><span class="project-name h300">Duck4s</span></span><button id="mobile-menu-close" class="icon-button close"></button></div><div class="mobile-menu-container body-medium"><input id="mobile-scaladoc-searchbar-input" class="scaladoc-searchbar-input" type="search" placeholder="Find anything"></input><span id="mobile-theme-toggle" class="mobile-menu-item mode"></span></div></div><span id="mobile-sidebar-toggle" class="floating-button"></span><div id="leftColumn" class="body-small"><div class="switcher-container"><a id="docs-nav-button" class="switcher h100 selected" href="index.html">Docs</a><a id="api-nav-button" class="switcher h100 " href="../index.html">API</a></div><nav id="docs-nav" class="side-menu"><div class="ni n0 expanded"><span class="nh h100 selected de"><a href="#"><span>Getting Started</span></a></span></div></nav></div><div id="footer" class="body-small"><div class="left-container">Generated with</div><div class="right-container"><a href="https://github.com/softinio/duck4s"><button class="icon-button gh"></button></a><div class="text"></div></div><div class="text-mobile"></div></div><div id="scaladoc-searchBar"></div><div id="main"><div class="breadcrumbs container"><a href="index.html">Duck4s</a>/<a href="getting-started.html">Getting Started</a></div><div id="content" class="body-medium"><div><section id="getting-started-with-duck4s-1">
+ <h1 class="h500"><a href="#getting-started-with-duck4s-1" class="anchor"></a>Getting Started with Duck4s</h1>
+ <p>This guide will help you get started with duck4s, a Scala 3 wrapper for DuckDB that provides type-safe, functional access to analytical database operations.</p>
+</section>
+<section id="installation-1">
+ <h2 class="h500"><a href="#installation-1" class="anchor"></a>Installation</h2>
+</section>
+<section id="sbt-1">
+ <h3 class="h400"><a href="#sbt-1" class="anchor"></a>SBT</h3>
+ <p>Add duck4s to your <code>build.sbt</code>:</p>
+ <div class="snippet mono-small-block">
+  <pre><code class="language-sbt"><span line-number="1" class=""><span class="tooltip-container"></span>libraryDependencies += "com.softinio" %% "duck4s" % "0.1.0"
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="mill-1">
+ <h3 class="h400"><a href="#mill-1" class="anchor"></a>Mill</h3>
+ <p>Add duck4s to your <code>build.mill</code>:</p>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>def ivyDeps = Agg(
+</span><span line-number="2" class=""><span class="tooltip-container"></span>  ivy"com.softinio::duck4s::0.1.0"
+</span><span line-number="3" class=""><span class="tooltip-container"></span>)
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="basic-usage-1">
+ <h2 class="h500"><a href="#basic-usage-1" class="anchor"></a>Basic Usage</h2>
+</section>
+<section id="imports-1">
+ <h3 class="h400"><a href="#imports-1" class="anchor"></a>Imports</h3>
+ <p>Start by importing the necessary packages:</p>
+ <div class="snippet mono-small-block" scala-snippet="" runnable="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>import com.softinio.duck4s.*
+</span><span line-number="2" class=""><span class="tooltip-container"></span>import com.softinio.duck4s.algebra.*
+</span></code></pre>
+  <div class="snippet-meta">
+   <div class="snippet-label">
+    Imp.scala
+   </div>
+  </div>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="creating-connections-1">
+ <h3 class="h400"><a href="#creating-connections-1" class="anchor"></a>Creating Connections</h3>
+ <p>Duck4s supports both in-memory and persistent databases:</p>
+ <div class="snippet mono-small-block" scala-snippet="" runnable="">
+  <pre><code class="language-scala"><span line-number="1" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.*
+</span><span line-number="2" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.algebra.*
+</span><span line-number="3" class="hideable include"><span class="tooltip-container"></span>
+</span><span line-number="4" class=""><span class="tooltip-container"></span>// In-memory database (default)
+</span><span line-number="5" class=""><span class="tooltip-container"></span>val inMemoryResult = DuckDBConnection.withConnection() { conn =&gt;
+</span><span line-number="6" class=""><span class="tooltip-container"></span>  // Your database operations here
+</span><span line-number="7" class=""><span class="tooltip-container"></span>  Right("Success")
+</span><span line-number="8" class=""><span class="tooltip-container"></span>}
+</span><span line-number="9" class=""><span class="tooltip-container"></span>
+</span><span line-number="10" class=""><span class="tooltip-container"></span>// Persistent database
+</span><span line-number="11" class=""><span class="tooltip-container"></span>val config = DuckDBConfig.persistent("/path/to/database.db")
+</span><span line-number="12" class=""><span class="tooltip-container"></span>val persistentResult = DuckDBConnection.withConnection(config) { conn =&gt;
+</span><span line-number="13" class=""><span class="tooltip-container"></span>  // Your database operations here
+</span><span line-number="14" class=""><span class="tooltip-container"></span>  Right("Success")
+</span><span line-number="15" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="basic-queries-1">
+ <h3 class="h400"><a href="#basic-queries-1" class="anchor"></a>Basic Queries</h3>
+ <p>Execute simple queries and updates:</p>
+ <div class="snippet mono-small-block" scala-snippet="" runnable="">
+  <pre><code class="language-scala"><span line-number="1" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.*
+</span><span line-number="2" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.algebra.*
+</span><span line-number="3" class="hideable include"><span class="tooltip-container"></span>
+</span><span line-number="4" class=""><span class="tooltip-container"></span>val result = DuckDBConnection.withConnection() { conn =&gt;
+</span><span line-number="5" class=""><span class="tooltip-container"></span>  for
+</span><span line-number="6" class=""><span class="tooltip-container"></span>    // Create a table
+</span><span line-number="7" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdate("""
+</span><span line-number="8" class=""><span class="tooltip-container"></span>      CREATE TABLE users (
+</span><span line-number="9" class=""><span class="tooltip-container"></span>        id INTEGER PRIMARY KEY,
+</span><span line-number="10" class=""><span class="tooltip-container"></span>        name VARCHAR,
+</span><span line-number="11" class=""><span class="tooltip-container"></span>        age INTEGER
+</span><span line-number="12" class=""><span class="tooltip-container"></span>      )
+</span><span line-number="13" class=""><span class="tooltip-container"></span>    """)
+</span><span line-number="14" class=""><span class="tooltip-container"></span>
+</span><span line-number="15" class=""><span class="tooltip-container"></span>    // Insert data
+</span><span line-number="16" class=""><span class="tooltip-container"></span>    insertCount &lt;- conn.executeUpdate("""
+</span><span line-number="17" class=""><span class="tooltip-container"></span>      INSERT INTO users VALUES
+</span><span line-number="18" class=""><span class="tooltip-container"></span>        (1, 'Alice', 25),
+</span><span line-number="19" class=""><span class="tooltip-container"></span>        (2, 'Bob', 30),
+</span><span line-number="20" class=""><span class="tooltip-container"></span>        (3, 'Charlie', 35)
+</span><span line-number="21" class=""><span class="tooltip-container"></span>    """)
+</span><span line-number="22" class=""><span class="tooltip-container"></span>
+</span><span line-number="23" class=""><span class="tooltip-container"></span>    // Query data
+</span><span line-number="24" class=""><span class="tooltip-container"></span>    rs &lt;- conn.executeQuery("SELECT * FROM users WHERE age &gt; 25")
+</span><span line-number="25" class=""><span class="tooltip-container"></span>  yield
+</span><span line-number="26" class=""><span class="tooltip-container"></span>    println(s"Inserted $insertCount rows")
+</span><span line-number="27" class=""><span class="tooltip-container"></span>    while rs.next() do
+</span><span line-number="28" class=""><span class="tooltip-container"></span>      val id = rs.getInt("id")
+</span><span line-number="29" class=""><span class="tooltip-container"></span>      val name = rs.getString("name")
+</span><span line-number="30" class=""><span class="tooltip-container"></span>      val age = rs.getInt("age")
+</span><span line-number="31" class=""><span class="tooltip-container"></span>      println(s"User $id: $name, age $age")
+</span><span line-number="32" class=""><span class="tooltip-container"></span>    rs.close()
+</span><span line-number="33" class=""><span class="tooltip-container"></span>}
+</span><span line-number="34" class=""><span class="tooltip-container"></span>
+</span><span line-number="35" class=""><span class="tooltip-container"></span>result match
+</span><span line-number="36" class=""><span class="tooltip-container"></span>  case Right(_) =&gt; println("Query executed successfully")
+</span><span line-number="37" class=""><span class="tooltip-container"></span>  case Left(error) =&gt; println(s"Error: $error")
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="prepared-statements-1">
+ <h3 class="h400"><a href="#prepared-statements-1" class="anchor"></a>Prepared Statements</h3>
+ <p>Use prepared statements for parameterized queries:</p>
+ <div class="snippet mono-small-block" scala-snippet="" runnable="">
+  <pre><code class="language-scala"><span line-number="1" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.*
+</span><span line-number="2" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.algebra.*
+</span><span line-number="3" class="hideable include"><span class="tooltip-container"></span>
+</span><span line-number="4" class=""><span class="tooltip-container"></span>val result = DuckDBConnection.withConnection() { conn =&gt;
+</span><span line-number="5" class=""><span class="tooltip-container"></span>  for
+</span><span line-number="6" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdate("CREATE TABLE products (id INTEGER, name VARCHAR, price DOUBLE)")
+</span><span line-number="7" class=""><span class="tooltip-container"></span>
+</span><span line-number="8" class=""><span class="tooltip-container"></span>    // Use prepared statement for safe parameter binding
+</span><span line-number="9" class=""><span class="tooltip-container"></span>    insertResult &lt;- conn.withPreparedStatement("INSERT INTO products VALUES (?, ?, ?)") { stmt =&gt;
+</span><span line-number="10" class=""><span class="tooltip-container"></span>      for
+</span><span line-number="11" class=""><span class="tooltip-container"></span>        _ &lt;- stmt.setInt(1, 1)
+</span><span line-number="12" class=""><span class="tooltip-container"></span>        _ &lt;- stmt.setString(2, "Laptop")
+</span><span line-number="13" class=""><span class="tooltip-container"></span>        _ &lt;- stmt.setDouble(3, 999.99)
+</span><span line-number="14" class=""><span class="tooltip-container"></span>        count &lt;- stmt.executeUpdate()
+</span><span line-number="15" class=""><span class="tooltip-container"></span>      yield count
+</span><span line-number="16" class=""><span class="tooltip-container"></span>    }
+</span><span line-number="17" class=""><span class="tooltip-container"></span>
+</span><span line-number="18" class=""><span class="tooltip-container"></span>    // Query with parameters
+</span><span line-number="19" class=""><span class="tooltip-container"></span>    queryResult &lt;- conn.withPreparedStatement("SELECT * FROM products WHERE price &gt; ?") { stmt =&gt;
+</span><span line-number="20" class=""><span class="tooltip-container"></span>      for
+</span><span line-number="21" class=""><span class="tooltip-container"></span>        _ &lt;- stmt.setDouble(1, 500.0)
+</span><span line-number="22" class=""><span class="tooltip-container"></span>        rs &lt;- stmt.executeQuery()
+</span><span line-number="23" class=""><span class="tooltip-container"></span>      yield
+</span><span line-number="24" class=""><span class="tooltip-container"></span>        while rs.next() do
+</span><span line-number="25" class=""><span class="tooltip-container"></span>          println(s"${rs.getString("name")}: $$${rs.getDouble("price")}")
+</span><span line-number="26" class=""><span class="tooltip-container"></span>        rs.close()
+</span><span line-number="27" class=""><span class="tooltip-container"></span>    }
+</span><span line-number="28" class=""><span class="tooltip-container"></span>  yield (insertResult, queryResult)
+</span><span line-number="29" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="batch-operations-1">
+ <h3 class="h400"><a href="#batch-operations-1" class="anchor"></a>Batch Operations</h3>
+ <p>Efficiently insert multiple rows using batch operations:</p>
+ <div class="snippet mono-small-block" scala-snippet="" runnable="">
+  <pre><code class="language-scala"><span line-number="1" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.*
+</span><span line-number="2" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.algebra.*
+</span><span line-number="3" class="hideable include"><span class="tooltip-container"></span>
+</span><span line-number="4" class=""><span class="tooltip-container"></span>val result = DuckDBConnection.withConnection() { conn =&gt;
+</span><span line-number="5" class=""><span class="tooltip-container"></span>  for
+</span><span line-number="6" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdate("CREATE TABLE employees (id INTEGER, name VARCHAR, salary DOUBLE)")
+</span><span line-number="7" class=""><span class="tooltip-container"></span>
+</span><span line-number="8" class=""><span class="tooltip-container"></span>    batchResult &lt;- conn.withBatch("INSERT INTO employees VALUES (?, ?, ?)") { batch =&gt;
+</span><span line-number="9" class=""><span class="tooltip-container"></span>      for
+</span><span line-number="10" class=""><span class="tooltip-container"></span>        _ &lt;- batch.addBatch(
+</span><span line-number="11" class=""><span class="tooltip-container"></span>          (1, "Alice", 75000.0),
+</span><span line-number="12" class=""><span class="tooltip-container"></span>          (2, "Bob", 80000.0),
+</span><span line-number="13" class=""><span class="tooltip-container"></span>          (3, "Charlie", 85000.0)
+</span><span line-number="14" class=""><span class="tooltip-container"></span>        )
+</span><span line-number="15" class=""><span class="tooltip-container"></span>        result &lt;- batch.executeBatch()
+</span><span line-number="16" class=""><span class="tooltip-container"></span>      yield result
+</span><span line-number="17" class=""><span class="tooltip-container"></span>    }
+</span><span line-number="18" class=""><span class="tooltip-container"></span>  yield batchResult
+</span><span line-number="19" class=""><span class="tooltip-container"></span>}
+</span><span line-number="20" class=""><span class="tooltip-container"></span>
+</span><span line-number="21" class=""><span class="tooltip-container"></span>result match
+</span><span line-number="22" class=""><span class="tooltip-container"></span>  case Right(batchResult) =&gt;
+</span><span line-number="23" class=""><span class="tooltip-container"></span>    println(s"Successfully inserted ${batchResult.successCount} rows")
+</span><span line-number="24" class=""><span class="tooltip-container"></span>    println(s"Failed operations: ${batchResult.failureCount}")
+</span><span line-number="25" class=""><span class="tooltip-container"></span>  case Left(error) =&gt;
+</span><span line-number="26" class=""><span class="tooltip-container"></span>    println(s"Batch operation failed: $error")
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="transactions-1">
+ <h3 class="h400"><a href="#transactions-1" class="anchor"></a>Transactions</h3>
+ <p>Use transactions for atomic operations:</p>
+ <div class="snippet mono-small-block" scala-snippet="" runnable="">
+  <pre><code class="language-scala"><span line-number="1" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.*
+</span><span line-number="2" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.algebra.*
+</span><span line-number="3" class="hideable include"><span class="tooltip-container"></span>
+</span><span line-number="4" class=""><span class="tooltip-container"></span>val result = DuckDBConnection.withConnection() { conn =&gt;
+</span><span line-number="5" class=""><span class="tooltip-container"></span>  for
+</span><span line-number="6" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdate("CREATE TABLE accounts (id INTEGER, balance DOUBLE)")
+</span><span line-number="7" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdate("INSERT INTO accounts VALUES (1, 1000.0), (2, 500.0)")
+</span><span line-number="8" class=""><span class="tooltip-container"></span>
+</span><span line-number="9" class=""><span class="tooltip-container"></span>    transferResult &lt;- conn.withTransaction { txConn =&gt;
+</span><span line-number="10" class=""><span class="tooltip-container"></span>      for
+</span><span line-number="11" class=""><span class="tooltip-container"></span>        _ &lt;- txConn.executeUpdate("UPDATE accounts SET balance = balance - 100 WHERE id = 1")
+</span><span line-number="12" class=""><span class="tooltip-container"></span>        _ &lt;- txConn.executeUpdate("UPDATE accounts SET balance = balance + 100 WHERE id = 2")
+</span><span line-number="13" class=""><span class="tooltip-container"></span>      yield "Transfer completed"
+</span><span line-number="14" class=""><span class="tooltip-container"></span>    }
+</span><span line-number="15" class=""><span class="tooltip-container"></span>  yield transferResult
+</span><span line-number="16" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="error-handling-1">
+ <h3 class="h400"><a href="#error-handling-1" class="anchor"></a>Error Handling</h3>
+ <p>Duck4s uses <code>Either[DuckDBError, T]</code> for functional error handling:</p>
+ <div class="snippet mono-small-block" scala-snippet="" runnable="">
+  <pre><code class="language-scala"><span line-number="1" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.*
+</span><span line-number="2" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.algebra.*
+</span><span line-number="3" class="hideable include"><span class="tooltip-container"></span>
+</span><span line-number="4" class=""><span class="tooltip-container"></span>val result = DuckDBConnection.withConnection() { conn =&gt;
+</span><span line-number="5" class=""><span class="tooltip-container"></span>  conn.executeQuery("SELECT * FROM nonexistent_table")
+</span><span line-number="6" class=""><span class="tooltip-container"></span>}
+</span><span line-number="7" class=""><span class="tooltip-container"></span>
+</span><span line-number="8" class=""><span class="tooltip-container"></span>result match
+</span><span line-number="9" class=""><span class="tooltip-container"></span>  case Right(resultSet) =&gt;
+</span><span line-number="10" class=""><span class="tooltip-container"></span>    // Handle successful result
+</span><span line-number="11" class=""><span class="tooltip-container"></span>    resultSet.close()
+</span><span line-number="12" class=""><span class="tooltip-container"></span>  case Left(DuckDBError.QueryError(message, sql, cause)) =&gt;
+</span><span line-number="13" class=""><span class="tooltip-container"></span>    println(s"Query failed: $message")
+</span><span line-number="14" class=""><span class="tooltip-container"></span>    println(s"SQL: $sql")
+</span><span line-number="15" class=""><span class="tooltip-container"></span>    cause.foreach(t =&gt; println(s"Cause: ${t.getMessage}"))
+</span><span line-number="16" class=""><span class="tooltip-container"></span>  case Left(error) =&gt;
+</span><span line-number="17" class=""><span class="tooltip-container"></span>    println(s"Other error: $error")
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="configuration-options-1">
+ <h2 class="h500"><a href="#configuration-options-1" class="anchor"></a>Configuration Options</h2>
+ <p>Customize your DuckDB connection:</p>
+ <div class="snippet mono-small-block" scala-snippet="" runnable="">
+  <pre><code class="language-scala"><span line-number="1" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.*
+</span><span line-number="2" class="hideable include"><span class="tooltip-container"></span>import com.softinio.duck4s.algebra.*
+</span><span line-number="3" class="hideable include"><span class="tooltip-container"></span>
+</span><span line-number="4" class=""><span class="tooltip-container"></span>val config = DuckDBConfig(
+</span><span line-number="5" class=""><span class="tooltip-container"></span>  mode = ConnectionMode.Persistent("/path/to/database.db"),
+</span><span line-number="6" class=""><span class="tooltip-container"></span>  readOnly = false,
+</span><span line-number="7" class=""><span class="tooltip-container"></span>  tempDirectory = Some("/tmp/duckdb"),
+</span><span line-number="8" class=""><span class="tooltip-container"></span>  streamResults = true,
+</span><span line-number="9" class=""><span class="tooltip-container"></span>  additionalProperties = Map(
+</span><span line-number="10" class=""><span class="tooltip-container"></span>    "memory_limit" -&gt; "1GB",
+</span><span line-number="11" class=""><span class="tooltip-container"></span>    "threads" -&gt; "4"
+</span><span line-number="12" class=""><span class="tooltip-container"></span>  )
+</span><span line-number="13" class=""><span class="tooltip-container"></span>)
+</span><span line-number="14" class=""><span class="tooltip-container"></span>
+</span><span line-number="15" class=""><span class="tooltip-container"></span>DuckDBConnection.withConnection(config) { conn =&gt;
+</span><span line-number="16" class=""><span class="tooltip-container"></span>  // Use configured connection
+</span><span line-number="17" class=""><span class="tooltip-container"></span>  Right("Success")
+</span><span line-number="18" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="next-steps-1">
+ <h2 class="h500"><a href="#next-steps-1" class="anchor"></a>Next Steps</h2>
+ <ul>
+  <li>Explore the <a href="../index.html">API Documentation</a> for complete reference</li>
+  <li>Learn about advanced batch operations and type classes</li>
+  <li>Check out the DuckDB <a href="https://duckdb.org/docs/">official documentation</a> for SQL features</li>
+  <li>Browse the source code on <a href="https://github.com/softinio/duck4s">GitHub</a></li>
+ </ul>
+</section>
+<section id="support-1">
+ <h2 class="h500"><a href="#support-1" class="anchor"></a>Support</h2>
+ <ul>
+  <li><a href="https://github.com/softinio/duck4s/issues">GitHub Issues</a> - Bug reports and feature requests</li>
+  <li><a href="https://github.com/softinio/duck4s/discussions">Discussions</a> - Questions and community support</li>
+ </ul>
+</section></div><div id="toc" class="body-small"><div id="toc-container"><span class="toc-title h200">In this article</span><nav class="toc-nav"><ul class="toc-list"><li><a href="#getting-started-with-duck4s-1">Getting Started with Duck4s</a><ul><li><a href="#installation-1">Installation</a><ul><li><a href="#sbt-1">SBT</a></li><li><a href="#mill-1">Mill</a></li></ul></li><li><a href="#basic-usage-1">Basic Usage</a><ul><li><a href="#imports-1">Imports</a></li><li><a href="#creating-connections-1">Creating Connections</a></li><li><a href="#basic-queries-1">Basic Queries</a></li><li><a href="#prepared-statements-1">Prepared Statements</a></li><li><a href="#batch-operations-1">Batch Operations</a></li><li><a href="#transactions-1">Transactions</a></li><li><a href="#error-handling-1">Error Handling</a></li></ul></li><li><a href="#configuration-options-1">Configuration Options</a></li><li><a href="#next-steps-1">Next Steps</a></li><li><a href="#support-1">Support</a></li></ul></li></ul></nav></div></div></div><div id="footer" class="body-small mobile-footer"><div class="left-container">Generated with</div><div class="right-container"><a href="https://github.com/softinio/duck4s"><button class="icon-button gh"></button></a><div class="text"></div></div><div class="text-mobile"></div></div></div></div></body></html>

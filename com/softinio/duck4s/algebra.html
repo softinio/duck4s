@@ -1,0 +1,1392 @@
+<!DOCTYPE html><html data-pathToRoot="../../../" data-rawLocation="com/softinio/duck4s/algebra" data-dynamicSideMenu="false"><head><meta charset="utf-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta><title>com.softinio.duck4s.algebra</title><link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico"></link><script type="text/javascript" src="../../../scripts/theme.js"></script><script type="text/javascript" src="../../../scripts/searchData.js" defer="true"></script><script type="text/javascript" src="../../../scripts/scastieConfiguration.js" defer="true"></script><link rel="stylesheet" href="../../../styles/theme/bundle.css"></link><link rel="stylesheet" href="../../../styles/theme/components/bundle.css"></link><link rel="stylesheet" href="../../../styles/theme/components/button/bundle.css"></link><link rel="stylesheet" href="../../../styles/theme/layout/bundle.css"></link><link rel="stylesheet" href="../../../styles/nord-light.css"></link><link rel="stylesheet" href="../../../styles/dotty-icons.css"></link><link rel="stylesheet" href="../../../styles/filter-bar.css"></link><link rel="stylesheet" href="../../../styles/code-snippets.css"></link><link rel="stylesheet" href="../../../styles/searchbar.css"></link><link rel="stylesheet" href="../../../styles/social-links.css"></link><link rel="stylesheet" href="../../../styles/versions-dropdown.css"></link><link rel="stylesheet" href="../../../styles/content-contributors.css"></link><link rel="stylesheet" href="../../../styles/fontawesome.css"></link><script type="text/javascript" src="../../../hljs/highlight.pack.js" defer="true"></script><script type="text/javascript" src="../../../scripts/hljs-scala3.js" defer="true"></script><script type="text/javascript" src="../../../scripts/ux.js" defer="true"></script><script type="text/javascript" src="../../../scripts/common/component.js" defer="true"></script><script type="text/javascript" src="../../../scripts/common/utils.js" defer="true"></script><script type="text/javascript" src="../../../scripts/components/FilterBar.js" defer="true"></script><script type="text/javascript" src="../../../scripts/components/DocumentableList.js" defer="true"></script><script type="text/javascript" src="../../../scripts/components/Input.js" defer="true"></script><script type="text/javascript" src="../../../scripts/components/FilterGroup.js" defer="true"></script><script type="text/javascript" src="../../../scripts/components/Filter.js" defer="true"></script><script type="text/javascript" src="../../../scripts/scaladoc-scalajs.js" defer="true"></script><script type="text/javascript" src="../../../scripts/contributors.js" defer="true"></script><script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js" defer="true"></script><script type="text/javascript" src="https://d3js.org/d3.v6.min.js" defer="true"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/graphlib-dot@0.6.2/dist/graphlib-dot.min.js" defer="true"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dagre-d3/0.6.1/dagre-d3.min.js" defer="true"></script><script type="text/javascript" src="https://scastie.scala-lang.org/embedded.js" defer="true"></script><script type="text/javascript" src="../../../scripts/data.js" defer="true"></script><link rel="stylesheet" href="../../../styles/apistyles.css"></link><script>var pathToRoot = "../../../";</script></head><body><div id=""><div id="header" class="body-small"><div class="header-container-left"><a href="../../../" class="logo-container"><span class="project-name h300">Duck4s</span></a><span onclick="dropdownHandler(event)" class="text-button with-arrow" id="dropdown-trigger"><a><div class="projectVersion">0.1.1</div></a></span><div id="version-dropdown" class="dropdown-menu"></div></div><div class="header-container-right"><button id="search-toggle" class="icon-button"></button><span id="theme-toggle" class="icon-button"></span><span id="mobile-menu-toggle" class="icon-button hamburger"></span></div></div><div id="mobile-menu"><div class="mobile-menu-header body-small"><span class="mobile-menu-logo"><span class="project-name h300">Duck4s</span></span><button id="mobile-menu-close" class="icon-button close"></button></div><div class="mobile-menu-container body-medium"><input id="mobile-scaladoc-searchbar-input" class="scaladoc-searchbar-input" type="search" placeholder="Find anything"></input><span id="mobile-theme-toggle" class="mobile-menu-item mode"></span></div></div><span id="mobile-sidebar-toggle" class="floating-button"></span><div id="leftColumn" class="body-small"><div class="switcher-container"><a id="docs-nav-button" class="switcher h100 " href="../../../docs/index.html">Docs</a><a id="api-nav-button" class="switcher h100 selected" href="../../../index.html">API</a></div><nav id="api-nav" class="side-menu"><div class="ni n0 expanded"><span class="nh h100 expanded cs"><button class="ar icon-button expanded"></button><a href="../duck4s.html"><span class="micon pa"></span><span>com.softinio.duck4s</span></a></span><div class="ni n1 expanded"><span class="nh h100 selected"><button class="ar icon-button expanded"></button><a href="#"><span class="micon pa"></span><span>algebra</span></a></span><div class="ni n2 "><span class="nh "><a href="algebra/BatchBinder.html"><span class="micon tr"></span><span>BatchBinder</span></a></span></div><div class="ni n2 "><span class="nh "><a href="algebra/BatchBinder$.html"><span class="micon ob"></span><span>BatchBinder</span></a></span></div><div class="ni n2"><span class="nh "><button class="ar icon-button "></button><a href="algebra/ConnectionMode.html"><span class="micon en"></span><span>ConnectionMode</span></a></span><div class="ni n3 "><span class="nh "><a href="algebra/ConnectionMode$$Persistent.html"><span class="micon cl"></span><span>Persistent</span></a></span></div></div><div class="ni n2 "><span class="nh "><a href="algebra/DuckDBBatch.html"><span class="micon cl"></span><span>DuckDBBatch</span></a></span></div><div class="ni n2 "><span class="nh "><a href="algebra/DuckDBBatchResult.html"><span class="micon cl"></span><span>DuckDBBatchResult</span></a></span></div><div class="ni n2 "><span class="nh "><a href="algebra/DuckDBConfig.html"><span class="micon cl"></span><span>DuckDBConfig</span></a></span></div><div class="ni n2 "><span class="nh "><a href="algebra/DuckDBConfig$.html"><span class="micon ob"></span><span>DuckDBConfig</span></a></span></div><div class="ni n2 "><span class="nh "><a href="algebra/DuckDBError.html"><span class="micon tr"></span><span>DuckDBError</span></a></span></div><div class="ni n2"><span class="nh "><button class="ar icon-button "></button><a href="algebra/DuckDBError$.html"><span class="micon ob"></span><span>DuckDBError</span></a></span><div class="ni n3 "><span class="nh "><a href="algebra/DuckDBError$$ConfigurationError.html"><span class="micon cl"></span><span>ConfigurationError</span></a></span></div><div class="ni n3 "><span class="nh "><a href="algebra/DuckDBError$$ConnectionError.html"><span class="micon cl"></span><span>ConnectionError</span></a></span></div><div class="ni n3 "><span class="nh "><a href="algebra/DuckDBError$$InvalidStateError.html"><span class="micon cl"></span><span>InvalidStateError</span></a></span></div><div class="ni n3 "><span class="nh "><a href="algebra/DuckDBError$$QueryError.html"><span class="micon cl"></span><span>QueryError</span></a></span></div><div class="ni n3 "><span class="nh "><a href="algebra/DuckDBError$$TransactionError.html"><span class="micon cl"></span><span>TransactionError</span></a></span></div></div><div class="ni n2 "><span class="nh "><a href="algebra/DuckDBPreparedStatement.html"><span class="micon cl"></span><span>DuckDBPreparedStatement</span></a></span></div><div class="ni n2 "><span class="nh "><a href="algebra/DuckDBResultSet.html"><span class="micon cl"></span><span>DuckDBResultSet</span></a></span></div><div class="ni n2 "><span class="nh "><a href="algebra/ParameterBinder.html"><span class="micon tr"></span><span>ParameterBinder</span></a></span></div><div class="ni n2"><span class="nh "><button class="ar icon-button "></button><a href="algebra/ParameterBinder$.html"><span class="micon ob"></span><span>ParameterBinder</span></a></span><div class="ni n3 "><span class="nh "><a href="algebra/ParameterBinder$$booleanBinder$.html"><span class="micon ob"></span><span>booleanBinder</span></a></span></div><div class="ni n3 "><span class="nh "><a href="algebra/ParameterBinder$$doubleBinder$.html"><span class="micon ob"></span><span>doubleBinder</span></a></span></div><div class="ni n3 "><span class="nh "><a href="algebra/ParameterBinder$$intBinder$.html"><span class="micon ob"></span><span>intBinder</span></a></span></div><div class="ni n3 "><span class="nh "><a href="algebra/ParameterBinder$$longBinder$.html"><span class="micon ob"></span><span>longBinder</span></a></span></div><div class="ni n3 "><span class="nh "><a href="algebra/ParameterBinder$$stringBinder$.html"><span class="micon ob"></span><span>stringBinder</span></a></span></div></div></div><div class="ni n1 "><span class="nh "><a href="DuckDBConnection.html"><span class="micon cl"></span><span>DuckDBConnection</span></a></span></div><div class="ni n1 "><span class="nh "><a href="DuckDBConnection$.html"><span class="micon ob"></span><span>DuckDBConnection</span></a></span></div></div></nav></div><div id="footer" class="body-small"><div class="left-container">Generated with</div><div class="right-container"><a href="https://github.com/softinio/duck4s"><button class="icon-button gh"></button></a><div class="text"></div></div><div class="text-mobile"></div></div><div id="scaladoc-searchBar"></div><div id="main"><div class="breadcrumbs container"><a href="../../../index.html">Duck4s</a>/<a href="../duck4s.html">com.softinio.duck4s</a>/<a href="algebra.html">com.softinio.duck4s.algebra</a></div><div id="content" class="body-medium"><div><div class="cover-header">
+ <span class="icon"><span class="micon pa"></span></span>
+ <h1 class="h600 single">com.softinio.duck4s.algebra</h1>
+</div>
+<div class="fqname body-large">
+ <span></span>
+</div>
+<div class="main-signature mono-small-block">
+ <div class="signature">
+  <span class="modifiers"></span><span class="kind"><span t="k">package </span></span><a href="algebra.html" t="n" class="documentableName ">com.softinio.duck4s.algebra</a>
+ </div>
+</div>
+<div class="cover">
+ <div class="doc">
+  <h1><a href="#algebra-package-core-types-and-data-structures" id="algebra-package-core-types-and-data-structures">Algebra Package: Core Types and Data Structures</a></h1>
+  <p>The algebra package contains the fundamental types, error hierarchies, and algebraic data structures that form the foundation of the duck4s library. These types provide type-safe, functional abstractions over DuckDB's JDBC interface.</p>
+  <h2><a href="#core-types" id="core-types">Core Types</a></h2>
+  <h3><a href="#error-handling" id="error-handling">Error Handling</a></h3>
+  <ul>
+   <li><a href="algebra/DuckDBError.html">DuckDBError</a> - Sealed trait hierarchy for all possible errors</li>
+   <li><a href="algebra/DuckDBError$$ConnectionError.html">DuckDBError.ConnectionError</a> - Connection establishment and management errors</li>
+   <li><a href="algebra/DuckDBError$$QueryError.html">DuckDBError.QueryError</a> - SQL execution errors with query context</li>
+   <li><a href="algebra/DuckDBError$$TransactionError.html">DuckDBError.TransactionError</a> - Transaction-related errors</li>
+   <li><a href="algebra/DuckDBError$$ConfigurationError.html">DuckDBError.ConfigurationError</a> - Configuration validation errors</li>
+   <li><a href="algebra/DuckDBError$$InvalidStateError.html">DuckDBError.InvalidStateError</a> - Invalid object state errors</li>
+  </ul>
+  <h3><a href="#configuration" id="configuration">Configuration</a></h3>
+  <ul>
+   <li><a href="algebra/DuckDBConfig.html">DuckDBConfig</a> - Comprehensive connection configuration</li>
+   <li><a href="algebra/ConnectionMode.html">ConnectionMode</a> - In-memory vs persistent database modes</li>
+  </ul>
+  <h3><a href="#query-execution" id="query-execution">Query Execution</a></h3>
+  <ul>
+   <li><a href="algebra/DuckDBResultSet.html">DuckDBResultSet</a> - Wrapper around JDBC ResultSet with resource management</li>
+   <li><a href="algebra/DuckDBPreparedStatement.html">DuckDBPreparedStatement</a> - Type-safe prepared statement wrapper</li>
+  </ul>
+  <h3><a href="#batch-operations" id="batch-operations">Batch Operations</a></h3>
+  <ul>
+   <li><a href="algebra/DuckDBBatch.html">DuckDBBatch</a> - Efficient batch operation wrapper</li>
+   <li><a href="algebra/DuckDBBatchResult.html">DuckDBBatchResult</a> - Results and metrics from batch execution</li>
+   <li><a href="algebra/BatchBinder.html">BatchBinder</a> - Type class for binding batch parameters</li>
+   <li><a href="algebra/ParameterBinder.html">ParameterBinder</a> - Type class for individual parameter binding</li>
+  </ul>
+  <h2><a href="#type-classes-for-batch-operations" id="type-classes-for-batch-operations">Type Classes for Batch Operations</a></h2>
+  <p>The algebra package provides powerful type classes for type-safe batch operations:</p>
+  <div class="snippet mono-small-block">
+   <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span>// Built-in support for tuples up to 4 elements
+</span><span line-number="2" class=""><span class="tooltip-container"></span>batch.addBatch((1, "Alice"))                    // (Int, String)
+</span><span line-number="3" class=""><span class="tooltip-container"></span>batch.addBatch((1, "Alice", 25))                // (Int, String, Int)
+</span><span line-number="4" class=""><span class="tooltip-container"></span>batch.addBatch((1, "Alice", 25, true))          // (Int, String, Int, Boolean)
+</span><span line-number="5" class=""><span class="tooltip-container"></span>batch.addBatch((1, "Alice", 25, 999.99))        // (Int, String, Int, Double)
+</span><span line-number="6" class=""><span class="tooltip-container"></span>
+</span><span line-number="7" class=""><span class="tooltip-container"></span>// Built-in support for primitive types
+</span><span line-number="8" class=""><span class="tooltip-container"></span>stmt.setInt(1, 42)
+</span><span line-number="9" class=""><span class="tooltip-container"></span>stmt.setString(2, "hello")
+</span><span line-number="10" class=""><span class="tooltip-container"></span>stmt.setDouble(3, 3.14)
+</span><span line-number="11" class=""><span class="tooltip-container"></span>stmt.setBoolean(4, true)
+</span><span line-number="12" class=""><span class="tooltip-container"></span>stmt.setLong(5, 1000L)
+</span><span line-number="13" class=""><span class="tooltip-container"></span>
+</span><span line-number="14" class=""><span class="tooltip-container"></span>// Option support for nullable values
+</span><span line-number="15" class=""><span class="tooltip-container"></span>stmt.setString(1, Some("value"))    // Sets the string value
+</span><span line-number="16" class=""><span class="tooltip-container"></span>stmt.setString(1, None)             // Sets NULL
+</span></code></pre>
+   <div class="buttons"></div>
+  </div>
+  <h2><a href="#custom-type-class-instances" id="custom-type-class-instances">Custom Type Class Instances</a></h2>
+  <p>You can provide custom <code>ParameterBinder</code> instances for your own types:</p>
+  <div class="snippet mono-small-block">
+   <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span>case class UserId(value: Long)
+</span><span line-number="2" class=""><span class="tooltip-container"></span>
+</span><span line-number="3" class=""><span class="tooltip-container"></span>given ParameterBinder[UserId] with
+</span><span line-number="4" class=""><span class="tooltip-container"></span> def bind(stmt: DuckDBPreparedStatement, index: Int, value: UserId): Either[DuckDBError, Unit] =
+</span><span line-number="5" class=""><span class="tooltip-container"></span>   stmt.setLong(index, value.value).map(_ =&gt; ())
+</span><span line-number="6" class=""><span class="tooltip-container"></span>
+</span><span line-number="7" class=""><span class="tooltip-container"></span>// Now UserId can be used in batch operations
+</span><span line-number="8" class=""><span class="tooltip-container"></span>batch.addBatch((UserId(123), "Alice"))
+</span></code></pre>
+   <div class="buttons"></div>
+  </div>
+  <h2><a href="#error-handling-patterns" id="error-handling-patterns">Error Handling Patterns</a></h2>
+  <p>All operations return <code>Either[DuckDBError, T]</code> for functional composition:</p>
+  <div class="snippet mono-small-block">
+   <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span>for
+</span><span line-number="2" class=""><span class="tooltip-container"></span> stmt &lt;- conn.prepareStatement("INSERT INTO users VALUES (?, ?)")
+</span><span line-number="3" class=""><span class="tooltip-container"></span> _ &lt;- stmt.setInt(1, 1)
+</span><span line-number="4" class=""><span class="tooltip-container"></span> _ &lt;- stmt.setString(2, "Alice")
+</span><span line-number="5" class=""><span class="tooltip-container"></span> result &lt;- stmt.executeUpdate()
+</span><span line-number="6" class=""><span class="tooltip-container"></span>yield result
+</span></code></pre>
+   <div class="buttons"></div>
+  </div>
+  <h2><a href="#resource-management" id="resource-management">Resource Management</a></h2>
+  <p>Types in this package follow consistent resource management patterns:</p>
+  <ul>
+   <li>All resource types implement <code>AutoCloseable</code></li>
+   <li>Prefer <code>with*</code> methods for automatic cleanup</li>
+   <li>Resources are cleaned up even on errors</li>
+   <li>Nested resource usage is safely composed</li>
+  </ul>
+ </div>
+ <section id="attributes">
+  <h2 class="h500">Attributes</h2>
+  <dl class="attributes">
+   <dt class="body-small">
+    See also
+   </dt>
+   <dd class="body-medium">
+    <div>
+     <div>
+      <p><a href="DuckDBConnection.html">com.softinio.duck4s.DuckDBConnection</a> for the main connection interface</p>
+     </div>
+    </div>
+   </dd>
+   <dt class="body-small">
+    Since
+   </dt>
+   <dd class="body-medium">
+    <p>0.1.0</p>
+   </dd>
+  </dl>
+ </section>
+</div>
+<section id="members-list">
+ <h2 class="h500">Members list</h2>
+ <div class="documentableFilter">
+  <div class="filtersContainer"></div><input class="filterableInput" placeholder="Filter by any phrase" data-test-id="filterBarInput" type="search"><button class="clearButton label-only-button" data-test-id="filterBarClearButton">Clear all</button>
+ </div>
+ <div class="membersList expand">
+  <div class="tabs">
+   <div class="contents">
+    <section id="Type-members">
+     <div data-togglable="Type members" class="tab expand">
+      <div class="member-group-header">
+       <h3 data-togglable="Type members" class="h400">Type members</h3>
+      </div>
+      <section id="Classlikes">
+       <div class="documentableList expand">
+        <div class="documentableList-expander">
+         <button class="icon-button show-content expand"></button>
+         <h4 class="groupHeader h200">Classlikes</h4>
+        </div>
+        <div class="documentableElement">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">trait </span></span><a href="algebra/BatchBinder.html" t="n" class="documentableName ">BatchBinder</a>[<span t="k"></span><span data-unresolved-link="" t="t">T</span>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Type class for binding batch parameters to prepared statements.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Type class for binding batch parameters to prepared statements.</p>
+              <p>This type class provides a way to bind different types of parameter values to prepared statements in a type-safe manner. Implementations are provided for tuples of various sizes, allowing batch operations with multiple parameters.</p>
+             </div>
+             <h2 class="h200">Type parameters</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               T
+              </dt>
+              <dd class="body-medium">
+               <p>the type of parameter values to bind</p>
+              </dd>
+             </dl>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               See also
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <p><a href="algebra/ParameterBinder.html">ParameterBinder</a> for individual parameter binding</p>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span> // Custom binder for a case class case class User(name: String, age:
+</span><span line-number="2" class=""><span class="tooltip-container"></span> Int)
+</span><span line-number="3" class=""><span class="tooltip-container"></span>given BatchBinder[User] with def bind(stmt: DuckDBPreparedStatement, values:
+</span><span line-number="4" class=""><span class="tooltip-container"></span>User*): Either[DuckDBError, Unit] = if (values.isEmpty) Right(()) else val
+</span><span line-number="5" class=""><span class="tooltip-container"></span>user = values.head for { _ &lt;- stmt.setString(1, user.name) _ &lt;-
+</span><span line-number="6" class=""><span class="tooltip-container"></span>stmt.setInt(2, user.age) } yield () 
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Companion
+              </dt>
+              <dd class="body-medium">
+               <a href="algebra/BatchBinder$.html">object</a>
+              </dd>
+              <dt class="body-small">
+               Supertypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <div>
+                 class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+                </div>
+                <div>
+                 trait <span data-unresolved-link="" t="n">Matchable</span>
+                </div>
+                <div>
+                 class <span data-unresolved-link="" t="n">Any</span>
+                </div><span></span>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">object </span></span><a href="algebra/BatchBinder$.html" t="n" class="documentableName ">BatchBinder</a>
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Companion object providing implicit <a href="algebra/BatchBinder.html">BatchBinder</a> instances for common types.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Companion object providing implicit <a href="algebra/BatchBinder.html">BatchBinder</a> instances for common types.</p>
+              <p>This object contains given instances for tuples of various sizes (2, 3, and 4 elements). Each binder uses the appropriate <a href="algebra/ParameterBinder.html">ParameterBinder</a> instances for the tuple elements.</p>
+             </div>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Companion
+              </dt>
+              <dd class="body-medium">
+               <a href="algebra/BatchBinder.html">trait</a>
+              </dd>
+              <dt class="body-small">
+               Supertypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <div>
+                 class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+                </div>
+                <div>
+                 trait <span data-unresolved-link="" t="n">Matchable</span>
+                </div>
+                <div>
+                 class <span data-unresolved-link="" t="n">Any</span>
+                </div><span></span>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Self type
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <span></span>
+                <div>
+                 <a href="algebra/BatchBinder$.html" t="n">BatchBinder</a>.<span t="k">type</span>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">enum </span></span><a href="algebra/ConnectionMode.html" t="n" class="documentableName ">ConnectionMode</a>
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Specifies the connection mode for DuckDB connections.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Specifies the connection mode for DuckDB connections.</p>
+              <p>DuckDB supports two primary connection modes: in-memory databases for temporary data processing and persistent databases stored on disk.</p>
+             </div>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Supertypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/reflect/Enum.html" t="n">Enum</a>
+                </div>
+                <div>
+                 trait <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/io/Serializable.html" t="n">Serializable</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/Product.html" t="n">Product</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/Equals.html" t="n">Equals</a>
+                </div>
+                <div>
+                 class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+                </div>
+                <div>
+                 trait <span data-unresolved-link="" t="n">Matchable</span>
+                </div>
+                <div>
+                 class <span data-unresolved-link="" t="n">Any</span>
+                </div><span class="show-all-code show-content text-button h100">Show all</span>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" data-f-keywords="case">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="signature-short"><span class="modifiers"><span t="k">case </span></span><span class="kind"><span t="k">class </span></span><a href="algebra/DuckDBBatch.html" t="n" class="documentableName ">DuckDBBatch</a>(<span t="k"></span><span t="k"></span><span data-unresolved-link="" t="n">preparedStatement</span>: <a href="algebra/DuckDBPreparedStatement.html" t="t">DuckDBPreparedStatement</a>)<span t="k"> extends </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/AutoCloseable.html" t="t">AutoCloseable</a></span><span class="signature-long"></span>
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>A batch operation wrapper for executing multiple parameter sets efficiently.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>A batch operation wrapper for executing multiple parameter sets efficiently.</p>
+              <p>This class provides a type-safe way to execute batch operations with prepared statements. It uses type classes (<a href="algebra/BatchBinder.html">BatchBinder</a> and <a href="algebra/ParameterBinder.html">ParameterBinder</a>) to automatically bind parameters of various types, making batch operations both safe and convenient.</p>
+             </div>
+             <h2 class="h200">Value parameters</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               preparedStatement
+              </dt>
+              <dd class="body-medium">
+               <p>the prepared statement to use for batch operations</p>
+              </dd>
+             </dl>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               See also
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <p><a href="algebra/BatchBinder.html">BatchBinder</a> for parameter binding type class</p>
+                </div>
+                <div>
+                 <p><a href="algebra/ParameterBinder.html">ParameterBinder</a> for individual parameter binding</p>
+                </div>
+                <div>
+                 <p><a href="algebra/DuckDBBatchResult.html">DuckDBBatchResult</a> for batch execution results</p>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span> // Batch insert with tuples val batch = for { stmt &lt;-
+</span><span line-number="2" class=""><span class="tooltip-container"></span> connection.prepareStatement("INSERT INTO users (name, age) VALUES (?, ?)")
+</span><span line-number="3" class=""><span class="tooltip-container"></span> batch &lt;- Right(DuckDBBatch(stmt)) _ &lt;- batch.addBatch(("Alice", 25),
+</span><span line-number="4" class=""><span class="tooltip-container"></span> ("Bob", 30), ("Charlie", 35)) result &lt;- batch.executeBatch() } yield
+</span><span line-number="5" class=""><span class="tooltip-container"></span> result
+</span><span line-number="6" class=""><span class="tooltip-container"></span>// Batch update with different parameter types val updateBatch = for { stmt
+</span><span line-number="7" class=""><span class="tooltip-container"></span>&lt;- connection.prepareStatement("UPDATE products SET price = ?, active = ?
+</span><span line-number="8" class=""><span class="tooltip-container"></span>WHERE id = ?") batch &lt;- Right(DuckDBBatch(stmt)) _ &lt;- batch.addBatch((19.99,
+</span><span line-number="9" class=""><span class="tooltip-container"></span>true, 1), (29.99, false, 2)) result &lt;- batch.executeBatch() } yield result
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Supertypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <div>
+                 trait <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/io/Serializable.html" t="n">Serializable</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/Product.html" t="n">Product</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/Equals.html" t="n">Equals</a>
+                </div>
+                <div>
+                 trait <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/AutoCloseable.html" t="n">AutoCloseable</a>
+                </div>
+                <div>
+                 class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+                </div>
+                <div>
+                 trait <span data-unresolved-link="" t="n">Matchable</span>
+                </div>
+                <div>
+                 class <span data-unresolved-link="" t="n">Any</span>
+                </div><span class="show-all-code show-content text-button h100">Show all</span>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" data-f-keywords="case">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"><span t="k">case </span></span><span class="kind"><span t="k">class </span></span><a href="algebra/DuckDBBatchResult.html" t="n" class="documentableName ">DuckDBBatchResult</a>(<span t="k"></span><span t="k"></span><span data-unresolved-link="" t="n">updateCounts</span>: <a href="https://scala-lang.org/api/3.x/scala/Array.html" t="t">Array</a>[<a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>], <span t="k"></span><span data-unresolved-link="" t="n">successCount</span>: <a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>, <span t="k"></span><span data-unresolved-link="" t="n">failureCount</span>: <a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>)
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Result of executing a batch operation, containing update counts and statistics.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Result of executing a batch operation, containing update counts and statistics.</p>
+              <p>This class encapsulates the results of executing a batch operation, providing both detailed update counts for each operation in the batch and summary statistics about successes and failures.</p>
+             </div>
+             <h2 class="h200">Value parameters</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               failureCount
+              </dt>
+              <dd class="body-medium">
+               <p>the number of operations that failed</p>
+              </dd>
+              <dt class="body-small">
+               successCount
+              </dt>
+              <dd class="body-medium">
+               <p>the number of operations that completed successfully</p>
+              </dd>
+              <dt class="body-small">
+               updateCounts
+              </dt>
+              <dd class="body-medium">
+               <p>array of update counts for each operation in the batch. Non-negative values indicate the number of rows affected by that operation. Negative values indicate failures.</p>
+              </dd>
+             </dl>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               See also
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <p><a href="algebra/DuckDBBatch.html#executeBatch-fffffba9">DuckDBBatch.executeBatch</a> for executing batch operations</p>
+                </div>
+                <div>
+                 <p><a href="algebra/DuckDBBatch.html">DuckDBBatch</a> for batch operation management</p>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span> val result = for { batch &lt;- Right(DuckDBBatch(stmt)) _ &lt;-
+</span><span line-number="2" class=""><span class="tooltip-container"></span> batch.addBatch(("Alice", 25), ("Bob", 30), ("Charlie", 35)) result &lt;-
+</span><span line-number="3" class=""><span class="tooltip-container"></span> batch.executeBatch() } yield result
+</span><span line-number="4" class=""><span class="tooltip-container"></span>result match { case Right(batchResult) =&gt; println(s"Total operations:
+</span><span line-number="5" class=""><span class="tooltip-container"></span>${batchResult.updateCounts.length}") println(s"Successful:
+</span><span line-number="6" class=""><span class="tooltip-container"></span>${batchResult.successCount}") println(s"Failed:
+</span><span line-number="7" class=""><span class="tooltip-container"></span>${batchResult.failureCount}")
+</span><span line-number="8" class=""><span class="tooltip-container"></span>// Check individual operation results
+</span><span line-number="9" class=""><span class="tooltip-container"></span>batchResult.updateCounts.zipWithIndex.foreach { case (count, index) =&gt; if
+</span><span line-number="10" class=""><span class="tooltip-container"></span>(count &gt;= 0) { println(s"Operation $index: $count rows affected") } else {
+</span><span line-number="11" class=""><span class="tooltip-container"></span>println(s"Operation $index: failed") } }
+</span><span line-number="12" class=""><span class="tooltip-container"></span>// Check if all operations succeeded if (batchResult.isAllSuccessful) {
+</span><span line-number="13" class=""><span class="tooltip-container"></span>println("All operations completed successfully!") }
+</span><span line-number="14" class=""><span class="tooltip-container"></span>case Left(error) =&gt; println(s"Batch execution failed: $error") } 
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Supertypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <div>
+                 trait <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/io/Serializable.html" t="n">Serializable</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/Product.html" t="n">Product</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/Equals.html" t="n">Equals</a>
+                </div>
+                <div>
+                 class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+                </div>
+                <div>
+                 trait <span data-unresolved-link="" t="n">Matchable</span>
+                </div>
+                <div>
+                 class <span data-unresolved-link="" t="n">Any</span>
+                </div><span class="show-all-code show-content text-button h100">Show all</span>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" data-f-keywords="case">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"><span t="k">case </span></span><span class="kind"><span t="k">class </span></span><a href="algebra/DuckDBConfig.html" t="n" class="documentableName ">DuckDBConfig</a>(<span t="k"></span><span t="k"></span><span data-unresolved-link="" t="n">mode</span>: <a href="algebra/ConnectionMode.html" t="t">ConnectionMode</a>, <span t="k"></span><span data-unresolved-link="" t="n">readOnly</span>: <a href="https://scala-lang.org/api/3.x/scala/Boolean.html" t="t">Boolean</a>, <span t="k"></span><span data-unresolved-link="" t="n">tempDirectory</span>: <a href="https://scala-lang.org/api/3.x/scala/Option.html" t="t">Option</a>[<a href="https://scala-lang.org/api/3.x/scala/Predef$.html#String-0" t="t">String</a>], <span t="k"></span><span data-unresolved-link="" t="n">streamResults</span>: <a href="https://scala-lang.org/api/3.x/scala/Boolean.html" t="t">Boolean</a>, <span t="k"></span><span data-unresolved-link="" t="n">additionalProperties</span>: <a href="https://scala-lang.org/api/3.x/scala/collection/immutable/Map.html" t="t">Map</a>[<a href="https://scala-lang.org/api/3.x/scala/Predef$.html#String-0" t="t">String</a>, <a href="https://scala-lang.org/api/3.x/scala/Predef$.html#String-0" t="t">String</a>])
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Configuration options for DuckDB connections.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Configuration options for DuckDB connections.</p>
+              <p>This case class provides a comprehensive set of configuration options for customizing DuckDB connection behavior, including connection mode, read-only access, temporary directory settings, and additional JDBC properties.</p>
+             </div>
+             <h2 class="h200">Value parameters</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               additionalProperties
+              </dt>
+              <dd class="body-medium">
+               <p>Additional JDBC properties to pass to the connection</p>
+              </dd>
+              <dt class="body-small">
+               mode
+              </dt>
+              <dd class="body-medium">
+               <p>The connection mode (in-memory or persistent)</p>
+              </dd>
+              <dt class="body-small">
+               readOnly
+              </dt>
+              <dd class="body-medium">
+               <p>Whether the connection should be read-only</p>
+              </dd>
+              <dt class="body-small">
+               streamResults
+              </dt>
+              <dd class="body-medium">
+               <p>Whether to enable JDBC result streaming for large result sets</p>
+              </dd>
+              <dt class="body-small">
+               tempDirectory
+              </dt>
+              <dd class="body-medium">
+               <p>Optional custom temporary directory for DuckDB operations</p>
+              </dd>
+             </dl>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               See also
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <p><a href="algebra/ConnectionMode.html">ConnectionMode</a> for available connection modes</p>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span> // In-memory database with streaming enabled val config =
+</span><span line-number="2" class=""><span class="tooltip-container"></span> DuckDBConfig( mode = ConnectionMode.InMemory, streamResults = true )
+</span><span line-number="3" class=""><span class="tooltip-container"></span>// Persistent read-only database val readOnlyConfig = DuckDBConfig( mode =
+</span><span line-number="4" class=""><span class="tooltip-container"></span>ConnectionMode.Persistent("/path/to/database.db"), readOnly = true ) 
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Companion
+              </dt>
+              <dd class="body-medium">
+               <a href="algebra/DuckDBConfig$.html">object</a>
+              </dd>
+              <dt class="body-small">
+               Supertypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <div>
+                 trait <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/io/Serializable.html" t="n">Serializable</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/Product.html" t="n">Product</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/Equals.html" t="n">Equals</a>
+                </div>
+                <div>
+                 class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+                </div>
+                <div>
+                 trait <span data-unresolved-link="" t="n">Matchable</span>
+                </div>
+                <div>
+                 class <span data-unresolved-link="" t="n">Any</span>
+                </div><span class="show-all-code show-content text-button h100">Show all</span>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">object </span></span><a href="algebra/DuckDBConfig$.html" t="n" class="documentableName ">DuckDBConfig</a>
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Factory methods for creating common DuckDB configurations.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Factory methods for creating common DuckDB configurations.</p>
+             </div>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Companion
+              </dt>
+              <dd class="body-medium">
+               <a href="algebra/DuckDBConfig.html">class</a>
+              </dd>
+              <dt class="body-small">
+               Supertypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/deriving/Mirror$$Product.html" t="n">Product</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/deriving/Mirror.html" t="n">Mirror</a>
+                </div>
+                <div>
+                 class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+                </div>
+                <div>
+                 trait <span data-unresolved-link="" t="n">Matchable</span>
+                </div>
+                <div>
+                 class <span data-unresolved-link="" t="n">Any</span>
+                </div><span></span>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Self type
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <span></span>
+                <div>
+                 <a href="algebra/DuckDBConfig$.html" t="n">DuckDBConfig</a>.<span t="k">type</span>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" data-f-keywords="sealed">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"><span t="k">sealed </span></span><span class="kind"><span t="k">trait </span></span><a href="algebra/DuckDBError.html" t="n" class="documentableName ">DuckDBError</a>
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Root error type for all DuckDB-related errors in duck4s.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Root error type for all DuckDB-related errors in duck4s.</p>
+              <p>This sealed trait represents all possible errors that can occur when working with DuckDB through the duck4s library. All operations return <code>Either[DuckDBError, T]</code> for functional error handling.</p>
+             </div>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               See also
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <p><a href="algebra/DuckDBError$$ConnectionError.html">DuckDBError.ConnectionError</a> for connection-related errors</p>
+                </div>
+                <div>
+                 <p><a href="algebra/DuckDBError$$QueryError.html">DuckDBError.QueryError</a> for SQL execution errors</p>
+                </div>
+                <div>
+                 <p><a href="algebra/DuckDBError$$TransactionError.html">DuckDBError.TransactionError</a> for transaction-related errors</p>
+                </div>
+                <div>
+                 <p><a href="algebra/DuckDBError$$ConfigurationError.html">DuckDBError.ConfigurationError</a> for configuration errors</p>
+                </div>
+                <div>
+                 <p><a href="algebra/DuckDBError$$InvalidStateError.html">DuckDBError.InvalidStateError</a> for invalid state errors</p>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Companion
+              </dt>
+              <dd class="body-medium">
+               <a href="algebra/DuckDBError$.html">object</a>
+              </dd>
+              <dt class="body-small">
+               Supertypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <div>
+                 class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+                </div>
+                <div>
+                 trait <span data-unresolved-link="" t="n">Matchable</span>
+                </div>
+                <div>
+                 class <span data-unresolved-link="" t="n">Any</span>
+                </div><span></span>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Known subtypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block subtypes">
+                <div>
+                 class <a href="algebra/DuckDBError$$ConfigurationError.html" t="n">ConfigurationError</a>
+                </div>
+                <div>
+                 class <a href="algebra/DuckDBError$$ConnectionError.html" t="n">ConnectionError</a>
+                </div>
+                <div>
+                 class <a href="algebra/DuckDBError$$InvalidStateError.html" t="n">InvalidStateError</a>
+                </div>
+                <div>
+                 class <a href="algebra/DuckDBError$$QueryError.html" t="n">QueryError</a>
+                </div>
+                <div>
+                 class <a href="algebra/DuckDBError$$TransactionError.html" t="n">TransactionError</a>
+                </div><span></span>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">object </span></span><a href="algebra/DuckDBError$.html" t="n" class="documentableName ">DuckDBError</a>
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Contains all concrete error types that can occur in duck4s operations.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Contains all concrete error types that can occur in duck4s operations.</p>
+             </div>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Companion
+              </dt>
+              <dd class="body-medium">
+               <a href="algebra/DuckDBError.html">trait</a>
+              </dd>
+              <dt class="body-small">
+               Supertypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/deriving/Mirror$$Sum.html" t="n">Sum</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/deriving/Mirror.html" t="n">Mirror</a>
+                </div>
+                <div>
+                 class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+                </div>
+                <div>
+                 trait <span data-unresolved-link="" t="n">Matchable</span>
+                </div>
+                <div>
+                 class <span data-unresolved-link="" t="n">Any</span>
+                </div><span></span>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Self type
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <span></span>
+                <div>
+                 <a href="algebra/DuckDBError$.html" t="n">DuckDBError</a>.<span t="k">type</span>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" data-f-keywords="case">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="signature-short"><span class="modifiers"><span t="k">case </span></span><span class="kind"><span t="k">class </span></span><a href="algebra/DuckDBPreparedStatement.html" t="n" class="documentableName ">DuckDBPreparedStatement</a>(<span t="k"></span><span t="k"></span><span data-unresolved-link="" t="n">underlying</span>: <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/sql/PreparedStatement.html" t="t">PreparedStatement</a>, <span t="k"></span><span data-unresolved-link="" t="n">sql</span>: <a href="https://scala-lang.org/api/3.x/scala/Predef$.html#String-0" t="t">String</a>)<span t="k"> extends </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/AutoCloseable.html" t="t">AutoCloseable</a></span><span class="signature-long"></span>
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>A wrapper around a JDBC PreparedStatement that provides type-safe parameter binding and error handling with DuckDB-specific error types.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>A wrapper around a JDBC PreparedStatement that provides type-safe parameter binding and error handling with DuckDB-specific error types.</p>
+              <p>This class encapsulates a JDBC PreparedStatement and provides methods for setting parameters and executing queries/updates in a functional style. All parameter setting methods return Either types for error handling, making it safe to compose operations.</p>
+             </div>
+             <h2 class="h200">Value parameters</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               sql
+              </dt>
+              <dd class="body-medium">
+               <p>the SQL query string, used for error reporting</p>
+              </dd>
+              <dt class="body-small">
+               underlying
+              </dt>
+              <dd class="body-medium">
+               <p>the underlying JDBC PreparedStatement</p>
+              </dd>
+             </dl>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               See also
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <p><a href="DuckDBConnection.html#prepareStatement-fffffbe4">DuckDBConnection.prepareStatement</a> for creating prepared statements</p>
+                </div>
+                <div>
+                 <p><a href="algebra/DuckDBBatch.html">DuckDBBatch</a> for batch operations</p>
+                </div>
+                <div>
+                 <p><a href="algebra/DuckDBResultSet.html">DuckDBResultSet</a> for query results</p>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span> // Setting parameters and executing a query val result = for { stmt &lt;-
+</span><span line-number="2" class=""><span class="tooltip-container"></span> connection.prepareStatement("SELECT * FROM users WHERE age &gt; ? AND name
+</span><span line-number="3" class=""><span class="tooltip-container"></span> LIKE ?") _ &lt;- stmt.setInt(1, 18) _ &lt;- stmt.setString(2, "John%") rs &lt;-
+</span><span line-number="4" class=""><span class="tooltip-container"></span> stmt.executeQuery() } yield rs
+</span><span line-number="5" class=""><span class="tooltip-container"></span>// Batch operations val batch = for { stmt &lt;-
+</span><span line-number="6" class=""><span class="tooltip-container"></span>connection.prepareStatement("INSERT INTO users (name, age) VALUES (?, ?)") _
+</span><span line-number="7" class=""><span class="tooltip-container"></span>&lt;- stmt.setString(1, "Alice") _ &lt;- stmt.setInt(2, 25) _ &lt;- stmt.addBatch() _
+</span><span line-number="8" class=""><span class="tooltip-container"></span>&lt;- stmt.setString(1, "Bob") _ &lt;- stmt.setInt(2, 30) _ &lt;- stmt.addBatch() }
+</span><span line-number="9" class=""><span class="tooltip-container"></span>yield stmt 
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Supertypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <div>
+                 trait <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/io/Serializable.html" t="n">Serializable</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/Product.html" t="n">Product</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/Equals.html" t="n">Equals</a>
+                </div>
+                <div>
+                 trait <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/AutoCloseable.html" t="n">AutoCloseable</a>
+                </div>
+                <div>
+                 class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+                </div>
+                <div>
+                 trait <span data-unresolved-link="" t="n">Matchable</span>
+                </div>
+                <div>
+                 class <span data-unresolved-link="" t="n">Any</span>
+                </div><span class="show-all-code show-content text-button h100">Show all</span>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" data-f-keywords="case">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="signature-short"><span class="modifiers"><span t="k">case </span></span><span class="kind"><span t="k">class </span></span><a href="algebra/DuckDBResultSet.html" t="n" class="documentableName ">DuckDBResultSet</a>(<span t="k"></span><span t="k"></span><span data-unresolved-link="" t="n">underlying</span>: <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/sql/ResultSet.html" t="t">ResultSet</a>, <span t="k"></span><span data-unresolved-link="" t="n">statement</span>: <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/sql/Statement.html" t="t">Statement</a>)<span t="k"> extends </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/AutoCloseable.html" t="t">AutoCloseable</a></span><span class="signature-long"></span>
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>A wrapper around a JDBC ResultSet that provides automatic resource management for both the result set and its associated statement.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>A wrapper around a JDBC ResultSet that provides automatic resource management for both the result set and its associated statement.</p>
+              <p>This class is designed to be used with the using pattern or explicit resource management to ensure that both the underlying ResultSet and its Statement are properly closed when no longer needed. The class exports common ResultSet methods for convenient access.</p>
+             </div>
+             <h2 class="h200">Value parameters</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               statement
+              </dt>
+              <dd class="body-medium">
+               <p>the Statement that created this ResultSet, needed for proper cleanup</p>
+              </dd>
+              <dt class="body-small">
+               underlying
+              </dt>
+              <dd class="body-medium">
+               <p>the underlying JDBC ResultSet</p>
+              </dd>
+             </dl>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               See also
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <p><a href="DuckDBConnection.html">DuckDBConnection</a> for creating result sets</p>
+                </div>
+                <div>
+                 <p><a href="algebra/DuckDBPreparedStatement.html">DuckDBPreparedStatement</a> for parameterized queries</p>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span> import scala.util.Using
+</span><span line-number="2" class=""><span class="tooltip-container"></span>// Automatic resource management val result =
+</span><span line-number="3" class=""><span class="tooltip-container"></span>Using(connection.executeQuery("SELECT * FROM users")) { rs =&gt; while
+</span><span line-number="4" class=""><span class="tooltip-container"></span>(rs.next()) { println(s"Name: ${rs.getString("name")}, Age:
+</span><span line-number="5" class=""><span class="tooltip-container"></span>${rs.getInt("age")}") } }
+</span><span line-number="6" class=""><span class="tooltip-container"></span>// Or with explicit management val rs = connection.executeQuery("SELECT
+</span><span line-number="7" class=""><span class="tooltip-container"></span>count(*) FROM users") try { if (rs.next()) { val count = rs.getInt(1)
+</span><span line-number="8" class=""><span class="tooltip-container"></span>println(s"Total users: $count") } } finally { rs.close() // Closes both
+</span><span line-number="9" class=""><span class="tooltip-container"></span>ResultSet and Statement } 
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Supertypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <div>
+                 trait <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/io/Serializable.html" t="n">Serializable</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/Product.html" t="n">Product</a>
+                </div>
+                <div>
+                 trait <a href="https://scala-lang.org/api/3.x/scala/Equals.html" t="n">Equals</a>
+                </div>
+                <div>
+                 trait <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/AutoCloseable.html" t="n">AutoCloseable</a>
+                </div>
+                <div>
+                 class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+                </div>
+                <div>
+                 trait <span data-unresolved-link="" t="n">Matchable</span>
+                </div>
+                <div>
+                 class <span data-unresolved-link="" t="n">Any</span>
+                </div><span class="show-all-code show-content text-button h100">Show all</span>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">trait </span></span><a href="algebra/ParameterBinder.html" t="n" class="documentableName ">ParameterBinder</a>[<span t="k"></span><span data-unresolved-link="" t="t">T</span>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Type class for binding individual parameters to prepared statements.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Type class for binding individual parameters to prepared statements.</p>
+              <p>This type class provides a way to bind individual parameter values to prepared statements at specific parameter indexes. Implementations are provided for common Scala types and Option types.</p>
+             </div>
+             <h2 class="h200">Type parameters</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               T
+              </dt>
+              <dd class="body-medium">
+               <p>the type of parameter value to bind</p>
+              </dd>
+             </dl>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               See also
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <p><a href="algebra/BatchBinder.html">BatchBinder</a> for batch parameter binding</p>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span> // Custom binder for a custom type case class UserId(value: Long)
+</span><span line-number="2" class=""><span class="tooltip-container"></span>given ParameterBinder[UserId] with def bind( stmt: DuckDBPreparedStatement,
+</span><span line-number="3" class=""><span class="tooltip-container"></span>index: Int, value: UserId ): Either[DuckDBError, Unit] = stmt.setLong(index,
+</span><span line-number="4" class=""><span class="tooltip-container"></span>value.value).map(_ =&gt; ()) 
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Companion
+              </dt>
+              <dd class="body-medium">
+               <a href="algebra/ParameterBinder$.html">object</a>
+              </dd>
+              <dt class="body-small">
+               Supertypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <div>
+                 class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+                </div>
+                <div>
+                 trait <span data-unresolved-link="" t="n">Matchable</span>
+                </div>
+                <div>
+                 class <span data-unresolved-link="" t="n">Any</span>
+                </div><span></span>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Known subtypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block subtypes">
+                <div>
+                 object <a href="algebra/ParameterBinder$$booleanBinder$.html" t="n">booleanBinder</a>
+                </div>
+                <div>
+                 object <a href="algebra/ParameterBinder$$doubleBinder$.html" t="n">doubleBinder</a>
+                </div>
+                <div>
+                 object <a href="algebra/ParameterBinder$$intBinder$.html" t="n">intBinder</a>
+                </div>
+                <div>
+                 object <a href="algebra/ParameterBinder$$longBinder$.html" t="n">longBinder</a>
+                </div>
+                <div>
+                 object <a href="algebra/ParameterBinder$$stringBinder$.html" t="n">stringBinder</a>
+                </div><span></span>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">object </span></span><a href="algebra/ParameterBinder$.html" t="n" class="documentableName ">ParameterBinder</a>
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Companion object providing implicit <a href="algebra/ParameterBinder.html">ParameterBinder</a> instances for common types.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Companion object providing implicit <a href="algebra/ParameterBinder.html">ParameterBinder</a> instances for common types.</p>
+              <p>This object contains given instances for primitive types (Int, Long, Double, String, Boolean) and Option types, providing automatic parameter binding for these common cases.</p>
+             </div>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Companion
+              </dt>
+              <dd class="body-medium">
+               <a href="algebra/ParameterBinder.html">trait</a>
+              </dd>
+              <dt class="body-small">
+               Supertypes
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <div>
+                 class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+                </div>
+                <div>
+                 trait <span data-unresolved-link="" t="n">Matchable</span>
+                </div>
+                <div>
+                 class <span data-unresolved-link="" t="n">Any</span>
+                </div><span></span>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Self type
+              </dt>
+              <dd class="body-medium">
+               <div class="mono-small-block supertypes">
+                <span></span>
+                <div>
+                 <a href="algebra/ParameterBinder$.html" t="n">ParameterBinder</a>.<span t="k">type</span>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+     </div>
+    </section>
+   </div>
+  </div>
+ </div>
+</section></div><div id="toc" class="body-small"><div id="toc-container"><span class="toc-title h200">In this article</span><nav class="toc-nav"><ul class="toc-list"><li><a href="#attributes">Attributes</a></li><li><a href="#members-list">Members list</a><ul><li><a href="#Type-members">Type members</a><ul><li><a href="#Classlikes">Classlikes</a></li></ul></li></ul></li></ul></nav></div></div></div><div id="footer" class="body-small mobile-footer"><div class="left-container">Generated with</div><div class="right-container"><a href="https://github.com/softinio/duck4s"><button class="icon-button gh"></button></a><div class="text"></div></div><div class="text-mobile"></div></div></div></div></body></html>

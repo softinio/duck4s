@@ -1,0 +1,970 @@
+<!DOCTYPE html><html data-pathToRoot="../../../../" data-rawLocation="com/softinio/duck4s/algebra/DuckDBPreparedStatement" data-dynamicSideMenu="false"><head><meta charset="utf-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta><title>DuckDBPreparedStatement</title><link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico"></link><script type="text/javascript" src="../../../../scripts/theme.js"></script><script type="text/javascript" src="../../../../scripts/searchData.js" defer="true"></script><script type="text/javascript" src="../../../../scripts/scastieConfiguration.js" defer="true"></script><link rel="stylesheet" href="../../../../styles/theme/bundle.css"></link><link rel="stylesheet" href="../../../../styles/theme/components/bundle.css"></link><link rel="stylesheet" href="../../../../styles/theme/components/button/bundle.css"></link><link rel="stylesheet" href="../../../../styles/theme/layout/bundle.css"></link><link rel="stylesheet" href="../../../../styles/nord-light.css"></link><link rel="stylesheet" href="../../../../styles/dotty-icons.css"></link><link rel="stylesheet" href="../../../../styles/filter-bar.css"></link><link rel="stylesheet" href="../../../../styles/code-snippets.css"></link><link rel="stylesheet" href="../../../../styles/searchbar.css"></link><link rel="stylesheet" href="../../../../styles/social-links.css"></link><link rel="stylesheet" href="../../../../styles/versions-dropdown.css"></link><link rel="stylesheet" href="../../../../styles/content-contributors.css"></link><link rel="stylesheet" href="../../../../styles/fontawesome.css"></link><script type="text/javascript" src="../../../../hljs/highlight.pack.js" defer="true"></script><script type="text/javascript" src="../../../../scripts/hljs-scala3.js" defer="true"></script><script type="text/javascript" src="../../../../scripts/ux.js" defer="true"></script><script type="text/javascript" src="../../../../scripts/common/component.js" defer="true"></script><script type="text/javascript" src="../../../../scripts/common/utils.js" defer="true"></script><script type="text/javascript" src="../../../../scripts/components/FilterBar.js" defer="true"></script><script type="text/javascript" src="../../../../scripts/components/DocumentableList.js" defer="true"></script><script type="text/javascript" src="../../../../scripts/components/Input.js" defer="true"></script><script type="text/javascript" src="../../../../scripts/components/FilterGroup.js" defer="true"></script><script type="text/javascript" src="../../../../scripts/components/Filter.js" defer="true"></script><script type="text/javascript" src="../../../../scripts/scaladoc-scalajs.js" defer="true"></script><script type="text/javascript" src="../../../../scripts/contributors.js" defer="true"></script><script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js" defer="true"></script><script type="text/javascript" src="https://d3js.org/d3.v6.min.js" defer="true"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/graphlib-dot@0.6.2/dist/graphlib-dot.min.js" defer="true"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dagre-d3/0.6.1/dagre-d3.min.js" defer="true"></script><script type="text/javascript" src="https://scastie.scala-lang.org/embedded.js" defer="true"></script><script type="text/javascript" src="../../../../scripts/data.js" defer="true"></script><link rel="stylesheet" href="../../../../styles/apistyles.css"></link><script>var pathToRoot = "../../../../";</script></head><body><div id=""><div id="header" class="body-small"><div class="header-container-left"><a href="../../../../" class="logo-container"><span class="project-name h300">Duck4s</span></a><span onclick="dropdownHandler(event)" class="text-button with-arrow" id="dropdown-trigger"><a><div class="projectVersion">0.1.1</div></a></span><div id="version-dropdown" class="dropdown-menu"></div></div><div class="header-container-right"><button id="search-toggle" class="icon-button"></button><span id="theme-toggle" class="icon-button"></span><span id="mobile-menu-toggle" class="icon-button hamburger"></span></div></div><div id="mobile-menu"><div class="mobile-menu-header body-small"><span class="mobile-menu-logo"><span class="project-name h300">Duck4s</span></span><button id="mobile-menu-close" class="icon-button close"></button></div><div class="mobile-menu-container body-medium"><input id="mobile-scaladoc-searchbar-input" class="scaladoc-searchbar-input" type="search" placeholder="Find anything"></input><span id="mobile-theme-toggle" class="mobile-menu-item mode"></span></div></div><span id="mobile-sidebar-toggle" class="floating-button"></span><div id="leftColumn" class="body-small"><div class="switcher-container"><a id="docs-nav-button" class="switcher h100 " href="../../../../docs/index.html">Docs</a><a id="api-nav-button" class="switcher h100 selected" href="../../../../index.html">API</a></div><nav id="api-nav" class="side-menu"><div class="ni n0 expanded"><span class="nh h100 expanded cs"><button class="ar icon-button expanded"></button><a href="../../duck4s.html"><span class="micon pa"></span><span>com.softinio.duck4s</span></a></span><div class="ni n1 expanded"><span class="nh h100 expanded cs"><button class="ar icon-button expanded"></button><a href="../algebra.html"><span class="micon pa"></span><span>algebra</span></a></span><div class="ni n2 "><span class="nh "><a href="BatchBinder.html"><span class="micon tr"></span><span>BatchBinder</span></a></span></div><div class="ni n2 "><span class="nh "><a href="BatchBinder$.html"><span class="micon ob"></span><span>BatchBinder</span></a></span></div><div class="ni n2"><span class="nh "><button class="ar icon-button "></button><a href="ConnectionMode.html"><span class="micon en"></span><span>ConnectionMode</span></a></span><div class="ni n3 "><span class="nh "><a href="ConnectionMode$$Persistent.html"><span class="micon cl"></span><span>Persistent</span></a></span></div></div><div class="ni n2 "><span class="nh "><a href="DuckDBBatch.html"><span class="micon cl"></span><span>DuckDBBatch</span></a></span></div><div class="ni n2 "><span class="nh "><a href="DuckDBBatchResult.html"><span class="micon cl"></span><span>DuckDBBatchResult</span></a></span></div><div class="ni n2 "><span class="nh "><a href="DuckDBConfig.html"><span class="micon cl"></span><span>DuckDBConfig</span></a></span></div><div class="ni n2 "><span class="nh "><a href="DuckDBConfig$.html"><span class="micon ob"></span><span>DuckDBConfig</span></a></span></div><div class="ni n2 "><span class="nh "><a href="DuckDBError.html"><span class="micon tr"></span><span>DuckDBError</span></a></span></div><div class="ni n2"><span class="nh "><button class="ar icon-button "></button><a href="DuckDBError$.html"><span class="micon ob"></span><span>DuckDBError</span></a></span><div class="ni n3 "><span class="nh "><a href="DuckDBError$$ConfigurationError.html"><span class="micon cl"></span><span>ConfigurationError</span></a></span></div><div class="ni n3 "><span class="nh "><a href="DuckDBError$$ConnectionError.html"><span class="micon cl"></span><span>ConnectionError</span></a></span></div><div class="ni n3 "><span class="nh "><a href="DuckDBError$$InvalidStateError.html"><span class="micon cl"></span><span>InvalidStateError</span></a></span></div><div class="ni n3 "><span class="nh "><a href="DuckDBError$$QueryError.html"><span class="micon cl"></span><span>QueryError</span></a></span></div><div class="ni n3 "><span class="nh "><a href="DuckDBError$$TransactionError.html"><span class="micon cl"></span><span>TransactionError</span></a></span></div></div><div class="ni n2 expanded"><span class="nh h100 selected"><a href="#"><span class="micon cl"></span><span>DuckDBPreparedStatement</span></a></span></div><div class="ni n2 "><span class="nh "><a href="DuckDBResultSet.html"><span class="micon cl"></span><span>DuckDBResultSet</span></a></span></div><div class="ni n2 "><span class="nh "><a href="ParameterBinder.html"><span class="micon tr"></span><span>ParameterBinder</span></a></span></div><div class="ni n2"><span class="nh "><button class="ar icon-button "></button><a href="ParameterBinder$.html"><span class="micon ob"></span><span>ParameterBinder</span></a></span><div class="ni n3 "><span class="nh "><a href="ParameterBinder$$booleanBinder$.html"><span class="micon ob"></span><span>booleanBinder</span></a></span></div><div class="ni n3 "><span class="nh "><a href="ParameterBinder$$doubleBinder$.html"><span class="micon ob"></span><span>doubleBinder</span></a></span></div><div class="ni n3 "><span class="nh "><a href="ParameterBinder$$intBinder$.html"><span class="micon ob"></span><span>intBinder</span></a></span></div><div class="ni n3 "><span class="nh "><a href="ParameterBinder$$longBinder$.html"><span class="micon ob"></span><span>longBinder</span></a></span></div><div class="ni n3 "><span class="nh "><a href="ParameterBinder$$stringBinder$.html"><span class="micon ob"></span><span>stringBinder</span></a></span></div></div></div><div class="ni n1 "><span class="nh "><a href="../DuckDBConnection.html"><span class="micon cl"></span><span>DuckDBConnection</span></a></span></div><div class="ni n1 "><span class="nh "><a href="../DuckDBConnection$.html"><span class="micon ob"></span><span>DuckDBConnection</span></a></span></div></div></nav></div><div id="footer" class="body-small"><div class="left-container">Generated with</div><div class="right-container"><a href="https://github.com/softinio/duck4s"><button class="icon-button gh"></button></a><div class="text"></div></div><div class="text-mobile"></div></div><div id="scaladoc-searchBar"></div><div id="main"><div class="breadcrumbs container"><a href="../../../../index.html">Duck4s</a>/<a href="../../duck4s.html">com.softinio.duck4s</a>/<a href="../algebra.html">com.softinio.duck4s.algebra</a>/<a href="DuckDBPreparedStatement.html">DuckDBPreparedStatement</a></div><div id="content" class="body-medium"><div><div class="cover-header">
+ <span class="icon"><span class="micon cl"></span></span>
+ <h1 class="h600 single">DuckDBPreparedStatement</h1>
+</div>
+<div class="fqname body-large">
+ <span>com.softinio.duck4s.algebra.DuckDBPreparedStatement</span>
+</div>
+<div class="main-signature mono-small-block">
+ <div class="signature">
+  <span class="signature-short"><span class="modifiers"><span t="k">case </span></span><span class="kind"><span t="k">class </span></span><a href="DuckDBPreparedStatement.html" t="n" class="documentableName ">DuckDBPreparedStatement</a>(<span t="k"></span><span t="k"></span><span data-unresolved-link="" t="n">underlying</span>: <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/sql/PreparedStatement.html" t="t">PreparedStatement</a>, <span t="k"></span><span data-unresolved-link="" t="n">sql</span>: <a href="https://scala-lang.org/api/3.x/scala/Predef$.html#String-0" t="t">String</a>)<span t="k"> extends </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/AutoCloseable.html" t="t">AutoCloseable</a></span><span class="signature-long"></span>
+ </div>
+</div>
+<div class="cover">
+ <div class="doc">
+  <p>A wrapper around a JDBC PreparedStatement that provides type-safe parameter binding and error handling with DuckDB-specific error types.</p>
+  <p>This class encapsulates a JDBC PreparedStatement and provides methods for setting parameters and executing queries/updates in a functional style. All parameter setting methods return Either types for error handling, making it safe to compose operations.</p>
+ </div>
+ <section id="attributes">
+  <h2 class="h500">Value parameters</h2>
+  <dl class="attributes">
+   <dt class="body-small">
+    sql
+   </dt>
+   <dd class="body-medium">
+    <p>the SQL query string, used for error reporting</p>
+   </dd>
+   <dt class="body-small">
+    underlying
+   </dt>
+   <dd class="body-medium">
+    <p>the underlying JDBC PreparedStatement</p>
+   </dd>
+  </dl>
+  <h2 class="h500">Attributes</h2>
+  <dl class="attributes">
+   <dt class="body-small">
+    See also
+   </dt>
+   <dd class="body-medium">
+    <div>
+     <div>
+      <p><a href="../DuckDBConnection.html#prepareStatement-fffffbe4">DuckDBConnection.prepareStatement</a> for creating prepared statements</p>
+     </div>
+     <div>
+      <p><a href="DuckDBBatch.html">DuckDBBatch</a> for batch operations</p>
+     </div>
+     <div>
+      <p><a href="DuckDBResultSet.html">DuckDBResultSet</a> for query results</p>
+     </div>
+    </div>
+   </dd>
+   <dt class="body-small">
+    Since
+   </dt>
+   <dd class="body-medium">
+    <p>0.1.0</p>
+   </dd>
+   <dt class="body-small">
+    Example
+   </dt>
+   <dd class="body-medium">
+    <div>
+     <div>
+      <div class="snippet mono-small-block">
+       <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span> // Setting parameters and executing a query val result = for { stmt &lt;-
+</span><span line-number="2" class=""><span class="tooltip-container"></span> connection.prepareStatement("SELECT * FROM users WHERE age &gt; ? AND name
+</span><span line-number="3" class=""><span class="tooltip-container"></span> LIKE ?") _ &lt;- stmt.setInt(1, 18) _ &lt;- stmt.setString(2, "John%") rs &lt;-
+</span><span line-number="4" class=""><span class="tooltip-container"></span> stmt.executeQuery() } yield rs
+</span><span line-number="5" class=""><span class="tooltip-container"></span>// Batch operations val batch = for { stmt &lt;-
+</span><span line-number="6" class=""><span class="tooltip-container"></span>connection.prepareStatement("INSERT INTO users (name, age) VALUES (?, ?)") _
+</span><span line-number="7" class=""><span class="tooltip-container"></span>&lt;- stmt.setString(1, "Alice") _ &lt;- stmt.setInt(2, 25) _ &lt;- stmt.addBatch() _
+</span><span line-number="8" class=""><span class="tooltip-container"></span>&lt;- stmt.setString(1, "Bob") _ &lt;- stmt.setInt(2, 30) _ &lt;- stmt.addBatch() }
+</span><span line-number="9" class=""><span class="tooltip-container"></span>yield stmt 
+</span></code></pre>
+       <div class="buttons"></div>
+      </div>
+     </div>
+    </div>
+   </dd>
+   <dt class="body-small">
+    Graph
+   </dt>
+   <dd class="body-medium">
+    <div id="inheritance-diagram" class="diagram-class showGraph">
+     <button type="button" class="label-only-button" onclick="zoomOut()">Reset zoom</button><button type="button" class="label-only-button" onclick="hideGraph()">Hide graph</button><button type="button" class="label-only-button" onclick="showGraph()">Show graph</button>
+     <svg id="graph"></svg>
+     <script type="text/dot" id="dot"> digraph g {
+ node0 [id=node0, label="<span style=\"color: #FFFFFF;\">class <a href=\"DuckDBPreparedStatement.html\" t=\"n\">DuckDBPreparedStatement</a></span>", class="class vertex"];
+node1 [id=node1, label="<span style=\"color: #FFFFFF;\">class <a href=\"https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html\" t=\"n\">Object</a></span>", class="class vertex"];
+node2 [id=node2, label="<span style=\"color: #FFFFFF;\">class <span data-unresolved-link=\"\" t=\"n\">Any</span></span>", class="class vertex"];
+node3 [id=node3, label="<span style=\"color: #FFFFFF;\">trait <span data-unresolved-link=\"\" t=\"n\">Matchable</span></span>", class="trait vertex"];
+node4 [id=node4, label="<span style=\"color: #FFFFFF;\">trait <a href=\"https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/AutoCloseable.html\" t=\"n\">AutoCloseable</a></span>", class="trait vertex"];
+node5 [id=node5, label="<span style=\"color: #FFFFFF;\">trait <a href=\"https://scala-lang.org/api/3.x/scala/Product.html\" t=\"n\">Product</a></span>", class="trait vertex"];
+node6 [id=node6, label="<span style=\"color: #FFFFFF;\">trait <a href=\"https://scala-lang.org/api/3.x/scala/Equals.html\" t=\"n\">Equals</a></span>", class="trait vertex"];
+node7 [id=node7, label="<span style=\"color: #FFFFFF;\">class <a href=\"https://scala-lang.org/api/3.x/scala.html#Serializable-0\" t=\"n\">Serializable</a></span>", class="class vertex"];
+
+
+ node0 -> node1;
+node1 -> node2;
+node1 -> node3;
+node3 -> node2;
+node0 -> node4;
+node4 -> node1;
+node0 -> node5;
+node5 -> node2;
+node5 -> node6;
+node6 -> node2;
+node0 -> node7;
+node7 -> node2;
+
+}
+</script>
+    </div>
+   </dd>
+   <dt class="body-small">
+    Supertypes
+   </dt>
+   <dd class="body-medium">
+    <div class="mono-small-block supertypes">
+     <div>
+      trait <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/io/Serializable.html" t="n">Serializable</a>
+     </div>
+     <div>
+      trait <a href="https://scala-lang.org/api/3.x/scala/Product.html" t="n">Product</a>
+     </div>
+     <div>
+      trait <a href="https://scala-lang.org/api/3.x/scala/Equals.html" t="n">Equals</a>
+     </div>
+     <div>
+      trait <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/AutoCloseable.html" t="n">AutoCloseable</a>
+     </div>
+     <div>
+      class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java/lang/Object.html" t="n">Object</a>
+     </div>
+     <div>
+      trait <span data-unresolved-link="" t="n">Matchable</span>
+     </div>
+     <div>
+      class <span data-unresolved-link="" t="n">Any</span>
+     </div><span class="show-all-code show-content text-button h100">Show all</span>
+    </div>
+   </dd>
+  </dl>
+ </section>
+</div>
+<section id="members-list">
+ <h2 class="h500">Members list</h2>
+ <div class="documentableFilter">
+  <div class="filtersContainer"></div><input class="filterableInput" placeholder="Filter by any phrase" data-test-id="filterBarInput" type="search"><button class="clearButton label-only-button" data-test-id="filterBarClearButton">Clear all</button>
+ </div>
+ <div class="membersList expand">
+  <div class="tabs">
+   <div class="contents">
+    <section id="Value-members">
+     <div data-togglable="Value members" class="tab expand">
+      <div class="member-group-header">
+       <h3 data-togglable="Value members" class="h400">Value members</h3>
+      </div>
+      <section id="Concrete-methods">
+       <div class="documentableList expand">
+        <div class="documentableList-expander">
+         <button class="icon-button show-content expand"></button>
+         <h4 class="groupHeader h200">Concrete methods</h4>
+        </div>
+        <div class="documentableElement" id="addBatch-fffffba9">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">def </span></span><a href="DuckDBPreparedStatement.html#addBatch-fffffba9" t="n" class="documentableName ">addBatch</a>(<span t="k"></span>): <a href="https://scala-lang.org/api/3.x/scala/util/Either.html" t="t">Either</a>[<a href="DuckDBError.html" t="t">DuckDBError</a>, <a href="DuckDBPreparedStatement.html" t="t">DuckDBPreparedStatement</a>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Adds the current parameter values to the batch for later execution.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Adds the current parameter values to the batch for later execution.</p>
+              <p>After setting parameters, this method adds them to the batch. Multiple sets of parameters can be added to build up a batch for efficient execution.</p>
+             </div>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Returns
+              </dt>
+              <dd class="body-medium">
+               <p>Right(this) on success, Left(DuckDBError) on failure</p>
+              </dd>
+              <dt class="body-small">
+               See also
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <p><a href="DuckDBBatch.html">DuckDBBatch</a> for batch execution</p>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span><span class="hideable"> </span>val batch = for { stmt &lt;- connection.prepareStatement("INSERT INTO
+</span><span line-number="2" class=""><span class="tooltip-container"></span><span class="hideable"> </span>users (name, age) VALUES (?, ?)") _ &lt;- stmt.setString(1, "Alice") _ &lt;-
+</span><span line-number="3" class=""><span class="tooltip-container"></span><span class="hideable"> </span>stmt.setInt(2, 25) _ &lt;- stmt.addBatch() _ &lt;- stmt.setString(1, "Bob") _
+</span><span line-number="4" class=""><span class="tooltip-container"></span><span class="hideable"> </span>&lt;- stmt.setInt(2, 30) _ &lt;- stmt.addBatch() } yield stmt 
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" id="clearParameters-fffffba9">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">def </span></span><a href="DuckDBPreparedStatement.html#clearParameters-fffffba9" t="n" class="documentableName ">clearParameters</a>(<span t="k"></span>): <a href="https://scala-lang.org/api/3.x/scala/util/Either.html" t="t">Either</a>[<a href="DuckDBError.html" t="t">DuckDBError</a>, <a href="DuckDBPreparedStatement.html" t="t">DuckDBPreparedStatement</a>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Clears all parameter values that have been set on this prepared statement.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Clears all parameter values that have been set on this prepared statement.</p>
+              <p>After calling this method, all parameters will be unset and need to be set again before executing the statement.</p>
+             </div>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Returns
+              </dt>
+              <dd class="body-medium">
+               <p>Right(this) on success, Left(DuckDBError) on failure</p>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span><span class="hideable"> </span>val result = for { stmt &lt;- connection.prepareStatement("SELECT *
+</span><span line-number="2" class=""><span class="tooltip-container"></span><span class="hideable"> </span>FROM users WHERE age &gt; ?") _ &lt;- stmt.setInt(1, 18) _ &lt;-
+</span><span line-number="3" class=""><span class="tooltip-container"></span><span class="hideable"> </span>stmt.clearParameters() // Clear previous value _ &lt;- stmt.setInt(1, 21)
+</span><span line-number="4" class=""><span class="tooltip-container"></span><span class="hideable"> </span>// Set new value rs &lt;- stmt.executeQuery() } yield rs 
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" id="close-94c">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">def </span></span><a href="DuckDBPreparedStatement.html#close-94c" t="n" class="documentableName ">close</a>(<span t="k"></span>): <a href="https://scala-lang.org/api/3.x/scala/Unit.html" t="t">Unit</a>
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Closes this prepared statement and releases its database resources.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Closes this prepared statement and releases its database resources.</p>
+              <p>It's important to close prepared statements when done with them to free database resources. This method is called automatically when using resource management patterns like <code>Using</code>.</p>
+             </div>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span><span class="hideable"> </span>val stmt = connection.prepareStatement("SELECT * FROM users") try {
+</span><span line-number="2" class=""><span class="tooltip-container"></span><span class="hideable"> </span>// Use the statement... } finally { stmt.close() } 
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" id="executeQuery-fffffba9">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">def </span></span><a href="DuckDBPreparedStatement.html#executeQuery-fffffba9" t="n" class="documentableName ">executeQuery</a>(<span t="k"></span>): <a href="https://scala-lang.org/api/3.x/scala/util/Either.html" t="t">Either</a>[<a href="DuckDBError.html" t="t">DuckDBError</a>, <a href="DuckDBResultSet.html" t="t">DuckDBResultSet</a>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Executes the prepared statement as a query and returns a result set.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Executes the prepared statement as a query and returns a result set.</p>
+              <p>This method is used for SELECT statements and other queries that return data. The returned result set must be properly closed after use.</p>
+             </div>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Returns
+              </dt>
+              <dd class="body-medium">
+               <p>Right(DuckDBResultSet) on success, Left(DuckDBError) on failure</p>
+              </dd>
+              <dt class="body-small">
+               See also
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <p><a href="DuckDBResultSet.html">DuckDBResultSet</a> for processing query results</p>
+                </div>
+               </div>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span><span class="hideable"> </span>val result = for { stmt &lt;- connection.prepareStatement("SELECT name,
+</span><span line-number="2" class=""><span class="tooltip-container"></span><span class="hideable"> </span>age FROM users WHERE id = ?") _ &lt;- stmt.setInt(1, 123) rs &lt;-
+</span><span line-number="3" class=""><span class="tooltip-container"></span><span class="hideable"> </span>stmt.executeQuery() } yield { if (rs.next()) { (rs.getString("name"),
+</span><span line-number="4" class=""><span class="tooltip-container"></span><span class="hideable"> </span>rs.getInt("age")) } else { ("Not found", 0) } } 
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" id="executeUpdate-fffffba9">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">def </span></span><a href="DuckDBPreparedStatement.html#executeUpdate-fffffba9" t="n" class="documentableName ">executeUpdate</a>(<span t="k"></span>): <a href="https://scala-lang.org/api/3.x/scala/util/Either.html" t="t">Either</a>[<a href="DuckDBError.html" t="t">DuckDBError</a>, <a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Executes the prepared statement as an update and returns the number of affected rows.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Executes the prepared statement as an update and returns the number of affected rows.</p>
+              <p>This method is used for INSERT, UPDATE, DELETE statements and other SQL statements that don't return a result set.</p>
+             </div>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Returns
+              </dt>
+              <dd class="body-medium">
+               <p>Right(rowCount) on success, Left(DuckDBError) on failure</p>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span> val result = for { stmt &lt;- connection.prepareStatement("UPDATE users
+</span><span line-number="2" class=""><span class="tooltip-container"></span> SET age = ? WHERE name = ?") _ &lt;- stmt.setInt(1, 26) _ &lt;-
+</span><span line-number="3" class=""><span class="tooltip-container"></span> stmt.setString(2, "Alice") rows &lt;- stmt.executeUpdate() } yield rows
+</span><span line-number="4" class=""><span class="tooltip-container"></span>result match { case Right(count) =&gt; println(s"Updated $count rows") case
+</span><span line-number="5" class=""><span class="tooltip-container"></span>Left(error) =&gt; println(s"Update failed: $error") } 
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" id="setBoolean-fffff130">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">def </span></span><a href="DuckDBPreparedStatement.html#setBoolean-fffff130" t="n" class="documentableName ">setBoolean</a>(<span t="k"></span><span t="k"></span><span data-unresolved-link="" t="n">parameterIndex</span>: <a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>, <span t="k"></span><span data-unresolved-link="" t="n">value</span>: <a href="https://scala-lang.org/api/3.x/scala/Boolean.html" t="t">Boolean</a>): <a href="https://scala-lang.org/api/3.x/scala/util/Either.html" t="t">Either</a>[<a href="DuckDBError.html" t="t">DuckDBError</a>, <a href="https://scala-lang.org/api/3.x/scala/Boolean.html" t="t">Boolean</a>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Sets a boolean parameter in the prepared statement.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Sets a boolean parameter in the prepared statement.</p>
+             </div>
+             <h2 class="h200">Value parameters</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               parameterIndex
+              </dt>
+              <dd class="body-medium">
+               <p>the parameter index (1-based)</p>
+              </dd>
+              <dt class="body-small">
+               value
+              </dt>
+              <dd class="body-medium">
+               <p>the boolean value to set</p>
+              </dd>
+             </dl>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Returns
+              </dt>
+              <dd class="body-medium">
+               <p>Right(value) on success, Left(DuckDBError) on failure</p>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span>stmt.setBoolean(1, true)
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" id="setDouble-fffffd69">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">def </span></span><a href="DuckDBPreparedStatement.html#setDouble-fffffd69" t="n" class="documentableName ">setDouble</a>(<span t="k"></span><span t="k"></span><span data-unresolved-link="" t="n">parameterIndex</span>: <a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>, <span t="k"></span><span data-unresolved-link="" t="n">value</span>: <a href="https://scala-lang.org/api/3.x/scala/Double.html" t="t">Double</a>): <a href="https://scala-lang.org/api/3.x/scala/util/Either.html" t="t">Either</a>[<a href="DuckDBError.html" t="t">DuckDBError</a>, <a href="https://scala-lang.org/api/3.x/scala/Double.html" t="t">Double</a>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Sets a double parameter in the prepared statement.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Sets a double parameter in the prepared statement.</p>
+             </div>
+             <h2 class="h200">Value parameters</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               parameterIndex
+              </dt>
+              <dd class="body-medium">
+               <p>the parameter index (1-based)</p>
+              </dd>
+              <dt class="body-small">
+               value
+              </dt>
+              <dd class="body-medium">
+               <p>the double value to set</p>
+              </dd>
+             </dl>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Returns
+              </dt>
+              <dd class="body-medium">
+               <p>Right(value) on success, Left(DuckDBError) on failure</p>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span>stmt.setDouble(1, 3.14159)
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" id="setInt-fffffbc9">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">def </span></span><a href="DuckDBPreparedStatement.html#setInt-fffffbc9" t="n" class="documentableName ">setInt</a>(<span t="k"></span><span t="k"></span><span data-unresolved-link="" t="n">parameterIndex</span>: <a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>, <span t="k"></span><span data-unresolved-link="" t="n">value</span>: <a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>): <a href="https://scala-lang.org/api/3.x/scala/util/Either.html" t="t">Either</a>[<a href="DuckDBError.html" t="t">DuckDBError</a>, <a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Sets an integer parameter in the prepared statement.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Sets an integer parameter in the prepared statement.</p>
+             </div>
+             <h2 class="h200">Value parameters</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               parameterIndex
+              </dt>
+              <dd class="body-medium">
+               <p>the parameter index (1-based)</p>
+              </dd>
+              <dt class="body-small">
+               value
+              </dt>
+              <dd class="body-medium">
+               <p>the integer value to set</p>
+              </dd>
+             </dl>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Returns
+              </dt>
+              <dd class="body-medium">
+               <p>Right(value) on success, Left(DuckDBError) on failure</p>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span><span class="hideable"> </span>val result = for { stmt &lt;- connection.prepareStatement("SELECT *
+</span><span line-number="2" class=""><span class="tooltip-container"></span><span class="hideable"> </span>FROM users WHERE age &gt; ?") _ &lt;- stmt.setInt(1, 18) rs &lt;-
+</span><span line-number="3" class=""><span class="tooltip-container"></span><span class="hideable"> </span>stmt.executeQuery() } yield rs 
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" id="setLong-65e">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">def </span></span><a href="DuckDBPreparedStatement.html#setLong-65e" t="n" class="documentableName ">setLong</a>(<span t="k"></span><span t="k"></span><span data-unresolved-link="" t="n">parameterIndex</span>: <a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>, <span t="k"></span><span data-unresolved-link="" t="n">value</span>: <a href="https://scala-lang.org/api/3.x/scala/Long.html" t="t">Long</a>): <a href="https://scala-lang.org/api/3.x/scala/util/Either.html" t="t">Either</a>[<a href="DuckDBError.html" t="t">DuckDBError</a>, <a href="https://scala-lang.org/api/3.x/scala/Long.html" t="t">Long</a>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Sets a long parameter in the prepared statement.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Sets a long parameter in the prepared statement.</p>
+             </div>
+             <h2 class="h200">Value parameters</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               parameterIndex
+              </dt>
+              <dd class="body-medium">
+               <p>the parameter index (1-based)</p>
+              </dd>
+              <dt class="body-small">
+               value
+              </dt>
+              <dd class="body-medium">
+               <p>the long value to set</p>
+              </dd>
+             </dl>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Returns
+              </dt>
+              <dd class="body-medium">
+               <p>Right(value) on success, Left(DuckDBError) on failure</p>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span>stmt.setLong(1, 1234567890L)
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" id="setNull-fffffbc9">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">def </span></span><a href="DuckDBPreparedStatement.html#setNull-fffffbc9" t="n" class="documentableName ">setNull</a>(<span t="k"></span><span t="k"></span><span data-unresolved-link="" t="n">parameterIndex</span>: <a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>, <span t="k"></span><span data-unresolved-link="" t="n">sqlType</span>: <a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>): <a href="https://scala-lang.org/api/3.x/scala/util/Either.html" t="t">Either</a>[<a href="DuckDBError.html" t="t">DuckDBError</a>, <a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Sets a parameter to NULL in the prepared statement.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Sets a parameter to NULL in the prepared statement.</p>
+             </div>
+             <h2 class="h200">Value parameters</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               parameterIndex
+              </dt>
+              <dd class="body-medium">
+               <p>the parameter index (1-based)</p>
+              </dd>
+              <dt class="body-small">
+               sqlType
+              </dt>
+              <dd class="body-medium">
+               <p>the SQL type code (from java.sql.Types)</p>
+              </dd>
+             </dl>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Returns
+              </dt>
+              <dd class="body-medium">
+               <p>Right(sqlType) on success, Left(DuckDBError) on failure</p>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span>import java.sql.Types stmt.setNull(1, Types.VARCHAR)
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" id="setString-fffffd9d">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">def </span></span><a href="DuckDBPreparedStatement.html#setString-fffffd9d" t="n" class="documentableName ">setString</a>(<span t="k"></span><span t="k"></span><span data-unresolved-link="" t="n">parameterIndex</span>: <a href="https://scala-lang.org/api/3.x/scala/Int.html" t="t">Int</a>, <span t="k"></span><span data-unresolved-link="" t="n">value</span>: <a href="https://scala-lang.org/api/3.x/scala/Predef$.html#String-0" t="t">String</a>): <a href="https://scala-lang.org/api/3.x/scala/util/Either.html" t="t">Either</a>[<a href="DuckDBError.html" t="t">DuckDBError</a>, <a href="https://scala-lang.org/api/3.x/scala/Predef$.html#String-0" t="t">String</a>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="documentableBrief doc">
+             <p>Sets a string parameter in the prepared statement.</p>
+            </div>
+            <div class="cover">
+             <div class="doc">
+              <p>Sets a string parameter in the prepared statement.</p>
+             </div>
+             <h2 class="h200">Value parameters</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               parameterIndex
+              </dt>
+              <dd class="body-medium">
+               <p>the parameter index (1-based)</p>
+              </dd>
+              <dt class="body-small">
+               value
+              </dt>
+              <dd class="body-medium">
+               <p>the string value to set</p>
+              </dd>
+             </dl>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Returns
+              </dt>
+              <dd class="body-medium">
+               <p>Right(value) on success, Left(DuckDBError) on failure</p>
+              </dd>
+              <dt class="body-small">
+               Since
+              </dt>
+              <dd class="body-medium">
+               <p>0.1.0</p>
+              </dd>
+              <dt class="body-small">
+               Example
+              </dt>
+              <dd class="body-medium">
+               <div>
+                <div>
+                 <div class="snippet mono-small-block">
+                  <pre><code class="language-"><span line-number="1" class=""><span class="tooltip-container"></span>stmt.setString(1, "John Doe")
+</span></code></pre>
+                  <div class="buttons"></div>
+                 </div>
+                </div>
+               </div>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section id="Inherited-methods">
+       <div class="documentableList expand">
+        <div class="documentableList-expander">
+         <button class="icon-button show-content expand"></button>
+         <h4 class="groupHeader h200">Inherited methods</h4>
+        </div>
+        <div class="documentableElement" id="productElementNames-0" data-f-inherited="Product">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">def </span></span><a href="DuckDBPreparedStatement.html#productElementNames-0" t="n" class="documentableName ">productElementNames</a>: <a href="https://scala-lang.org/api/3.x/scala/collection/Iterator.html" t="t">Iterator</a>[<a href="https://scala-lang.org/api/3.x/scala/Predef$.html#String-0" t="t">String</a>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="cover">
+             <div class="doc"></div>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Inherited from:
+              </dt>
+              <dd class="body-medium">
+               <a href="https://scala-lang.org/api/3.x/scala/Product.html#productElementNames-0">Product</a>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="documentableElement" id="productIterator-0" data-f-inherited="Product">
+         <div class="documentableElement-expander">
+          <button class="icon-button ar show-content"></button>
+          <div class="header monospace mono-medium">
+           <div class="signature">
+            <span class="modifiers"></span><span class="kind"><span t="k">def </span></span><a href="DuckDBPreparedStatement.html#productIterator-0" t="n" class="documentableName ">productIterator</a>: <a href="https://scala-lang.org/api/3.x/scala/collection/Iterator.html" t="t">Iterator</a>[<span data-unresolved-link="" t="t">Any</span>]
+           </div>
+          </div>
+         </div>
+         <div class="docs">
+          <span class="modifiers"></span>
+          <div>
+           <div class="originInfo"></div>
+           <div class="memberDocumentation">
+            <div class="cover">
+             <div class="doc"></div>
+             <h2 class="h200">Attributes</h2>
+             <dl class="attributes attributes-small">
+              <dt class="body-small">
+               Inherited from:
+              </dt>
+              <dd class="body-medium">
+               <a href="https://scala-lang.org/api/3.x/scala/Product.html#productIterator-0">Product</a>
+              </dd>
+             </dl>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+     </div>
+    </section>
+   </div>
+  </div>
+ </div>
+</section></div><div id="toc" class="body-small"><div id="toc-container"><span class="toc-title h200">In this article</span><nav class="toc-nav"><ul class="toc-list"><li><a href="#attributes">Value parameters</a></li><li><a href="#members-list">Members list</a><ul><li><a href="#Value-members">Value members</a><ul><li><a href="#Concrete-methods">Concrete methods</a></li><li><a href="#Inherited-methods">Inherited methods</a></li></ul></li></ul></li></ul></nav></div></div></div><div id="footer" class="body-small mobile-footer"><div class="left-container">Generated with</div><div class="right-container"><a href="https://github.com/softinio/duck4s"><button class="icon-button gh"></button></a><div class="text"></div></div><div class="text-mobile"></div></div></div></div></body></html>
