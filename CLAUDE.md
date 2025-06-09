@@ -102,10 +102,10 @@ Generate the complete documentation website with `mill 'duck4s[3.7.0].docJar'`.
 
 ### Required GitHub Secrets
 To enable automatic publishing to Maven Central, configure these secrets in your GitHub repository:
-- `PGP_SECRET`: Base64-encoded PGP private key for signing artifacts
-- `PGP_PASSPHRASE`: Passphrase for the PGP key
-- `SONATYPE_USERNAME`: Sonatype (Maven Central) username
-- `SONATYPE_PASSWORD`: Sonatype (Maven Central) password
+- `MILL_PGP_SECRET_BASE64`: Base64-encoded PGP private key for signing artifacts
+- `MILL_PGP_PASSPHRASE`: Passphrase for the PGP key
+- `MILL_SONATYPE_USERNAME`: Sonatype (Maven Central) username
+- `MILL_SONATYPE_PASSWORD`: Sonatype (Maven Central) password
 
 ### Release Process
 
