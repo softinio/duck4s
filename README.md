@@ -36,7 +36,7 @@ Duck4s makes working with DuckDB in Scala applications a pleasant experience by:
 Add duck4s to your `build.sbt`:
 
 ```scala
-libraryDependencies += "com.softinio" %% "duck4s" % "0.1.0"
+libraryDependencies += "com.softinio" %% "duck4s" % "0.1.1"
 ```
 
 #### Mill
@@ -45,7 +45,7 @@ Add duck4s to your `build.mill`:
 
 ```scala
 def ivyDeps = Agg(
-  ivy"com.softinio::duck4s::0.1.0"
+  ivy"com.softinio::duck4s::0.1.1"
 )
 ```
 
