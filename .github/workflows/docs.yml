@@ -17,7 +17,6 @@ jobs:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
-        ref: ${{ github.event.workflow_run.head_sha }}
 
     - uses: cachix/install-nix-action@v31
       with:
@@ -62,5 +61,5 @@ jobs:
 
         # Commit and push
         git add -A
-        git commit -m "Update documentation for release ${{ github.event.workflow_run.head_sha }}"
+        git commit -m "Update documentation for release"
         git push origin gh-pages --force
