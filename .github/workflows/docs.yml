@@ -34,6 +34,15 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-mill-
 
+    # Extract version from the latest tag
+    - name: Get release version
+      id: get_version
+      run: |
+        # Get the latest tag
+        TAG=$(git describe --tags --abbrev=0)
+        echo "VERSION=${TAG#v}" >> $GITHUB_OUTPUT
+        echo "TAG=${TAG}" >> $GITHUB_OUTPUT
+
     # Generate documentation
     - name: Generate documentation
       run: |
@@ -61,5 +70,5 @@ jobs:
 
         # Commit and push
         git add -A
-        git commit -m "Update documentation for release"
+        git commit -m "Update documentation for release ${{ steps.get_version.outputs.TAG }}"
         git push origin gh-pages --force
