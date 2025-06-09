@@ -1,5 +1,5 @@
 
-![tests](https://github.com/softinio/duck4s/actions/workflows/ci.yml/badge.svg) | ![release](https://github.com/softinio/duck4s/actions/workflows/release.yml/badge.svg)  | ![documentation](https://github.com/softinio/duck4s/actions/workflows/docs.yml/badge.svg)
+![tests](https://github.com/softinio/duck4s/actions/workflows/ci.yml/badge.svg) | ![release](https://github.com/softinio/duck4s/actions/workflows/release.yml/badge.svg)  | ![documentation](https://github.com/softinio/duck4s/actions/workflows/docs.yml/badge.svg) | [![Latest version](https://index.scala-lang.org/<organization>/<repository>/<artifact>/latest.svg)](https://index.scala-lang.org/softinio/duck4s/duck4s)
 
 # Duck4s
 
