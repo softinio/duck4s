@@ -14,18 +14,18 @@ This is a Scala 3 project using Mill build tool (version 0.12.14).
 
 ### Common Commands
 
-This project supports multiple Scala versions: **3.3.6** and **3.7.0**
+This project supports multiple Scala versions: **3.3.6** and **3.8.1**
 
 #### Cross-Version Commands
 - **Build for all Scala versions**: `mill __.compile`
-- **Build for specific Scala version**: `mill 'duck4s[3.3.6].compile'` or `mill 'duck4s[3.7.0].compile'`
+- **Build for specific Scala version**: `mill 'duck4s[3.3.6].compile'` or `mill 'duck4s[3.8.1].compile'`
 - **Run tests for all Scala versions**: `mill __.test`
-- **Run tests for specific Scala version**: `mill 'duck4s[3.3.6].test'` or `mill 'duck4s[3.7.0].test'`
-- **Run specific test**: `mill 'duck4s[3.7.0].test' com.softinio.duck4s.MySuite`
+- **Run tests for specific Scala version**: `mill 'duck4s[3.3.6].test'` or `mill 'duck4s[3.8.1].test'`
+- **Run specific test**: `mill 'duck4s[3.8.1].test' com.softinio.duck4s.MySuite`
 
 #### Documentation Commands
-- **Generate API documentation with static site**: `mill 'duck4s[3.7.0].docJar'`
-- **Generated site location**: `out/duck4s/3.7.0/docJar.dest/javadoc/index.html`
+- **Generate API documentation with static site**: `mill 'duck4s[3.8.1].docJar'`
+- **Generated site location**: `out/duck4s/3.8.1/docJar.dest/javadoc/index.html`
 
 #### Development Commands
 - **Format code**: `mill mill.scalalib.scalafmt.ScalafmtModule/reformatAll __.sources`
@@ -34,8 +34,8 @@ This project supports multiple Scala versions: **3.3.6** and **3.7.0**
 
 #### Publishing Commands
 - **Publish locally for all Scala versions**: `mill __.publishLocal`
-- **Publish locally for specific Scala version**: `mill 'duck4s[3.3.6].publishLocal'` or `mill 'duck4s[3.7.0].publishLocal'`
-- **Published artifacts location**: `~/.ivy2/local/com.softinio/duck4s_3.3.6/` and `~/.ivy2/local/com.softinio/duck4s_3.7.0/`
+- **Publish locally for specific Scala version**: `mill 'duck4s[3.3.6].publishLocal'` or `mill 'duck4s[3.8.1].publishLocal'`
+- **Published artifacts location**: `~/.ivy2/local/com.softinio/duck4s_3.3.6/` and `~/.ivy2/local/com.softinio/duck4s_3.8.1/`
 
 ### Development Environment
 The project uses Nix flake for reproducible development environments. To enter the dev shell:
@@ -58,10 +58,10 @@ This is a Scala 3 wrapper library for DuckDB with the following structure:
 - **Build definition**: `build.mill` - Mill build configuration defining the project as a ScalaModule
 
 The project uses:
-- **Scala 3.3.6 and 3.7.0** with modern syntax features (optional braces, colon syntax)
-- **MUnit 1.1.1** for testing
+- **Scala 3.3.6 and 3.8.1** with modern syntax features (optional braces, colon syntax)
+- **MUnit 1.2.2** for testing
 - **Scalafmt 3.9.7** configured for Scala 3 dialect
-- **DuckDB JDBC Driver 1.1.3** for database connectivity
+- **DuckDB JDBC Driver 1.3.1.0** for database connectivity
 - **Scala 3 Scaladoc** for comprehensive API documentation generation with:
   - Snippet compiler for validating code examples
   - External mappings for Scala and Java standard library documentation
@@ -96,7 +96,7 @@ The project includes comprehensive scaladoc documentation with a static website:
 - **Examples**: Practical usage examples throughout the API
 - **Static site integration**: Homepage, getting started guide, and direct links to API docs
 
-Generate the complete documentation website with `mill 'duck4s[3.7.0].docJar'`.
+Generate the complete documentation website with `mill 'duck4s[3.8.1].docJar'`.
 
 ## Publishing and Release Process
 
@@ -167,5 +167,5 @@ This is useful for:
 - Mill builds are defined in `build.mill` using Scala syntax
 - The `.scalafmt.conf` is configured to use modern Scala 3 syntax features
 - All public APIs include comprehensive scaladoc documentation for generated documentation websites
-- The build includes conditional scalac options (e.g., `-Xkind-projector:underscores` for Scala 3.7)
+- The build includes conditional scalac options (e.g., `-Xkind-projector:underscores` for Scala 3.8)
 - Documentation links use the `[[algebra.TypeName]]` format for cross-references to types in the algebra package

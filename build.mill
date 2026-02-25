@@ -1,3 +1,6 @@
+//| mvnDeps:
+//|   - com.goyeau::mill-git::0.3.2
+
 /*
  * Copyright 2025 Salar Rahmanian
  *
@@ -14,58 +17,57 @@
  * limitations under the License.
  */
 
-import mill._
-import mill.scalalib.api.ZincWorkerUtil
-import mill.scalalib._
-import publish._
+import mill.*
+import mill.scalalib.*
+import mill.scalalib.publish.*
+import com.goyeau.mill.git.GitVersionedPublishModule
 
-import $ivy.`de.tototec::de.tobiasroeser.mill.vcs.version::0.4.1`
-import de.tobiasroeser.mill.vcs.version.VcsVersion
-
-val duckdbVersion = "1.1.3"
-val munitVersion = "1.1.1"
-val scalaVersions = Seq("3.3.6", "3.7.0")
+val duckdbVersion = "1.3.1.0"
+val munitV = "1.2.2"
+val scalaVersions = Seq("3.3.6", "3.8.1")
 
 object duck4s extends Cross[Duck4sModule](scalaVersions)
 
-trait Duck4sModule extends ScalaModule with CrossScalaModule with PublishModule {
-  override def publishVersion: T[String] = VcsVersion.vcsState().format()
-
+trait Duck4sModule
+    extends ScalaModule
+    with CrossScalaModule
+    with GitVersionedPublishModule:
   def artifactName = "duck4s"
 
-  override def artifactScalaVersion: T[String] = T {
-    ZincWorkerUtil.scalaBinaryVersion(crossScalaVersion)
+  override def artifactScalaVersion: T[String] = Task {
+    val v = crossScalaVersion
+    if v.startsWith("3.") then "3"
+    else v.split('.').take(2).mkString(".")
   }
 
-  def ivyDeps = Agg(
-    ivy"org.duckdb:duckdb_jdbc:$duckdbVersion"
+  def mvnDeps = Seq(
+    mvn"org.duckdb:duckdb_jdbc:$duckdbVersion"
   )
 
   // Enforce Java 17 as minimum version
   def javacOptions = Seq("-source", "17", "-target", "17")
 
   // Scaladoc configuration for documentation website generation
-  def scalacOptions = {
+  def scalacOptions =
     val common = Seq("-explain", "-explain-types", "-release", "17")
-    if (crossScalaVersion.startsWith("3.7")) {
+    if crossScalaVersion.startsWith("3.8") then
       common :+ "-Xkind-projector:underscores"
-    } else {
-      common
-    }
-  }
+    else common
 
-  def scalaDocOptions = T {
-    val version = T.env.get("DUCK4S_DOC_VERSION").getOrElse(publishVersion())
+  def scalaDocOptions = Task {
+    val version = Task.env.get("DUCK4S_DOC_VERSION").getOrElse(publishVersion())
     super.scalaDocOptions() ++ Seq(
-      "-project", "Duck4s",
-      "-project-version", version,
+      "-project",
+      "Duck4s",
+      "-project-version",
+      version,
       "-social-links:github::https://github.com/softinio/duck4s",
       "-groups",
       "-snippet-compiler:compile",
-        "-external-mappings:" +
-          ".*scala.*::scaladoc3::https://scala-lang.org/api/3.x/," +
-          ".*java.*::javadoc::https://docs.oracle.com/en/java/javase/17/docs/api/"
-      )
+      "-external-mappings:" +
+        ".*scala.*::scaladoc3::https://scala-lang.org/api/3.x/," +
+        ".*java.*::javadoc::https://docs.oracle.com/en/java/javase/17/docs/api/"
+    )
   }
 
   def pomSettings = PomSettings(
@@ -83,9 +85,7 @@ trait Duck4sModule extends ScalaModule with CrossScalaModule with PublishModule 
     )
   )
 
-  object test extends ScalaTests with TestModule.Munit {
-    def ivyDeps = Agg(
-      ivy"org.scalameta::munit::$munitVersion"
+  object test extends ScalaTests with TestModule.Munit:
+    def mvnDeps = Seq(
+      mvn"org.scalameta::munit::$munitV"
     )
-  }
-}
