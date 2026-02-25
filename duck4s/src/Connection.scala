@@ -62,7 +62,7 @@ import scala.util.control.NonFatal
 class DuckDBConnection private (
     private[duck4s] val underlying: JDBCConnection
 ) extends AutoCloseable:
-  export underlying.{close, isClosed, isValid}
+  export underlying.{close, isClosed, isValid, setAutoCommit, commit, rollback}
 
   /** Creates a duplicate of this DuckDB connection.
     *

@@ -1,8 +1,8 @@
 // Example script to test locally published duck4s artifacts
 // This script demonstrates basic usage of the duck4s library after publishing locally
-//> using scala "3.7.0"
+//> using scala "3.8.2"
 //> using repository "ivy2Local"
-//> using dep "com.softinio:duck4s_3.7.0:0.0.0-6-7132b5-DIRTY594c25f5" // Update this version to match your locally published version
+//> using dep "com.softinio:duck4s_3:0.1.2-4-1bed287" // Update this version to match your locally published version
 
 import com.softinio.duck4s.*
 import com.softinio.duck4s.algebra.*
@@ -55,6 +55,6 @@ import com.softinio.duck4s.algebra.*
 
 // To run this example:
 // 1. First publish duck4s locally: mill __.publishLocal
-// 2. Check the published version: mill show 'duck4s[3.7.0].publishVersion'
+// 2. Check the published version: mill show 'duck4s[3.8.2].publishVersion'
 // 3. Update line 5 above with the published version
 // 4. Run this script: scala-cli run scripts/example-usage.scala

@@ -16,7 +16,8 @@ Duck4s is a modern, type-safe Scala 3 wrapper library for DuckDB that provides i
 - **Modern Scala 3**: Utilizes Scala 3 features like extension methods, given instances, and braceless syntax
 - **Batch Operations**: Efficient type-safe batch processing with type classes
 - **Transaction Support**: First-class transaction management with automatic rollback
-- **Cross-Platform**: Supports Scala 3.3.6 (LTS) and 3.7.0
+- **Cats-Effect Integration**: Optional `duck4s-cats-effect` module with `Resource`-based connection management, `IO`-wrapped operations, and `fs2.Stream` result set streaming
+- **Cross-Platform**: Supports Scala 3.3.6 (LTS) and 3.8.2
 
 ## Quick Example
 
@@ -40,4 +41,5 @@ val result = DuckDBConnection.withConnection() { conn =>
 ## Documentation
 
 - [Getting Started](getting-started.html) - Learn the basics of duck4s
+- [Cats-Effect Integration](cats-effect.html) - Effectful IO and streaming with cats-effect and fs2
 - [API Documentation](../index.html) - Complete API reference

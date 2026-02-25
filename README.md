@@ -25,7 +25,8 @@ Duck4s makes working with DuckDB in Scala applications a pleasant experience by:
 - 📊 **Modern Scala 3** - Utilizes Scala 3 features like extension methods, given instances, and braceless syntax
 - 🔄 **Batch Operations** - Efficient type-safe batch processing with type classes
 - 💼 **Transaction Support** - First-class transaction management with automatic rollback
-- 📱 **LTS and Latest Scala Version Support** - Supports Scala 3.3.6 (LTS) and 3.7.0
+- 🐱 **Cats-Effect Integration** - Optional `duck4s-cats-effect` module with `Resource`-based connection management, `IO`-wrapped operations, and `fs2.Stream` result set streaming
+- 📱 **LTS and Latest Scala Version Support** - Supports Scala 3.3.6 (LTS) and 3.8.2
 
 ## Getting Started
 
@@ -36,7 +37,11 @@ Duck4s makes working with DuckDB in Scala applications a pleasant experience by:
 Add duck4s to your `build.sbt`:
 
 ```scala
+// Core library
 libraryDependencies += "com.softinio" %% "duck4s" % "0.1.1"
+
+// Optional: cats-effect integration (includes fs2)
+libraryDependencies += "com.softinio" %% "duck4s-cats-effect" % "0.1.1"
 ```
 
 #### Mill
@@ -44,14 +49,21 @@ libraryDependencies += "com.softinio" %% "duck4s" % "0.1.1"
 Add duck4s to your `build.mill`:
 
 ```scala
+// Core library
 def ivyDeps = Agg(
   ivy"com.softinio::duck4s::0.1.1"
+)
+
+// Optional: cats-effect integration (includes fs2)
+def ivyDeps = Agg(
+  ivy"com.softinio::duck4s::0.1.1",
+  ivy"com.softinio::duck4s-cats-effect::0.1.1"
 )
 ```
 
 ### Prerequisites
 
-- Scala 3.3.6 or 3.7.0
+- Scala 3.3.6 or 3.8.2
 - Java 17 or higher
 - Mill build tool (or use the provided Nix development environment)
 
@@ -67,13 +79,13 @@ nix develop
 mill __.compile
 
 # Build for specific Scala version
-mill 'duck4s[3.7.0].compile'
+mill 'duck4s[3.8.2].compile'
 
 # Run tests
 mill __.test
 
 # Generate documentation
-mill 'duck4s[3.7.0].docJar'
+mill 'duck4s[3.8.2].docJar'
 
 # Format code
 mill mill.scalalib.scalafmt.ScalafmtModule/reformatAll __.sources
@@ -119,6 +131,7 @@ result match
 ## Documentation
 
 - [Getting Started Guide](https://softinio.github.io/duck4s/docs/getting-started.html) - Learn the basics of duck4s
+- [Cats-Effect Integration](https://softinio.github.io/duck4s/docs/cats-effect.html) - Effectful IO and streaming with cats-effect and fs2
 - [API Documentation](https://softinio.github.io/duck4s/) - Complete API reference
 
 ## Contributing
