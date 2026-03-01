@@ -31,7 +31,9 @@ class DuckDBIOTest extends CatsEffectSuite:
   test("executeUpdateIO / executeQueryIO round-trip") {
     DuckDBIO.connect().use { conn =>
       for
-        _ <- conn.executeUpdateIO("CREATE TABLE test (id INTEGER, name VARCHAR)")
+        _ <- conn.executeUpdateIO(
+          "CREATE TABLE test (id INTEGER, name VARCHAR)"
+        )
         _ <- conn.executeUpdateIO("INSERT INTO test VALUES (1, 'Alice')")
         rs <- conn.executeQueryIO("SELECT * FROM test")
         _ <- IO(assert(rs.next()))
@@ -47,7 +49,10 @@ class DuckDBIOTest extends CatsEffectSuite:
       for
         _ <- conn.executeUpdateIO("CREATE TABLE nums (n INTEGER)")
         _ <- conn.executeUpdateIO("INSERT INTO nums VALUES (1),(2),(3)")
-        rows <- DuckDBIO.stream(conn, "SELECT n FROM nums")(_.getInt("n")).compile.toList
+        rows <- DuckDBIO
+          .stream(conn, "SELECT n FROM nums")(_.getInt("n"))
+          .compile
+          .toList
         _ <- IO(assertEquals(rows, List(1, 2, 3)))
       yield ()
     }
@@ -86,7 +91,7 @@ class DuckDBIOTest extends CatsEffectSuite:
 
   test("DuckDBException wraps ConnectionError") {
     val error = DuckDBError.ConnectionError("test connection error")
-    val ex    = DuckDBException.from(error)
+    val ex = DuckDBException.from(error)
     assertEquals(ex.getMessage, "test connection error")
     assertEquals(ex.error, error)
     assert(ex.getCause == null)
@@ -95,7 +100,7 @@ class DuckDBIOTest extends CatsEffectSuite:
   test("DuckDBException wraps QueryError with cause") {
     val cause = new RuntimeException("jdbc failure")
     val error = DuckDBError.QueryError("query failed", "SELECT 1", Some(cause))
-    val ex    = DuckDBException.from(error)
+    val ex = DuckDBException.from(error)
     assertEquals(ex.getMessage, "query failed")
     assertEquals(ex.error, error)
     assertEquals(ex.getCause, cause)

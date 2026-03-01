@@ -57,7 +57,9 @@ object DuckDBIO:
     * @return
     *   A [[Resource]] that manages the connection lifecycle.
     */
-  def connect(config: DuckDBConfig = DuckDBConfig.inMemory): Resource[IO, DuckDBConnection] =
+  def connect(
+      config: DuckDBConfig = DuckDBConfig.inMemory
+  ): Resource[IO, DuckDBConnection] =
     Resource.make(
       IO.blocking(DuckDBConnection.connect(config)).flatMap(liftE)
     )(conn => IO.blocking(conn.close()))
@@ -80,7 +82,9 @@ object DuckDBIO:
     * @return
     *   A [[fs2.Stream]] that emits one element per row.
     */
-  def stream[A](conn: DuckDBConnection, sql: String)(f: DuckDBResultSet => A): Stream[IO, A] =
+  def stream[A](conn: DuckDBConnection, sql: String)(
+      f: DuckDBResultSet => A
+  ): Stream[IO, A] =
     Stream
       .resource(
         Resource.make(
@@ -89,7 +93,8 @@ object DuckDBIO:
       )
       .flatMap: rs =>
         Stream.unfoldEval(rs): rs =>
-          IO.blocking(rs.next()).map(hasNext => Option.when(hasNext)(f(rs) -> rs))
+          IO.blocking(rs.next())
+            .map(hasNext => Option.when(hasNext)(f(rs) -> rs))
 
 /** Extension methods providing effectful versions of [[DuckDBConnection]]
   * operations. Import `com.softinio.duck4s.effect.*` to use these.
@@ -140,7 +145,9 @@ extension (conn: DuckDBConnection)
     * @return
     *   An `IO[T]` with the result of the block.
     */
-  def withPreparedStatementIO[T](sql: String)(block: DuckDBPreparedStatement => IO[T]): IO[T] =
+  def withPreparedStatementIO[T](
+      sql: String
+  )(block: DuckDBPreparedStatement => IO[T]): IO[T] =
     Resource
       .make(conn.prepareStatementIO(sql))(stmt => IO.blocking(stmt.close()))
       .use(block)
@@ -175,8 +182,8 @@ extension (conn: DuckDBConnection)
     *
     * Disables auto-commit before running the block. On success, commits the
     * transaction. On failure (any raised error), rolls back the transaction.
-    * Auto-commit is restored to `true` in a `guarantee` finalizer regardless
-    * of outcome.
+    * Auto-commit is restored to `true` in a `guarantee` finalizer regardless of
+    * outcome.
     *
     * @param block
     *   A function receiving this connection and returning an `IO[T]`.

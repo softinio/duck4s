@@ -47,8 +47,11 @@ object DuckDBException:
     *   A DuckDBException wrapping the given error
     */
   def from(error: DuckDBError): DuckDBException = error match
-    case DuckDBError.ConnectionError(msg, cause)  => DuckDBException(error, msg, cause)
-    case DuckDBError.QueryError(msg, _, cause)     => DuckDBException(error, msg, cause)
-    case DuckDBError.TransactionError(msg, cause)  => DuckDBException(error, msg, cause)
-    case DuckDBError.ConfigurationError(msg)       => DuckDBException(error, msg)
-    case DuckDBError.InvalidStateError(msg)        => DuckDBException(error, msg)
+    case DuckDBError.ConnectionError(msg, cause) =>
+      DuckDBException(error, msg, cause)
+    case DuckDBError.QueryError(msg, _, cause) =>
+      DuckDBException(error, msg, cause)
+    case DuckDBError.TransactionError(msg, cause) =>
+      DuckDBException(error, msg, cause)
+    case DuckDBError.ConfigurationError(msg) => DuckDBException(error, msg)
+    case DuckDBError.InvalidStateError(msg)  => DuckDBException(error, msg)
