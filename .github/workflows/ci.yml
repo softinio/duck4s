@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        scala-version: ["3.3.6", "3.7.0"]
+        scala-version: ["3.3.6", "3.8.2"]
     steps:
     - uses: actions/checkout@v4
 
@@ -21,7 +21,7 @@ jobs:
 
     # Run nix checks
     - name: Run nix flake check
-      if: matrix.scala-version == '3.7.0'
+      if: matrix.scala-version == '3.8.2'
       run: |
         nix flake check
 
@@ -44,15 +44,15 @@ jobs:
 
     # Check code formatting
     - name: Check code formatting
-      if: matrix.scala-version == '3.7.0'
+      if: matrix.scala-version == '3.8.2'
       run: |
         nix develop --command mill mill.scalalib.scalafmt.ScalafmtModule/checkFormatAll __.sources
 
     # Build documentation
     - name: Generate documentation
-      if: matrix.scala-version == '3.7.0'
+      if: matrix.scala-version == '3.8.2'
       run: |
-        nix develop --command mill "duck4s[3.7.0].docJar"
+        nix develop --command mill "duck4s[3.8.2].docJar"
 
     # Upload test results
     - name: Upload test results
