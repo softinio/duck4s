@@ -3,6 +3,16 @@
 [[commands]]
 package = "mill"
 
+[[commands]]
+name = "fmt"
+command = "mill mill.scalalib.scalafmt.ScalafmtModule/reformatAll __.sources"
+help = "Format all source files with Scalafmt"
+
+[[commands]]
+name = "preview-docs"
+command = "scala-cli run scripts/preview-docs.scala"
+help = "Preview the documentation site locally"
+
 [devshell]
 packages = [
   "coursier",

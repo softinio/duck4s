@@ -51,11 +51,17 @@ fi
 
 # Generate documentation
 echo "Generating documentation with version $VERSION..."
-DUCK4S_DOC_VERSION="$VERSION" nix develop --command mill 'duck4s[3.7.0].docJar'
+DUCK4S_DOC_VERSION="$VERSION" nix develop --command mill 'duck4s[3.8.2].docJar'
+DUCK4S_DOC_VERSION="$VERSION" nix develop --command mill 'duck4s-cats-effect[3.8.2].docJar'
 
 # Check if documentation was generated
-if [ ! -d "out/duck4s/3.7.0/docJar.dest/javadoc" ]; then
+if [ ! -d "out/duck4s/3.8.2/docJar.dest/docs" ]; then
     echo "Error: Documentation generation failed"
+    exit 1
+fi
+
+if [ ! -d "out/duck4s-cats-effect/3.8.2/docJar.dest/docs" ]; then
+    echo "Error: Cats-effect documentation generation failed"
     exit 1
 fi
 
@@ -64,7 +70,9 @@ TEMP_DIR=$(mktemp -d)
 echo "Preparing documentation in $TEMP_DIR..."
 
 # Copy documentation to temp directory
-cp -r out/duck4s/3.7.0/docJar.dest/javadoc/* "$TEMP_DIR/"
+cp -r out/duck4s/3.8.2/docJar.dest/docs/* "$TEMP_DIR/"
+mkdir -p "$TEMP_DIR/cats-effect-api"
+cp -r out/duck4s-cats-effect/3.8.2/docJar.dest/docs/* "$TEMP_DIR/cats-effect-api/"
 
 # Switch to gh-pages branch (create if doesn't exist)
 echo "Switching to gh-pages branch..."

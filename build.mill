@@ -122,6 +122,21 @@ trait Duck4sCatsEffectModule
       common :+ "-Xkind-projector:underscores"
     else common
 
+  def scalaDocOptions = Task {
+    val version = Task.env.get("DUCK4S_DOC_VERSION").getOrElse(publishVersion())
+    super.scalaDocOptions() ++ Seq(
+      "-project",
+      "Duck4s Cats Effect",
+      "-project-version",
+      version,
+      "-social-links:github::https://github.com/softinio/duck4s",
+      "-groups",
+      "-external-mappings:" +
+        ".*scala.*::scaladoc3::https://scala-lang.org/api/3.x/," +
+        ".*java.*::javadoc::https://docs.oracle.com/en/java/javase/17/docs/api/"
+    )
+  }
+
   def pomSettings = PomSettings(
     description = "Scala 3 cats-effect integration for duck4s DuckDB library",
     organization = "com.softinio",

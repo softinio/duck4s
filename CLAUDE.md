@@ -25,7 +25,9 @@ This project supports multiple Scala versions: **3.3.6** and **3.8.2**
 
 #### Documentation Commands
 - **Generate API documentation with static site**: `mill 'duck4s[3.8.2].docJar'`
-- **Generated site location**: `out/duck4s/3.8.2/docJar.dest/javadoc/index.html`
+- **Generated site location**: `out/duck4s/3.8.2/docJar.dest/docs/index.html`
+- **Preview docs locally**: `scala-cli run scripts/preview-docs.scala` (generates both core and cats-effect docs, merges them, and serves at http://localhost:8080)
+  - Optional port: `scala-cli run scripts/preview-docs.scala -- --port 9000`
 
 #### Development Commands
 - **Format code**: `mill mill.scalalib.scalafmt.ScalafmtModule/reformatAll __.sources`

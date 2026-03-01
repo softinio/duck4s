@@ -34,12 +34,13 @@ class DuckDBException(
     cause: Option[Throwable] = None
 ) extends RuntimeException(message, cause.orNull)
 
-/** Factory methods for creating [[DuckDBException]] from [[DuckDBError]]
-  * values.
+/** Factory methods for creating [[DuckDBException]] from
+  * [[com.softinio.duck4s.algebra.DuckDBError]] values.
   */
 object DuckDBException:
 
-  /** Converts a [[DuckDBError]] into a [[DuckDBException]].
+  /** Converts a [[com.softinio.duck4s.algebra.DuckDBError]] into a
+    * [[DuckDBException]].
     *
     * @param error
     *   The DuckDBError to wrap
