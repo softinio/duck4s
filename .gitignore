@@ -5,3 +5,4 @@
 /.metals/
 /out/
 mill.*
+.mcp.json

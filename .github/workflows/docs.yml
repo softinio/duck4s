@@ -46,7 +46,7 @@ jobs:
     # Generate documentation
     - name: Generate documentation
       run: |
-        nix develop --command mill 'duck4s[3.7.0].docJar'
+        nix develop --command mill 'duck4s[3.8.2].docJar'
 
     # Deploy to gh-pages branch
     - name: Deploy to GitHub Pages
@@ -57,7 +57,7 @@ jobs:
 
         # Create temporary directory
         TEMP_DIR=$(mktemp -d)
-        cp -r out/duck4s/3.7.0/docJar.dest/javadoc/* "$TEMP_DIR/"
+        cp -r out/duck4s/3.8.2/docJar.dest/javadoc/* "$TEMP_DIR/"
 
         # Check if gh-pages branch exists
         if git ls-remote --heads origin gh-pages | grep -q gh-pages; then

@@ -13,7 +13,11 @@ This guide will help you get started with duck4s, a Scala 3 wrapper for DuckDB t
 Add duck4s to your `build.sbt`:
 
 ```sbt
+// Core library
 libraryDependencies += "com.softinio" %% "duck4s" % "0.1.0"
+
+// Optional: cats-effect integration (includes fs2)
+libraryDependencies += "com.softinio" %% "duck4s-cats-effect" % "0.1.0"
 ```
 
 ### Mill
@@ -21,8 +25,15 @@ libraryDependencies += "com.softinio" %% "duck4s" % "0.1.0"
 Add duck4s to your `build.mill`:
 
 ```scala sc:nocompile
+// Core library
 def ivyDeps = Agg(
   ivy"com.softinio::duck4s::0.1.0"
+)
+
+// Optional: cats-effect integration (includes fs2)
+def ivyDeps = Agg(
+  ivy"com.softinio::duck4s::0.1.0",
+  ivy"com.softinio::duck4s-cats-effect::0.1.0"
 )
 ```
 
@@ -223,9 +234,34 @@ DuckDBConnection.withConnection(config) { conn =>
 }
 ```
 
+## Cats-Effect Integration
+
+If you prefer a purely functional style with cats-effect and fs2, add the `duck4s-cats-effect` module and import `com.softinio.duck4s.effect.*`. Connections are managed as `Resource[IO, DuckDBConnection]`, queries return `IO`, and result sets can be consumed as `fs2.Stream`.
+
+```scala sc:nocompile
+import cats.effect.{IO, IOApp}
+import com.softinio.duck4s.effect.*
+
+object Main extends IOApp.Simple:
+  def run: IO[Unit] =
+    DuckDBIO.connect().use { conn =>
+      for
+        _ <- conn.executeUpdateIO("CREATE TABLE t (id INTEGER, name VARCHAR)")
+        _ <- conn.executeUpdateIO("INSERT INTO t VALUES (1, 'Alice'), (2, 'Bob')")
+        rows <- DuckDBIO.stream(conn, "SELECT * FROM t") { rs =>
+          rs.getString("name")
+        }.compile.toList
+        _ <- IO(println(rows))
+      yield ()
+    }
+```
+
+See the [Cats-Effect Integration](cats-effect.html) guide for the full API reference.
+
 ## Next Steps
 
 - Explore the [API Documentation](../index.html) for complete reference
+- Read the [Cats-Effect Integration](cats-effect.html) guide for effectful usage
 - Learn about advanced batch operations and type classes
 - Check out the DuckDB [official documentation](https://duckdb.org/docs/) for SQL features
 - Browse the source code on [GitHub](https://github.com/softinio/duck4s)
