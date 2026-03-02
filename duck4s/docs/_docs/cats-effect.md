@@ -299,6 +299,7 @@ object Main extends IOApp.Simple:
 ## Next Steps
 
 - [Getting Started](getting-started.html) - Core synchronous API
-- [API Documentation](../index.html) - Complete API reference
+- [Core API Documentation](../index.html) - Core API reference
+- [Cats-Effect API Documentation](../cats-effect-api/index.html) - Cats-effect module API reference
 - [cats-effect documentation](https://typelevel.org/cats-effect/)
 - [fs2 documentation](https://fs2.io/)

@@ -49,13 +49,13 @@ object DuckDBIO:
   private[effect] def liftE[T](e: Either[DuckDBError, T]): IO[T] =
     IO.fromEither(e.left.map(DuckDBException.from))
 
-  /** Acquires a DuckDB connection as a cats-effect [[Resource]]. The connection
-    * is closed automatically on release.
+  /** Acquires a DuckDB connection as a cats-effect [[cats.effect.Resource]].
+    * The connection is closed automatically on release.
     *
     * @param config
     *   Database configuration. Defaults to in-memory mode.
     * @return
-    *   A [[Resource]] that manages the connection lifecycle.
+    *   A [[cats.effect.Resource]] that manages the connection lifecycle.
     */
   def connect(
       config: DuckDBConfig = DuckDBConfig.inMemory

@@ -1,6 +1,3 @@
----
-title: Home
----
 
 ![](images/duck4s_logo.jpeg)
 
@@ -42,4 +39,5 @@ val result = DuckDBConnection.withConnection() { conn =>
 
 - [Getting Started](getting-started.html) - Learn the basics of duck4s
 - [Cats-Effect Integration](cats-effect.html) - Effectful IO and streaming with cats-effect and fs2
-- [API Documentation](../index.html) - Complete API reference
+- [API Documentation](../index.html) - Complete core API reference
+- [Cats-Effect API Documentation](../cats-effect-api/index.html) - Cats-effect module API reference
