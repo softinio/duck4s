@@ -1,0 +1,325 @@
+<!DOCTYPE html><html data-pathToRoot="../" data-rawLocation="docs/cats-effect" data-dynamicSideMenu="false"><head><meta charset="utf-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta><title>Cats-Effect Integration</title><link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"></link><script type="text/javascript" src="../scripts/theme.js"></script><script type="text/javascript" src="../scripts/searchData.js" defer="true"></script><script type="text/javascript" src="../scripts/scastieConfiguration.js" defer="true"></script><link rel="stylesheet" href="../styles/theme/bundle.css"></link><link rel="stylesheet" href="../styles/theme/components/bundle.css"></link><link rel="stylesheet" href="../styles/theme/components/button/bundle.css"></link><link rel="stylesheet" href="../styles/theme/layout/bundle.css"></link><link rel="stylesheet" href="../styles/nord-light.css"></link><link rel="stylesheet" href="../styles/dotty-icons.css"></link><link rel="stylesheet" href="../styles/filter-bar.css"></link><link rel="stylesheet" href="../styles/code-snippets.css"></link><link rel="stylesheet" href="../styles/searchbar.css"></link><link rel="stylesheet" href="../styles/social-links.css"></link><link rel="stylesheet" href="../styles/versions-dropdown.css"></link><link rel="stylesheet" href="../styles/content-contributors.css"></link><link rel="stylesheet" href="../styles/fontawesome.css"></link><script type="text/javascript" src="../hljs/highlight.pack.js" defer="true"></script><script type="text/javascript" src="../scripts/hljs-scala3.js" defer="true"></script><script type="text/javascript" src="../scripts/ux.js" defer="true"></script><script type="text/javascript" src="../scripts/common/component.js" defer="true"></script><script type="text/javascript" src="../scripts/common/utils.js" defer="true"></script><script type="text/javascript" src="../scripts/components/FilterBar.js" defer="true"></script><script type="text/javascript" src="../scripts/components/DocumentableList.js" defer="true"></script><script type="text/javascript" src="../scripts/components/Input.js" defer="true"></script><script type="text/javascript" src="../scripts/components/FilterGroup.js" defer="true"></script><script type="text/javascript" src="../scripts/components/Filter.js" defer="true"></script><script type="text/javascript" src="../scripts/scaladoc-scalajs.js" defer="true"></script><script type="text/javascript" src="../scripts/contributors.js" defer="true"></script><script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js" defer="true"></script><script type="text/javascript" src="https://d3js.org/d3.v6.min.js" defer="true"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/graphlib-dot@0.6.2/dist/graphlib-dot.min.js" defer="true"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dagre-d3/0.6.1/dagre-d3.min.js" defer="true"></script><script type="text/javascript" src="https://scastie.scala-lang.org/embedded.js" defer="true"></script><script type="text/javascript" src="../scripts/data.js" defer="true"></script><link rel="stylesheet" href="../styles/staticsitestyles.css"></link><script>var pathToRoot = "../";</script></head><body><div id=""><div id="header" class="body-small"><div class="header-container-left"><a href="../" class="logo-container"><span class="project-name h300">Duck4s</span></a><span onclick="dropdownHandler(event)" class="text-button with-arrow" id="dropdown-trigger"><a><div class="projectVersion">0.1.3</div></a></span><div id="version-dropdown" class="dropdown-menu"></div></div><div class="header-container-right"><button id="search-toggle" class="icon-button"></button><span id="theme-toggle" class="icon-button"></span><span id="mobile-menu-toggle" class="icon-button hamburger"></span></div></div><div id="mobile-menu"><div class="mobile-menu-header body-small"><span class="mobile-menu-logo"><span class="project-name h300">Duck4s</span></span><button id="mobile-menu-close" class="icon-button close"></button></div><div class="mobile-menu-container body-medium"><input id="mobile-scaladoc-searchbar-input" class="scaladoc-searchbar-input" type="search" placeholder="Find anything"></input><span id="mobile-theme-toggle" class="mobile-menu-item mode"></span></div></div><span id="mobile-sidebar-toggle" class="floating-button"></span><div id="leftColumn" class="body-small"><div class="switcher-container"><a id="docs-nav-button" class="switcher h100 selected" href="index.html">Docs</a><a id="api-nav-button" class="switcher h100 " href="../index.html">API</a></div><nav id="docs-nav" class="side-menu"><div class="ni n0 expanded"><span class="nh h100 selected de"><a href="#"><span>Cats-Effect Integration</span></a></span></div><div class="ni n0 "><span class="nh de"><a href="getting-started.html"><span>Getting Started</span></a></span></div></nav></div><div id="footer" class="body-small"><div class="left-container">Generated with</div><div class="right-container"><a href="https://github.com/softinio/duck4s"><button class="icon-button gh"></button></a><div class="text"></div></div><div class="text-mobile"></div></div><div id="scaladoc-searchBar"></div><div id="main"><div class="breadcrumbs container"><a href="index.html">Duck4s</a>/<a href="cats-effect.html">Cats-Effect Integration</a></div><div id="content" class="body-medium"><div><section id="cats-effect-integration">
+ <h1 class="h500"><a href="#cats-effect-integration" class="anchor"></a>Cats-Effect Integration</h1>
+ <p>The <code>duck4s-cats-effect</code> module provides a purely functional interface for DuckDB built on <a href="https://typelevel.org/cats-effect/">cats-effect</a> and <a href="https://fs2.io/">fs2</a>. Connections are managed as <code>Resource[IO, DuckDBConnection]</code>, all JDBC calls are wrapped in <code>IO.blocking</code>, and errors are raised as <code>DuckDBException</code> rather than returned as <code>Either</code> values.</p>
+</section>
+<section id="installation">
+ <h2 class="h500"><a href="#installation" class="anchor"></a>Installation</h2>
+</section>
+<section id="sbt">
+ <h3 class="h400"><a href="#sbt" class="anchor"></a>SBT</h3>
+ <div class="snippet mono-small-block">
+  <pre><code class="language-sbt"><span line-number="1" class=""><span class="tooltip-container"></span>libraryDependencies += "com.softinio" %% "duck4s-cats-effect" % "0.1.3"
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="mill">
+ <h3 class="h400"><a href="#mill" class="anchor"></a>Mill</h3>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>def ivyDeps = Agg(
+</span><span line-number="2" class=""><span class="tooltip-container"></span>  ivy"com.softinio::duck4s-cats-effect::0.1.3"
+</span><span line-number="3" class=""><span class="tooltip-container"></span>)
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="imports">
+ <h2 class="h500"><a href="#imports" class="anchor"></a>Imports</h2>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>import cats.effect.{IO, Resource, IOApp}
+</span><span line-number="2" class=""><span class="tooltip-container"></span>import fs2.Stream
+</span><span line-number="3" class=""><span class="tooltip-container"></span>import com.softinio.duck4s.algebra.*
+</span><span line-number="4" class=""><span class="tooltip-container"></span>import com.softinio.duck4s.effect.*
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="connection-management">
+ <h2 class="h500"><a href="#connection-management" class="anchor"></a>Connection Management</h2>
+ <p>Use <code>DuckDBIO.connect()</code> to acquire a connection as a <code>Resource</code>. The connection is closed automatically when the resource scope exits.</p>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>// In-memory database (default)
+</span><span line-number="2" class=""><span class="tooltip-container"></span>val program: IO[Unit] =
+</span><span line-number="3" class=""><span class="tooltip-container"></span>  DuckDBIO.connect().use { conn =&gt;
+</span><span line-number="4" class=""><span class="tooltip-container"></span>    conn.executeUpdateIO("CREATE TABLE t (id INTEGER)").void
+</span><span line-number="5" class=""><span class="tooltip-container"></span>  }
+</span><span line-number="6" class=""><span class="tooltip-container"></span>
+</span><span line-number="7" class=""><span class="tooltip-container"></span>// Persistent database
+</span><span line-number="8" class=""><span class="tooltip-container"></span>val config = DuckDBConfig.persistent("/path/to/database.db")
+</span><span line-number="9" class=""><span class="tooltip-container"></span>val persistentProgram: IO[Unit] =
+</span><span line-number="10" class=""><span class="tooltip-container"></span>  DuckDBIO.connect(config).use { conn =&gt;
+</span><span line-number="11" class=""><span class="tooltip-container"></span>    conn.executeUpdateIO("CREATE TABLE t (id INTEGER)").void
+</span><span line-number="12" class=""><span class="tooltip-container"></span>  }
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+ <blockquote>
+  <p><strong>Thread safety</strong>: DuckDB connections are <strong>not thread-safe</strong>. Do not share a single <code>DuckDBConnection</code> across fibers. Each fiber should use its own connection, either via a separate <code>DuckDBIO.connect()</code> scope or by calling <code>conn.duplicate()</code>.</p>
+ </blockquote>
+</section>
+<section id="executing-queries">
+ <h2 class="h500"><a href="#executing-queries" class="anchor"></a>Executing Queries</h2>
+</section>
+<section id="ddl-and-updates">
+ <h3 class="h400"><a href="#ddl-and-updates" class="anchor"></a>DDL and Updates</h3>
+ <p><code>executeUpdateIO</code> runs INSERT, UPDATE, DELETE, and DDL statements, returning the affected row count:</p>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>DuckDBIO.connect().use { conn =&gt;
+</span><span line-number="2" class=""><span class="tooltip-container"></span>  for
+</span><span line-number="3" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdateIO("CREATE TABLE users (id INTEGER, name VARCHAR, age INTEGER)")
+</span><span line-number="4" class=""><span class="tooltip-container"></span>    n &lt;- conn.executeUpdateIO("INSERT INTO users VALUES (1, 'Alice', 25), (2, 'Bob', 30)")
+</span><span line-number="5" class=""><span class="tooltip-container"></span>    _ &lt;- IO(println(s"Inserted $n rows"))
+</span><span line-number="6" class=""><span class="tooltip-container"></span>  yield ()
+</span><span line-number="7" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="select-queries">
+ <h3 class="h400"><a href="#select-queries" class="anchor"></a>SELECT Queries</h3>
+ <p><code>executeQueryIO</code> returns a <code>DuckDBResultSet</code> wrapped in <code>IO</code>. You are responsible for closing the result set:</p>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>DuckDBIO.connect().use { conn =&gt;
+</span><span line-number="2" class=""><span class="tooltip-container"></span>  for
+</span><span line-number="3" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdateIO("CREATE TABLE users (id INTEGER, name VARCHAR)")
+</span><span line-number="4" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdateIO("INSERT INTO users VALUES (1, 'Alice'), (2, 'Bob')")
+</span><span line-number="5" class=""><span class="tooltip-container"></span>    rs &lt;- conn.executeQueryIO("SELECT * FROM users ORDER BY id")
+</span><span line-number="6" class=""><span class="tooltip-container"></span>    _ &lt;- IO {
+</span><span line-number="7" class=""><span class="tooltip-container"></span>      while rs.next() do
+</span><span line-number="8" class=""><span class="tooltip-container"></span>        println(s"${rs.getInt("id")}: ${rs.getString("name")}")
+</span><span line-number="9" class=""><span class="tooltip-container"></span>      rs.close()
+</span><span line-number="10" class=""><span class="tooltip-container"></span>    }
+</span><span line-number="11" class=""><span class="tooltip-container"></span>  yield ()
+</span><span line-number="12" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="streaming-results-with-fs2">
+ <h2 class="h500"><a href="#streaming-results-with-fs2" class="anchor"></a>Streaming Results with fs2</h2>
+ <p><code>DuckDBIO.stream</code> streams rows from a SELECT query as an <code>fs2.Stream[IO, A]</code>. The result set is opened and closed within the stream's resource scope — no manual cleanup needed.</p>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>DuckDBIO.connect().use { conn =&gt;
+</span><span line-number="2" class=""><span class="tooltip-container"></span>  for
+</span><span line-number="3" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdateIO("CREATE TABLE products (id INTEGER, name VARCHAR, price DOUBLE)")
+</span><span line-number="4" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdateIO("""
+</span><span line-number="5" class=""><span class="tooltip-container"></span>      INSERT INTO products VALUES
+</span><span line-number="6" class=""><span class="tooltip-container"></span>        (1, 'Widget', 9.99),
+</span><span line-number="7" class=""><span class="tooltip-container"></span>        (2, 'Gadget', 24.99),
+</span><span line-number="8" class=""><span class="tooltip-container"></span>        (3, 'Doohickey', 4.99)
+</span><span line-number="9" class=""><span class="tooltip-container"></span>    """)
+</span><span line-number="10" class=""><span class="tooltip-container"></span>    names &lt;- DuckDBIO
+</span><span line-number="11" class=""><span class="tooltip-container"></span>      .stream(conn, "SELECT name, price FROM products WHERE price &gt; 5.0") { rs =&gt;
+</span><span line-number="12" class=""><span class="tooltip-container"></span>        s"${rs.getString("name")} ($$${rs.getDouble("price")})"
+</span><span line-number="13" class=""><span class="tooltip-container"></span>      }
+</span><span line-number="14" class=""><span class="tooltip-container"></span>      .compile.toList
+</span><span line-number="15" class=""><span class="tooltip-container"></span>    _ &lt;- IO(names.foreach(println))
+</span><span line-number="16" class=""><span class="tooltip-container"></span>  yield ()
+</span><span line-number="17" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+ <p>The row mapper function receives the <code>DuckDBResultSet</code> positioned at each row and should extract the values synchronously.</p>
+</section>
+<section id="prepared-statements">
+ <h2 class="h500"><a href="#prepared-statements" class="anchor"></a>Prepared Statements</h2>
+</section>
+<section id="one-shot-with-automatic-cleanup">
+ <h3 class="h400"><a href="#one-shot-with-automatic-cleanup" class="anchor"></a>One-shot with automatic cleanup</h3>
+ <p><code>withPreparedStatementIO</code> prepares a statement, runs a block, then closes it automatically:</p>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>DuckDBIO.connect().use { conn =&gt;
+</span><span line-number="2" class=""><span class="tooltip-container"></span>  for
+</span><span line-number="3" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdateIO("CREATE TABLE items (id INTEGER, label VARCHAR)")
+</span><span line-number="4" class=""><span class="tooltip-container"></span>    count &lt;- conn.withPreparedStatementIO("INSERT INTO items VALUES (?, ?)") { stmt =&gt;
+</span><span line-number="5" class=""><span class="tooltip-container"></span>      for
+</span><span line-number="6" class=""><span class="tooltip-container"></span>        _ &lt;- IO.blocking(stmt.setInt(1, 42))
+</span><span line-number="7" class=""><span class="tooltip-container"></span>        _ &lt;- IO.blocking(stmt.setString(2, "example"))
+</span><span line-number="8" class=""><span class="tooltip-container"></span>        n &lt;- IO.blocking(stmt.executeUpdate())
+</span><span line-number="9" class=""><span class="tooltip-container"></span>      yield n
+</span><span line-number="10" class=""><span class="tooltip-container"></span>    }
+</span><span line-number="11" class=""><span class="tooltip-container"></span>    _ &lt;- IO(println(s"Inserted $count row(s)"))
+</span><span line-number="12" class=""><span class="tooltip-container"></span>  yield ()
+</span><span line-number="13" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="manual-lifecycle">
+ <h3 class="h400"><a href="#manual-lifecycle" class="anchor"></a>Manual lifecycle</h3>
+ <p><code>prepareStatementIO</code> returns an <code>IO[DuckDBPreparedStatement]</code> when you need to manage the lifecycle yourself:</p>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>import cats.effect.Resource
+</span><span line-number="2" class=""><span class="tooltip-container"></span>
+</span><span line-number="3" class=""><span class="tooltip-container"></span>DuckDBIO.connect().use { conn =&gt;
+</span><span line-number="4" class=""><span class="tooltip-container"></span>  Resource
+</span><span line-number="5" class=""><span class="tooltip-container"></span>    .make(conn.prepareStatementIO("SELECT * FROM items WHERE id = ?"))(stmt =&gt;
+</span><span line-number="6" class=""><span class="tooltip-container"></span>      IO.blocking(stmt.close())
+</span><span line-number="7" class=""><span class="tooltip-container"></span>    )
+</span><span line-number="8" class=""><span class="tooltip-container"></span>    .use { stmt =&gt;
+</span><span line-number="9" class=""><span class="tooltip-container"></span>      IO.blocking(stmt.setInt(1, 42)) &gt;&gt;
+</span><span line-number="10" class=""><span class="tooltip-container"></span>        IO.blocking(stmt.executeQuery()).flatMap { rs =&gt;
+</span><span line-number="11" class=""><span class="tooltip-container"></span>          IO {
+</span><span line-number="12" class=""><span class="tooltip-container"></span>            while rs.next() do println(rs.getString("label"))
+</span><span line-number="13" class=""><span class="tooltip-container"></span>            rs.close()
+</span><span line-number="14" class=""><span class="tooltip-container"></span>          }
+</span><span line-number="15" class=""><span class="tooltip-container"></span>        }
+</span><span line-number="16" class=""><span class="tooltip-container"></span>    }
+</span><span line-number="17" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="batch-operations">
+ <h2 class="h500"><a href="#batch-operations" class="anchor"></a>Batch Operations</h2>
+</section>
+<section id="one-shot-with-automatic-cleanup-1">
+ <h3 class="h400"><a href="#one-shot-with-automatic-cleanup-1" class="anchor"></a>One-shot with automatic cleanup</h3>
+ <p><code>withBatchIO</code> prepares a batch, runs a block, then closes it automatically:</p>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>DuckDBIO.connect().use { conn =&gt;
+</span><span line-number="2" class=""><span class="tooltip-container"></span>  for
+</span><span line-number="3" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdateIO("CREATE TABLE employees (id INTEGER, name VARCHAR, salary DOUBLE)")
+</span><span line-number="4" class=""><span class="tooltip-container"></span>    result &lt;- conn.withBatchIO("INSERT INTO employees VALUES (?, ?, ?)") { batch =&gt;
+</span><span line-number="5" class=""><span class="tooltip-container"></span>      for
+</span><span line-number="6" class=""><span class="tooltip-container"></span>        _ &lt;- IO.blocking(batch.addBatch((1, "Alice", 75000.0), (2, "Bob", 80000.0), (3, "Charlie", 85000.0)))
+</span><span line-number="7" class=""><span class="tooltip-container"></span>        r &lt;- IO.blocking(batch.executeBatch())
+</span><span line-number="8" class=""><span class="tooltip-container"></span>      yield r
+</span><span line-number="9" class=""><span class="tooltip-container"></span>    }
+</span><span line-number="10" class=""><span class="tooltip-container"></span>    _ &lt;- IO(println(s"Inserted ${result.successCount} row(s), ${result.failureCount} failure(s)"))
+</span><span line-number="11" class=""><span class="tooltip-container"></span>  yield ()
+</span><span line-number="12" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="manual-lifecycle-1">
+ <h3 class="h400"><a href="#manual-lifecycle-1" class="anchor"></a>Manual lifecycle</h3>
+ <p><code>prepareBatchIO</code> returns an <code>IO[DuckDBBatch]</code> for manual control:</p>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>import cats.effect.Resource
+</span><span line-number="2" class=""><span class="tooltip-container"></span>
+</span><span line-number="3" class=""><span class="tooltip-container"></span>DuckDBIO.connect().use { conn =&gt;
+</span><span line-number="4" class=""><span class="tooltip-container"></span>  Resource
+</span><span line-number="5" class=""><span class="tooltip-container"></span>    .make(conn.prepareBatchIO("INSERT INTO employees VALUES (?, ?, ?)"))(b =&gt;
+</span><span line-number="6" class=""><span class="tooltip-container"></span>      IO.blocking(b.close())
+</span><span line-number="7" class=""><span class="tooltip-container"></span>    )
+</span><span line-number="8" class=""><span class="tooltip-container"></span>    .use { batch =&gt;
+</span><span line-number="9" class=""><span class="tooltip-container"></span>      IO.blocking(batch.addBatch((4, "Dana", 90000.0))) &gt;&gt;
+</span><span line-number="10" class=""><span class="tooltip-container"></span>        IO.blocking(batch.executeBatch()).void
+</span><span line-number="11" class=""><span class="tooltip-container"></span>    }
+</span><span line-number="12" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="transactions">
+ <h2 class="h500"><a href="#transactions" class="anchor"></a>Transactions</h2>
+ <p><code>withTransactionIO</code> disables auto-commit, runs a block, and commits on success or rolls back on any raised error. Auto-commit is restored in a <code>guarantee</code> finalizer regardless of outcome.</p>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>DuckDBIO.connect().use { conn =&gt;
+</span><span line-number="2" class=""><span class="tooltip-container"></span>  for
+</span><span line-number="3" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdateIO("CREATE TABLE accounts (id INTEGER, balance DOUBLE)")
+</span><span line-number="4" class=""><span class="tooltip-container"></span>    _ &lt;- conn.executeUpdateIO("INSERT INTO accounts VALUES (1, 1000.0), (2, 500.0)")
+</span><span line-number="5" class=""><span class="tooltip-container"></span>    _ &lt;- conn.withTransactionIO { txConn =&gt;
+</span><span line-number="6" class=""><span class="tooltip-container"></span>      for
+</span><span line-number="7" class=""><span class="tooltip-container"></span>        _ &lt;- txConn.executeUpdateIO("UPDATE accounts SET balance = balance - 200 WHERE id = 1")
+</span><span line-number="8" class=""><span class="tooltip-container"></span>        _ &lt;- txConn.executeUpdateIO("UPDATE accounts SET balance = balance + 200 WHERE id = 2")
+</span><span line-number="9" class=""><span class="tooltip-container"></span>      yield ()
+</span><span line-number="10" class=""><span class="tooltip-container"></span>    }
+</span><span line-number="11" class=""><span class="tooltip-container"></span>  yield ()
+</span><span line-number="12" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+ <p>If either update raises an error, the whole transaction is rolled back automatically.</p>
+</section>
+<section id="error-handling">
+ <h2 class="h500"><a href="#error-handling" class="anchor"></a>Error Handling</h2>
+ <p>The cats-effect module raises errors as <code>DuckDBException</code> (a <code>RuntimeException</code> subclass) rather than returning <code>Either</code>. Use standard cats-effect error handling:</p>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>import com.softinio.duck4s.effect.DuckDBException
+</span><span line-number="2" class=""><span class="tooltip-container"></span>
+</span><span line-number="3" class=""><span class="tooltip-container"></span>DuckDBIO.connect().use { conn =&gt;
+</span><span line-number="4" class=""><span class="tooltip-container"></span>  conn
+</span><span line-number="5" class=""><span class="tooltip-container"></span>    .executeQueryIO("SELECT * FROM nonexistent_table")
+</span><span line-number="6" class=""><span class="tooltip-container"></span>    .handleErrorWith {
+</span><span line-number="7" class=""><span class="tooltip-container"></span>      case ex: DuckDBException =&gt;
+</span><span line-number="8" class=""><span class="tooltip-container"></span>        IO(println(s"DuckDB error: ${ex.getMessage}")) &gt;&gt; IO(println(s"Underlying: ${ex.error}"))
+</span><span line-number="9" class=""><span class="tooltip-container"></span>      case ex =&gt;
+</span><span line-number="10" class=""><span class="tooltip-container"></span>        IO(println(s"Unexpected error: ${ex.getMessage}"))
+</span><span line-number="11" class=""><span class="tooltip-container"></span>    }
+</span><span line-number="12" class=""><span class="tooltip-container"></span>    .void
+</span><span line-number="13" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+ <p>You can also use <code>attempt</code> to recover an <code>Either[Throwable, A]</code>:</p>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>DuckDBIO.connect().use { conn =&gt;
+</span><span line-number="2" class=""><span class="tooltip-container"></span>  conn.executeQueryIO("SELECT * FROM nonexistent_table").attempt.flatMap {
+</span><span line-number="3" class=""><span class="tooltip-container"></span>    case Right(rs) =&gt; IO(rs.close())
+</span><span line-number="4" class=""><span class="tooltip-container"></span>    case Left(ex)  =&gt; IO(println(s"Failed: ${ex.getMessage}"))
+</span><span line-number="5" class=""><span class="tooltip-container"></span>  }
+</span><span line-number="6" class=""><span class="tooltip-container"></span>}
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="complete-example">
+ <h2 class="h500"><a href="#complete-example" class="anchor"></a>Complete Example</h2>
+ <div class="snippet mono-small-block" scala-snippet="">
+  <pre><code class="language-scala"><span line-number="1" class=""><span class="tooltip-container"></span>import cats.effect.{IO, IOApp}
+</span><span line-number="2" class=""><span class="tooltip-container"></span>import com.softinio.duck4s.algebra.*
+</span><span line-number="3" class=""><span class="tooltip-container"></span>import com.softinio.duck4s.effect.*
+</span><span line-number="4" class=""><span class="tooltip-container"></span>
+</span><span line-number="5" class=""><span class="tooltip-container"></span>object Main extends IOApp.Simple:
+</span><span line-number="6" class=""><span class="tooltip-container"></span>  def run: IO[Unit] =
+</span><span line-number="7" class=""><span class="tooltip-container"></span>    DuckDBIO.connect().use { conn =&gt;
+</span><span line-number="8" class=""><span class="tooltip-container"></span>      for
+</span><span line-number="9" class=""><span class="tooltip-container"></span>        _ &lt;- conn.executeUpdateIO("""
+</span><span line-number="10" class=""><span class="tooltip-container"></span>          CREATE TABLE orders (
+</span><span line-number="11" class=""><span class="tooltip-container"></span>            id      INTEGER,
+</span><span line-number="12" class=""><span class="tooltip-container"></span>            product VARCHAR,
+</span><span line-number="13" class=""><span class="tooltip-container"></span>            qty     INTEGER,
+</span><span line-number="14" class=""><span class="tooltip-container"></span>            price   DOUBLE
+</span><span line-number="15" class=""><span class="tooltip-container"></span>          )
+</span><span line-number="16" class=""><span class="tooltip-container"></span>        """)
+</span><span line-number="17" class=""><span class="tooltip-container"></span>
+</span><span line-number="18" class=""><span class="tooltip-container"></span>        _ &lt;- conn.withBatchIO("INSERT INTO orders VALUES (?, ?, ?, ?)") { batch =&gt;
+</span><span line-number="19" class=""><span class="tooltip-container"></span>          for
+</span><span line-number="20" class=""><span class="tooltip-container"></span>            _ &lt;- IO.blocking(batch.addBatch(
+</span><span line-number="21" class=""><span class="tooltip-container"></span>              (1, "Widget",    10, 9.99),
+</span><span line-number="22" class=""><span class="tooltip-container"></span>              (2, "Gadget",     5, 24.99),
+</span><span line-number="23" class=""><span class="tooltip-container"></span>              (3, "Doohickey", 20, 4.99)
+</span><span line-number="24" class=""><span class="tooltip-container"></span>            ))
+</span><span line-number="25" class=""><span class="tooltip-container"></span>            r &lt;- IO.blocking(batch.executeBatch())
+</span><span line-number="26" class=""><span class="tooltip-container"></span>            _ &lt;- IO(println(s"Inserted ${r.successCount} order(s)"))
+</span><span line-number="27" class=""><span class="tooltip-container"></span>          yield ()
+</span><span line-number="28" class=""><span class="tooltip-container"></span>        }
+</span><span line-number="29" class=""><span class="tooltip-container"></span>
+</span><span line-number="30" class=""><span class="tooltip-container"></span>        total &lt;- DuckDBIO
+</span><span line-number="31" class=""><span class="tooltip-container"></span>          .stream(conn, "SELECT product, qty * price AS subtotal FROM orders") { rs =&gt;
+</span><span line-number="32" class=""><span class="tooltip-container"></span>            rs.getString("product") -&gt; rs.getDouble("subtotal")
+</span><span line-number="33" class=""><span class="tooltip-container"></span>          }
+</span><span line-number="34" class=""><span class="tooltip-container"></span>          .evalTap { case (product, subtotal) =&gt; IO(println(f"$product%-12s $$${subtotal}%.2f")) }
+</span><span line-number="35" class=""><span class="tooltip-container"></span>          .map(_._2)
+</span><span line-number="36" class=""><span class="tooltip-container"></span>          .compile.fold(0.0)(_ + _)
+</span><span line-number="37" class=""><span class="tooltip-container"></span>
+</span><span line-number="38" class=""><span class="tooltip-container"></span>        _ &lt;- IO(println(f"Total: $$${total}%.2f"))
+</span><span line-number="39" class=""><span class="tooltip-container"></span>      yield ()
+</span><span line-number="40" class=""><span class="tooltip-container"></span>    }
+</span></code></pre>
+  <div class="buttons"></div>
+ </div>
+</section>
+<section id="next-steps">
+ <h2 class="h500"><a href="#next-steps" class="anchor"></a>Next Steps</h2>
+ <ul>
+  <li><a href="getting-started.html">Getting Started</a> - Core synchronous API</li>
+  <li><a href="../index.html">Core API Documentation</a> - Core API reference</li>
+  <li><a href="../cats-effect-api/index.html">Cats-Effect API Documentation</a> - Cats-effect module API reference</li>
+  <li><a href="https://typelevel.org/cats-effect/">cats-effect documentation</a></li>
+  <li><a href="https://fs2.io/">fs2 documentation</a></li>
+ </ul>
+</section></div><div id="toc" class="body-small"><div id="toc-container"><span class="toc-title h200">In this article</span><nav class="toc-nav"><ul class="toc-list"><li><a href="#cats-effect-integration">Cats-Effect Integration</a><ul><li><a href="#installation">Installation</a><ul><li><a href="#sbt">SBT</a></li><li><a href="#mill">Mill</a></li></ul></li><li><a href="#imports">Imports</a></li><li><a href="#connection-management">Connection Management</a></li><li><a href="#executing-queries">Executing Queries</a><ul><li><a href="#ddl-and-updates">DDL and Updates</a></li><li><a href="#select-queries">SELECT Queries</a></li></ul></li><li><a href="#streaming-results-with-fs2">Streaming Results with fs2</a></li><li><a href="#prepared-statements">Prepared Statements</a><ul><li><a href="#one-shot-with-automatic-cleanup">One-shot with automatic cleanup</a></li><li><a href="#manual-lifecycle">Manual lifecycle</a></li></ul></li><li><a href="#batch-operations">Batch Operations</a><ul><li><a href="#one-shot-with-automatic-cleanup-1">One-shot with automatic cleanup</a></li><li><a href="#manual-lifecycle-1">Manual lifecycle</a></li></ul></li><li><a href="#transactions">Transactions</a></li><li><a href="#error-handling">Error Handling</a></li><li><a href="#complete-example">Complete Example</a></li><li><a href="#next-steps">Next Steps</a></li></ul></li></ul></nav></div></div></div><div id="footer" class="body-small mobile-footer"><div class="left-container">Generated with</div><div class="right-container"><a href="https://github.com/softinio/duck4s"><button class="icon-button gh"></button></a><div class="text"></div></div><div class="text-mobile"></div></div></div></div></body></html>
