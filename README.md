@@ -38,10 +38,10 @@ Add duck4s to your `build.sbt`:
 
 ```scala
 // Core library
-libraryDependencies += "com.softinio" %% "duck4s" % "0.1.1"
+libraryDependencies += "com.softinio" %% "duck4s" % "0.1.3"
 
 // Optional: cats-effect integration (includes fs2)
-libraryDependencies += "com.softinio" %% "duck4s-cats-effect" % "0.1.1"
+libraryDependencies += "com.softinio" %% "duck4s-cats-effect" % "0.1.3"
 ```
 
 #### Mill
@@ -51,13 +51,13 @@ Add duck4s to your `build.mill`:
 ```scala
 // Core library
 def ivyDeps = Agg(
-  ivy"com.softinio::duck4s::0.1.1"
+  ivy"com.softinio::duck4s::0.1.3"
 )
 
 // Optional: cats-effect integration (includes fs2)
 def ivyDeps = Agg(
-  ivy"com.softinio::duck4s::0.1.1",
-  ivy"com.softinio::duck4s-cats-effect::0.1.1"
+  ivy"com.softinio::duck4s::0.1.3",
+  ivy"com.softinio::duck4s-cats-effect::0.1.3"
 )
 ```
 
@@ -126,6 +126,29 @@ val result = DuckDBConnection.withConnection() { conn =>
 result match
   case Right(_) => println("Query executed successfully")
   case Left(error) => println(s"Error: $error")
+```
+
+## Cats-Effect Quick Example
+
+```scala
+import cats.effect.{IO, IOApp}
+import com.softinio.duck4s.algebra.*
+import com.softinio.duck4s.effect.*
+
+object Main extends IOApp.Simple:
+  def run: IO[Unit] =
+    DuckDBIO.connect().use { conn =>
+      for
+        _ <- conn.executeUpdateIO("CREATE TABLE users (id INTEGER, name VARCHAR)")
+        _ <- conn.executeUpdateIO("INSERT INTO users VALUES (1, 'Alice'), (2, 'Bob')")
+        _ <- DuckDBIO
+          .stream(conn, "SELECT * FROM users ORDER BY id") { rs =>
+            s"${rs.getInt("id")}: ${rs.getString("name")}"
+          }
+          .evalTap(row => IO(println(row)))
+          .compile.drain
+      yield ()
+    }
 ```
 
 ## Documentation

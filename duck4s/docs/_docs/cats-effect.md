@@ -11,14 +11,14 @@ The `duck4s-cats-effect` module provides a purely functional interface for DuckD
 ### SBT
 
 ```sbt
-libraryDependencies += "com.softinio" %% "duck4s-cats-effect" % "0.1.0"
+libraryDependencies += "com.softinio" %% "duck4s-cats-effect" % "0.1.3"
 ```
 
 ### Mill
 
 ```scala sc:nocompile
 def ivyDeps = Agg(
-  ivy"com.softinio::duck4s-cats-effect::0.1.0"
+  ivy"com.softinio::duck4s-cats-effect::0.1.3"
 )
 ```
 
