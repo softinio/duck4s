@@ -259,6 +259,125 @@ class BatchTest extends munit.FunSuite:
 
     assert(result.isRight)
 
+  test("batch insert - float, date, BigDecimal, bytes"):
+    val result = DuckDBConnection.withConnection(): conn =>
+      for
+        _ <- conn.executeUpdate(
+          """CREATE TABLE batch_types2 (
+            |  id INTEGER,
+            |  f FLOAT,
+            |  d DATE,
+            |  dec DECIMAL(10,2),
+            |  b BLOB
+            |)""".stripMargin
+        )
+        date  = java.sql.Date.valueOf("2024-06-15")
+        price = BigDecimal("99.99")
+        bytes = "duck4s".getBytes("UTF-8")
+
+        batchResult <- conn.withBatch(
+          "INSERT INTO batch_types2 VALUES (?, ?, ?, ?, ?)"
+        ): batch =>
+          for
+            _ <- batch.addBatch((1, 1.5f, date, price, bytes))
+            result <- batch.executeBatch()
+          yield result
+
+        rs <- conn.executeQuery("SELECT * FROM batch_types2 WHERE id = 1")
+      yield
+        assertEquals(batchResult.successCount, 1)
+        assert(rs.next())
+        assertEquals(rs.getFloat("f"), 1.5f)
+        assertEquals(rs.getDate("d"), date)
+        assertEquals(BigDecimal(rs.getBigDecimal("dec")), price)
+        assertEquals(rs.getBytes("b").toList, bytes.toList)
+        rs.close()
+
+    assert(result.isRight)
+
+  test("batch insert - java.time binders"):
+    val result = DuckDBConnection.withConnection(): conn =>
+      for
+        _ <- conn.executeUpdate(
+          """CREATE TABLE batch_jtime (
+            |  id INTEGER,
+            |  ld DATE,
+            |  ldt TIMESTAMP,
+            |  odt TIMESTAMPTZ
+            |)""".stripMargin
+        )
+        localDate     = java.time.LocalDate.of(2024, 3, 1)
+        localDateTime = java.time.LocalDateTime.of(2024, 3, 1, 9, 0, 0)
+        offsetDateTime = java.time.OffsetDateTime.of(
+          localDateTime,
+          java.time.ZoneOffset.UTC
+        )
+
+        batchResult <- conn.withBatch(
+          "INSERT INTO batch_jtime VALUES (?, ?, ?, ?)"
+        ): batch =>
+          for
+            _ <- batch.addBatch((1, localDate, localDateTime, offsetDateTime))
+            result <- batch.executeBatch()
+          yield result
+
+        rs <- conn.executeQuery("SELECT * FROM batch_jtime WHERE id = 1")
+      yield
+        assertEquals(batchResult.successCount, 1)
+        assert(rs.next())
+        assertEquals(
+          rs.getObject("ld", classOf[java.time.LocalDate]),
+          localDate
+        )
+        assertEquals(
+          rs.getObject("ldt", classOf[java.time.LocalDateTime]),
+          localDateTime
+        )
+        rs.close()
+
+    assert(result.isRight)
+
+  test("batch insert - with Timestamp and UUID"):
+    val result = DuckDBConnection.withConnection(): conn =>
+      for
+        _ <- conn.executeUpdate(
+          "CREATE TABLE batch_ts_uuid (id INTEGER, ts TIMESTAMP, uid UUID)"
+        )
+        ts1 = java.sql.Timestamp.valueOf("2024-01-01 00:00:00")
+        ts2 = java.sql.Timestamp.valueOf("2024-06-15 12:30:00")
+        uuid1 = java.util.UUID.fromString("550e8400-e29b-41d4-a716-446655440000")
+        uuid2 = java.util.UUID.fromString("6ba7b810-9dad-11d1-80b4-00c04fd430c8")
+
+        batchResult <- conn.withBatch(
+          "INSERT INTO batch_ts_uuid VALUES (?, ?, ?)"
+        ): batch =>
+          for
+            _ <- batch.addBatch((1, ts1, uuid1))
+            _ <- batch.addBatch((2, ts2, uuid2))
+            result <- batch.executeBatch()
+          yield result
+
+        rs <- conn.executeQuery(
+          "SELECT * FROM batch_ts_uuid ORDER BY id"
+        )
+      yield
+        assertEquals(batchResult.successCount, 2)
+
+        assert(rs.next())
+        assertEquals(rs.getInt("id"), 1)
+        assertEquals(rs.getTimestamp("ts"), ts1)
+        assertEquals(rs.getObject("uid", classOf[java.util.UUID]), uuid1)
+
+        assert(rs.next())
+        assertEquals(rs.getInt("id"), 2)
+        assertEquals(rs.getTimestamp("ts"), ts2)
+        assertEquals(rs.getObject("uid", classOf[java.util.UUID]), uuid2)
+
+        assert(!rs.next())
+        rs.close()
+
+    assert(result.isRight)
+
   test("batch insert - transaction with batch"):
     val result = DuckDBConnection.withConnection(): conn =>
       for

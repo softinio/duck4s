@@ -214,9 +214,9 @@ trait BatchBinder[T]:
 /** Companion object providing implicit [[BatchBinder]] instances for common
   * types.
   *
-  * This object contains given instances for tuples of various sizes (2, 3, and
-  * 4 elements). Each binder uses the appropriate [[ParameterBinder]] instances
-  * for the tuple elements.
+  * This object contains given instances for tuples of various sizes (2, 3, 4,
+  * 5, and 6 elements). Each binder uses the appropriate [[ParameterBinder]]
+  * instances for the tuple elements.
   *
   * @since 0.1.0
   */
@@ -294,6 +294,60 @@ object BatchBinder:
           _ <- ba.bind(stmt, 1, a)
           _ <- bb.bind(stmt, 2, b)
           _ <- bc.bind(stmt, 3, c)
+        yield ()
+
+  /** Implicit [[BatchBinder]] for 5-element tuples.
+    *
+    * @since 0.2.0
+    */
+  given batchBinder5[A, B, C, D, E](using
+      ba: ParameterBinder[A],
+      bb: ParameterBinder[B],
+      bc: ParameterBinder[C],
+      bd: ParameterBinder[D],
+      be: ParameterBinder[E]
+  ): BatchBinder[(A, B, C, D, E)] with
+    def bind(
+        stmt: DuckDBPreparedStatement,
+        values: (A, B, C, D, E)*
+    ): Either[DuckDBError, Unit] =
+      if values.isEmpty then Right(())
+      else
+        val (a, b, c, d, e) = values.head
+        for
+          _ <- ba.bind(stmt, 1, a)
+          _ <- bb.bind(stmt, 2, b)
+          _ <- bc.bind(stmt, 3, c)
+          _ <- bd.bind(stmt, 4, d)
+          _ <- be.bind(stmt, 5, e)
+        yield ()
+
+  /** Implicit [[BatchBinder]] for 6-element tuples.
+    *
+    * @since 0.2.0
+    */
+  given batchBinder6[A, B, C, D, E, F](using
+      ba: ParameterBinder[A],
+      bb: ParameterBinder[B],
+      bc: ParameterBinder[C],
+      bd: ParameterBinder[D],
+      be: ParameterBinder[E],
+      bf: ParameterBinder[F]
+  ): BatchBinder[(A, B, C, D, E, F)] with
+    def bind(
+        stmt: DuckDBPreparedStatement,
+        values: (A, B, C, D, E, F)*
+    ): Either[DuckDBError, Unit] =
+      if values.isEmpty then Right(())
+      else
+        val (a, b, c, d, e, f) = values.head
+        for
+          _ <- ba.bind(stmt, 1, a)
+          _ <- bb.bind(stmt, 2, b)
+          _ <- bc.bind(stmt, 3, c)
+          _ <- bd.bind(stmt, 4, d)
+          _ <- be.bind(stmt, 5, e)
+          _ <- bf.bind(stmt, 6, f)
         yield ()
 
   /** Implicit [[BatchBinder]] for 4-element tuples.
@@ -466,6 +520,135 @@ object ParameterBinder:
         value: Boolean
     ): Either[DuckDBError, Unit] =
       stmt.setBoolean(index, value).map(_ => ())
+
+  /** Implicit [[ParameterBinder]] for `Float` values.
+    *
+    * @since 0.2.0
+    */
+  given floatBinder: ParameterBinder[Float] with
+    def bind(
+        stmt: DuckDBPreparedStatement,
+        index: Int,
+        value: Float
+    ): Either[DuckDBError, Unit] =
+      stmt.setFloat(index, value).map(_ => ())
+
+  /** Implicit [[ParameterBinder]] for `java.sql.Date` values.
+    *
+    * @example
+    *   {{{batch.addBatch((java.sql.Date.valueOf("2024-06-15"), "event"))}}}
+    *
+    * @since 0.2.0
+    */
+  given dateBinder: ParameterBinder[java.sql.Date] with
+    def bind(
+        stmt: DuckDBPreparedStatement,
+        index: Int,
+        value: java.sql.Date
+    ): Either[DuckDBError, Unit] =
+      stmt.setDate(index, value).map(_ => ())
+
+  /** Implicit [[ParameterBinder]] for `BigDecimal` values.
+    *
+    * @example
+    *   {{{batch.addBatch((BigDecimal("123.45"), "item"))}}}
+    *
+    * @since 0.2.0
+    */
+  given bigDecimalBinder: ParameterBinder[BigDecimal] with
+    def bind(
+        stmt: DuckDBPreparedStatement,
+        index: Int,
+        value: BigDecimal
+    ): Either[DuckDBError, Unit] =
+      stmt.setBigDecimal(index, value).map(_ => ())
+
+  /** Implicit [[ParameterBinder]] for `Array[Byte]` values (BLOB columns).
+    *
+    * @since 0.2.0
+    */
+  given bytesBinder: ParameterBinder[Array[Byte]] with
+    def bind(
+        stmt: DuckDBPreparedStatement,
+        index: Int,
+        value: Array[Byte]
+    ): Either[DuckDBError, Unit] =
+      stmt.setBytes(index, value).map(_ => ())
+
+  /** Implicit [[ParameterBinder]] for `java.time.LocalDate` values.
+    *
+    * Passed via `setObject`; DuckDB maps this to the `DATE` column type.
+    *
+    * @since 0.2.0
+    */
+  given localDateBinder: ParameterBinder[java.time.LocalDate] with
+    def bind(
+        stmt: DuckDBPreparedStatement,
+        index: Int,
+        value: java.time.LocalDate
+    ): Either[DuckDBError, Unit] =
+      stmt.setObject(index, value).map(_ => ())
+
+  /** Implicit [[ParameterBinder]] for `java.time.LocalDateTime` values.
+    *
+    * Passed via `setObject`; DuckDB maps this to the `TIMESTAMP` column type.
+    *
+    * @since 0.2.0
+    */
+  given localDateTimeBinder: ParameterBinder[java.time.LocalDateTime] with
+    def bind(
+        stmt: DuckDBPreparedStatement,
+        index: Int,
+        value: java.time.LocalDateTime
+    ): Either[DuckDBError, Unit] =
+      stmt.setObject(index, value).map(_ => ())
+
+  /** Implicit [[ParameterBinder]] for `java.time.OffsetDateTime` values.
+    *
+    * Passed via `setObject`; DuckDB maps this to the `TIMESTAMPTZ` column type.
+    *
+    * @since 0.2.0
+    */
+  given offsetDateTimeBinder: ParameterBinder[java.time.OffsetDateTime] with
+    def bind(
+        stmt: DuckDBPreparedStatement,
+        index: Int,
+        value: java.time.OffsetDateTime
+    ): Either[DuckDBError, Unit] =
+      stmt.setObject(index, value).map(_ => ())
+
+  /** Implicit [[ParameterBinder]] for `java.sql.Timestamp` values.
+    *
+    * @example
+    *   {{{batch.addBatch((java.sql.Timestamp.valueOf("2024-01-01 12:00:00"), "event"))}}}
+    *
+    * @since 0.2.0
+    */
+  given timestampBinder: ParameterBinder[java.sql.Timestamp] with
+    def bind(
+        stmt: DuckDBPreparedStatement,
+        index: Int,
+        value: java.sql.Timestamp
+    ): Either[DuckDBError, Unit] =
+      stmt.setTimestamp(index, value).map(_ => ())
+
+  /** Implicit [[ParameterBinder]] for `java.util.UUID` values.
+    *
+    * DuckDB supports UUID natively; this binder uses `setObject` to pass the
+    * UUID directly without string conversion.
+    *
+    * @example
+    *   {{{batch.addBatch((java.util.UUID.randomUUID(), "label"))}}}
+    *
+    * @since 0.2.0
+    */
+  given uuidBinder: ParameterBinder[java.util.UUID] with
+    def bind(
+        stmt: DuckDBPreparedStatement,
+        index: Int,
+        value: java.util.UUID
+    ): Either[DuckDBError, Unit] =
+      stmt.setObject(index, value).map(_ => ())
 
   /** Implicit [[ParameterBinder]] for Option values.
     *
