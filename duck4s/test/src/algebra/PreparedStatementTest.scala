@@ -343,7 +343,7 @@ class PreparedStatementTest extends munit.FunSuite:
             |  odt TIMESTAMPTZ
             |)""".stripMargin
         )
-        localDate     = java.time.LocalDate.of(2024, 6, 15)
+        localDate = java.time.LocalDate.of(2024, 6, 15)
         localDateTime = java.time.LocalDateTime.of(2024, 6, 15, 10, 30, 0)
         offsetDateTime = java.time.OffsetDateTime.of(
           localDateTime,

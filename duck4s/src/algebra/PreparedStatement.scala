@@ -246,8 +246,8 @@ case class DuckDBPreparedStatement(
 
   /** Sets an object parameter in the prepared statement.
     *
-    * This is primarily useful for types not covered by dedicated setter methods,
-    * such as `java.util.UUID` which DuckDB supports natively.
+    * This is primarily useful for types not covered by dedicated setter
+    * methods, such as `java.util.UUID` which DuckDB supports natively.
     *
     * @param parameterIndex
     *   the parameter index (1-based)

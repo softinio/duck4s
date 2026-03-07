@@ -92,8 +92,8 @@ case class DuckDBResultSet(
 
   /** Returns the raw bytes of a BLOB column, or null if SQL NULL.
     *
-    * DuckDB JDBC does not implement the standard `getBytes` method; this
-    * wraps `getBlob` internally.
+    * DuckDB JDBC does not implement the standard `getBytes` method; this wraps
+    * `getBlob` internally.
     *
     * @since 0.2.0
     */
@@ -107,8 +107,8 @@ case class DuckDBResultSet(
 
   /** Returns the raw bytes of a BLOB column, or null if SQL NULL.
     *
-    * DuckDB JDBC does not implement the standard `getBytes` method; this
-    * wraps `getBlob` internally.
+    * DuckDB JDBC does not implement the standard `getBytes` method; this wraps
+    * `getBlob` internally.
     *
     * @since 0.2.0
     */

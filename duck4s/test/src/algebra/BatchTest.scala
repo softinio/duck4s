@@ -271,7 +271,7 @@ class BatchTest extends munit.FunSuite:
             |  b BLOB
             |)""".stripMargin
         )
-        date  = java.sql.Date.valueOf("2024-06-15")
+        date = java.sql.Date.valueOf("2024-06-15")
         price = BigDecimal("99.99")
         bytes = "duck4s".getBytes("UTF-8")
 
@@ -306,7 +306,7 @@ class BatchTest extends munit.FunSuite:
             |  odt TIMESTAMPTZ
             |)""".stripMargin
         )
-        localDate     = java.time.LocalDate.of(2024, 3, 1)
+        localDate = java.time.LocalDate.of(2024, 3, 1)
         localDateTime = java.time.LocalDateTime.of(2024, 3, 1, 9, 0, 0)
         offsetDateTime = java.time.OffsetDateTime.of(
           localDateTime,
@@ -345,8 +345,12 @@ class BatchTest extends munit.FunSuite:
         )
         ts1 = java.sql.Timestamp.valueOf("2024-01-01 00:00:00")
         ts2 = java.sql.Timestamp.valueOf("2024-06-15 12:30:00")
-        uuid1 = java.util.UUID.fromString("550e8400-e29b-41d4-a716-446655440000")
-        uuid2 = java.util.UUID.fromString("6ba7b810-9dad-11d1-80b4-00c04fd430c8")
+        uuid1 = java.util.UUID.fromString(
+          "550e8400-e29b-41d4-a716-446655440000"
+        )
+        uuid2 = java.util.UUID.fromString(
+          "6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+        )
 
         batchResult <- conn.withBatch(
           "INSERT INTO batch_ts_uuid VALUES (?, ?, ?)"
