@@ -213,6 +213,192 @@ case class DuckDBPreparedStatement(
           )
         )
 
+  /** Sets a timestamp parameter in the prepared statement.
+    *
+    * @param parameterIndex
+    *   the parameter index (1-based)
+    * @param value
+    *   the timestamp value to set
+    * @return
+    *   Right(value) on success, Left(DuckDBError) on failure
+    *
+    * @example
+    *   {{{stmt.setTimestamp(1, java.sql.Timestamp.valueOf("2024-01-01 12:00:00"))}}}
+    *
+    * @since 0.1.4
+    */
+  def setTimestamp(
+      parameterIndex: Int,
+      value: java.sql.Timestamp
+  ): Either[DuckDBError, java.sql.Timestamp] =
+    try
+      underlying.setTimestamp(parameterIndex, value)
+      Right(value)
+    catch
+      case e: SQLException =>
+        Left(
+          DuckDBError.QueryError(
+            s"Failed to set timestamp parameter at index $parameterIndex",
+            sql,
+            Some(e)
+          )
+        )
+
+  /** Sets an object parameter in the prepared statement.
+    *
+    * This is primarily useful for types not covered by dedicated setter
+    * methods, such as `java.util.UUID` which DuckDB supports natively.
+    *
+    * @param parameterIndex
+    *   the parameter index (1-based)
+    * @param value
+    *   the object value to set
+    * @return
+    *   Right(value) on success, Left(DuckDBError) on failure
+    *
+    * @example
+    *   {{{stmt.setObject(1, java.util.UUID.randomUUID())}}}
+    *
+    * @since 0.1.4
+    */
+  def setObject(
+      parameterIndex: Int,
+      value: AnyRef
+  ): Either[DuckDBError, AnyRef] =
+    try
+      underlying.setObject(parameterIndex, value)
+      Right(value)
+    catch
+      case e: SQLException =>
+        Left(
+          DuckDBError.QueryError(
+            s"Failed to set object parameter at index $parameterIndex",
+            sql,
+            Some(e)
+          )
+        )
+
+  /** Sets a float parameter in the prepared statement.
+    *
+    * @param parameterIndex
+    *   the parameter index (1-based)
+    * @param value
+    *   the float value to set
+    * @return
+    *   Right(value) on success, Left(DuckDBError) on failure
+    *
+    * @example
+    *   {{{stmt.setFloat(1, 3.14f)}}}
+    *
+    * @since 0.1.4
+    */
+  def setFloat(parameterIndex: Int, value: Float): Either[DuckDBError, Float] =
+    try
+      underlying.setFloat(parameterIndex, value)
+      Right(value)
+    catch
+      case e: SQLException =>
+        Left(
+          DuckDBError.QueryError(
+            s"Failed to set float parameter at index $parameterIndex",
+            sql,
+            Some(e)
+          )
+        )
+
+  /** Sets a date parameter in the prepared statement.
+    *
+    * @param parameterIndex
+    *   the parameter index (1-based)
+    * @param value
+    *   the date value to set
+    * @return
+    *   Right(value) on success, Left(DuckDBError) on failure
+    *
+    * @example
+    *   {{{stmt.setDate(1, java.sql.Date.valueOf("2024-06-15"))}}}
+    *
+    * @since 0.1.4
+    */
+  def setDate(
+      parameterIndex: Int,
+      value: java.sql.Date
+  ): Either[DuckDBError, java.sql.Date] =
+    try
+      underlying.setDate(parameterIndex, value)
+      Right(value)
+    catch
+      case e: SQLException =>
+        Left(
+          DuckDBError.QueryError(
+            s"Failed to set date parameter at index $parameterIndex",
+            sql,
+            Some(e)
+          )
+        )
+
+  /** Sets a decimal parameter in the prepared statement.
+    *
+    * @param parameterIndex
+    *   the parameter index (1-based)
+    * @param value
+    *   the BigDecimal value to set
+    * @return
+    *   Right(value) on success, Left(DuckDBError) on failure
+    *
+    * @example
+    *   {{{stmt.setBigDecimal(1, BigDecimal("123.45"))}}}
+    *
+    * @since 0.1.4
+    */
+  def setBigDecimal(
+      parameterIndex: Int,
+      value: BigDecimal
+  ): Either[DuckDBError, BigDecimal] =
+    try
+      underlying.setBigDecimal(parameterIndex, value.bigDecimal)
+      Right(value)
+    catch
+      case e: SQLException =>
+        Left(
+          DuckDBError.QueryError(
+            s"Failed to set BigDecimal parameter at index $parameterIndex",
+            sql,
+            Some(e)
+          )
+        )
+
+  /** Sets a binary parameter in the prepared statement.
+    *
+    * @param parameterIndex
+    *   the parameter index (1-based)
+    * @param value
+    *   the byte array value to set
+    * @return
+    *   Right(value) on success, Left(DuckDBError) on failure
+    *
+    * @example
+    *   {{{stmt.setBytes(1, "hello".getBytes("UTF-8"))}}}
+    *
+    * @since 0.1.4
+    */
+  def setBytes(
+      parameterIndex: Int,
+      value: Array[Byte]
+  ): Either[DuckDBError, Array[Byte]] =
+    try
+      underlying.setBytes(parameterIndex, value)
+      Right(value)
+    catch
+      case e: SQLException =>
+        Left(
+          DuckDBError.QueryError(
+            s"Failed to set bytes parameter at index $parameterIndex",
+            sql,
+            Some(e)
+          )
+        )
+
   /** Sets a parameter to NULL in the prepared statement.
     *
     * @param parameterIndex

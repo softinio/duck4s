@@ -189,6 +189,192 @@ class PreparedStatementTest extends munit.FunSuite:
         assert(message.nonEmpty)
       case _ => fail("Expected QueryError")
 
+  test("prepared statement - timestamp parameter"):
+    val result = DuckDBConnection.withConnection(): conn =>
+      for
+        _ <- conn.executeUpdate(
+          "CREATE TABLE ps_timestamp (id INTEGER, created_at TIMESTAMP)"
+        )
+        ts = java.sql.Timestamp.valueOf("2024-06-15 10:30:00")
+
+        insertResult <- conn.withPreparedStatement(
+          "INSERT INTO ps_timestamp VALUES (?, ?)"
+        ): stmt =>
+          for
+            _ <- stmt.setInt(1, 1)
+            _ <- stmt.setTimestamp(2, ts)
+            count <- stmt.executeUpdate()
+          yield count
+
+        rs <- conn.executeQuery("SELECT * FROM ps_timestamp WHERE id = 1")
+      yield
+        assertEquals(insertResult, 1)
+        assert(rs.next())
+        assertEquals(rs.getInt("id"), 1)
+        assertEquals(rs.getTimestamp("created_at"), ts)
+        rs.close()
+
+    assert(result.isRight)
+
+  test("prepared statement - uuid parameter"):
+    val result = DuckDBConnection.withConnection(): conn =>
+      for
+        _ <- conn.executeUpdate(
+          "CREATE TABLE ps_uuid (id INTEGER, uid UUID)"
+        )
+        uuid = java.util.UUID.fromString("550e8400-e29b-41d4-a716-446655440000")
+
+        insertResult <- conn.withPreparedStatement(
+          "INSERT INTO ps_uuid VALUES (?, ?)"
+        ): stmt =>
+          for
+            _ <- stmt.setInt(1, 1)
+            _ <- stmt.setObject(2, uuid)
+            count <- stmt.executeUpdate()
+          yield count
+
+        rs <- conn.executeQuery("SELECT * FROM ps_uuid WHERE id = 1")
+      yield
+        assertEquals(insertResult, 1)
+        assert(rs.next())
+        assertEquals(rs.getInt("id"), 1)
+        assertEquals(rs.getObject("uid", classOf[java.util.UUID]), uuid)
+        rs.close()
+
+    assert(result.isRight)
+
+  test("prepared statement - float parameter"):
+    val result = DuckDBConnection.withConnection(): conn =>
+      for
+        _ <- conn.executeUpdate("CREATE TABLE ps_float (id INTEGER, val FLOAT)")
+        insertResult <- conn.withPreparedStatement(
+          "INSERT INTO ps_float VALUES (?, ?)"
+        ): stmt =>
+          for
+            _ <- stmt.setInt(1, 1)
+            _ <- stmt.setFloat(2, 3.14f)
+            count <- stmt.executeUpdate()
+          yield count
+        rs <- conn.executeQuery("SELECT * FROM ps_float WHERE id = 1")
+      yield
+        assertEquals(insertResult, 1)
+        assert(rs.next())
+        assertEquals(rs.getFloat("val"), 3.14f)
+        rs.close()
+
+    assert(result.isRight)
+
+  test("prepared statement - date parameter"):
+    val result = DuckDBConnection.withConnection(): conn =>
+      for
+        _ <- conn.executeUpdate("CREATE TABLE ps_date (id INTEGER, d DATE)")
+        date = java.sql.Date.valueOf("2024-06-15")
+        insertResult <- conn.withPreparedStatement(
+          "INSERT INTO ps_date VALUES (?, ?)"
+        ): stmt =>
+          for
+            _ <- stmt.setInt(1, 1)
+            _ <- stmt.setDate(2, date)
+            count <- stmt.executeUpdate()
+          yield count
+        rs <- conn.executeQuery("SELECT * FROM ps_date WHERE id = 1")
+      yield
+        assertEquals(insertResult, 1)
+        assert(rs.next())
+        assertEquals(rs.getDate("d"), date)
+        rs.close()
+
+    assert(result.isRight)
+
+  test("prepared statement - BigDecimal parameter"):
+    val result = DuckDBConnection.withConnection(): conn =>
+      for
+        _ <- conn.executeUpdate(
+          "CREATE TABLE ps_decimal (id INTEGER, price DECIMAL(10,2))"
+        )
+        price = BigDecimal("123.45")
+        insertResult <- conn.withPreparedStatement(
+          "INSERT INTO ps_decimal VALUES (?, ?)"
+        ): stmt =>
+          for
+            _ <- stmt.setInt(1, 1)
+            _ <- stmt.setBigDecimal(2, price)
+            count <- stmt.executeUpdate()
+          yield count
+        rs <- conn.executeQuery("SELECT * FROM ps_decimal WHERE id = 1")
+      yield
+        assertEquals(insertResult, 1)
+        assert(rs.next())
+        assertEquals(BigDecimal(rs.getBigDecimal("price")), price)
+        rs.close()
+
+    assert(result.isRight)
+
+  test("prepared statement - bytes parameter (BLOB)"):
+    val result = DuckDBConnection.withConnection(): conn =>
+      for
+        _ <- conn.executeUpdate("CREATE TABLE ps_blob (id INTEGER, data BLOB)")
+        bytes = "hello duck4s".getBytes("UTF-8")
+        insertResult <- conn.withPreparedStatement(
+          "INSERT INTO ps_blob VALUES (?, ?)"
+        ): stmt =>
+          for
+            _ <- stmt.setInt(1, 1)
+            _ <- stmt.setBytes(2, bytes)
+            count <- stmt.executeUpdate()
+          yield count
+        rs <- conn.executeQuery("SELECT * FROM ps_blob WHERE id = 1")
+      yield
+        assertEquals(insertResult, 1)
+        assert(rs.next())
+        assertEquals(rs.getBytes("data").toList, bytes.toList)
+        rs.close()
+
+    assert(result.isRight)
+
+  test("prepared statement - java.time types"):
+    val result = DuckDBConnection.withConnection(): conn =>
+      for
+        _ <- conn.executeUpdate(
+          """CREATE TABLE ps_jtime (
+            |  id INTEGER,
+            |  ld DATE,
+            |  ldt TIMESTAMP,
+            |  odt TIMESTAMPTZ
+            |)""".stripMargin
+        )
+        localDate = java.time.LocalDate.of(2024, 6, 15)
+        localDateTime = java.time.LocalDateTime.of(2024, 6, 15, 10, 30, 0)
+        offsetDateTime = java.time.OffsetDateTime.of(
+          localDateTime,
+          java.time.ZoneOffset.UTC
+        )
+        insertResult <- conn.withPreparedStatement(
+          "INSERT INTO ps_jtime VALUES (?, ?, ?, ?)"
+        ): stmt =>
+          for
+            _ <- stmt.setInt(1, 1)
+            _ <- stmt.setObject(2, localDate)
+            _ <- stmt.setObject(3, localDateTime)
+            _ <- stmt.setObject(4, offsetDateTime)
+            count <- stmt.executeUpdate()
+          yield count
+        rs <- conn.executeQuery("SELECT * FROM ps_jtime WHERE id = 1")
+      yield
+        assertEquals(insertResult, 1)
+        assert(rs.next())
+        assertEquals(
+          rs.getObject("ld", classOf[java.time.LocalDate]),
+          localDate
+        )
+        assertEquals(
+          rs.getObject("ldt", classOf[java.time.LocalDateTime]),
+          localDateTime
+        )
+        rs.close()
+
+    assert(result.isRight)
+
   test("prepared statement - sql injection protection"):
     val result = DuckDBConnection.withConnection(): conn =>
       for

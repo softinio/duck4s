@@ -38,10 +38,10 @@ Add duck4s to your `build.sbt`:
 
 ```scala
 // Core library
-libraryDependencies += "com.softinio" %% "duck4s" % "0.1.3"
+libraryDependencies += "com.softinio" %% "duck4s" % "0.1.4"
 
 // Optional: cats-effect integration (includes fs2)
-libraryDependencies += "com.softinio" %% "duck4s-cats-effect" % "0.1.3"
+libraryDependencies += "com.softinio" %% "duck4s-cats-effect" % "0.1.4"
 ```
 
 #### Mill
@@ -51,13 +51,13 @@ Add duck4s to your `build.mill`:
 ```scala
 // Core library
 def ivyDeps = Agg(
-  ivy"com.softinio::duck4s::0.1.3"
+  ivy"com.softinio::duck4s::0.1.4"
 )
 
 // Optional: cats-effect integration (includes fs2)
 def ivyDeps = Agg(
-  ivy"com.softinio::duck4s::0.1.3",
-  ivy"com.softinio::duck4s-cats-effect::0.1.3"
+  ivy"com.softinio::duck4s::0.1.4",
+  ivy"com.softinio::duck4s-cats-effect::0.1.4"
 )
 ```
 

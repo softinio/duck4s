@@ -63,8 +63,14 @@ case class DuckDBResultSet(
     *   - `getInt(columnIndex/columnLabel)`: Get integer value
     *   - `getLong(columnIndex/columnLabel)`: Get long value
     *   - `getDouble(columnIndex/columnLabel)`: Get double value
+    *   - `getFloat(columnIndex/columnLabel)`: Get float value
     *   - `getBoolean(columnIndex/columnLabel)`: Get boolean value
     *   - `wasNull()`: Check if last retrieved value was NULL
+    *   - `getDate(columnIndex/columnLabel)`: Get date value
+    *   - `getTimestamp(columnIndex/columnLabel)`: Get timestamp value
+    *   - `getBigDecimal(columnIndex/columnLabel)`: Get decimal value
+    *   - `getArray(columnIndex/columnLabel)`: Get array value
+    *   - `getObject(columnIndex/columnLabel)`: Get object value
     *
     * @since 0.1.0
     */
@@ -74,9 +80,45 @@ case class DuckDBResultSet(
     getInt,
     getLong,
     getDouble,
+    getFloat,
     getBoolean,
-    wasNull
+    wasNull,
+    getTimestamp,
+    getDate,
+    getBigDecimal,
+    getArray,
+    getObject
   }
+
+  /** Returns the raw bytes of a BLOB column, or null if SQL NULL.
+    *
+    * DuckDB JDBC does not implement the standard `getBytes` method; this wraps
+    * `getBlob` internally.
+    *
+    * @since 0.1.4
+    */
+  def getBytes(columnLabel: String): Array[Byte] =
+    val blob = underlying.getBlob(columnLabel)
+    if blob == null then null
+    else
+      val bytes = blob.getBytes(1L, blob.length().toInt)
+      blob.free()
+      bytes
+
+  /** Returns the raw bytes of a BLOB column, or null if SQL NULL.
+    *
+    * DuckDB JDBC does not implement the standard `getBytes` method; this wraps
+    * `getBlob` internally.
+    *
+    * @since 0.1.4
+    */
+  def getBytes(columnIndex: Int): Array[Byte] =
+    val blob = underlying.getBlob(columnIndex)
+    if blob == null then null
+    else
+      val bytes = blob.getBytes(1L, blob.length().toInt)
+      blob.free()
+      bytes
 
   /** Closes both the underlying ResultSet and its associated Statement.
     *

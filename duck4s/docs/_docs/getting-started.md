@@ -14,10 +14,10 @@ Add duck4s to your `build.sbt`:
 
 ```sbt
 // Core library
-libraryDependencies += "com.softinio" %% "duck4s" % "0.1.3"
+libraryDependencies += "com.softinio" %% "duck4s" % "0.1.4"
 
 // Optional: cats-effect integration (includes fs2)
-libraryDependencies += "com.softinio" %% "duck4s-cats-effect" % "0.1.3"
+libraryDependencies += "com.softinio" %% "duck4s-cats-effect" % "0.1.4"
 ```
 
 ### Mill
@@ -27,13 +27,13 @@ Add duck4s to your `build.mill`:
 ```scala sc:nocompile
 // Core library
 def ivyDeps = Agg(
-  ivy"com.softinio::duck4s::0.1.3"
+  ivy"com.softinio::duck4s::0.1.4"
 )
 
 // Optional: cats-effect integration (includes fs2)
 def ivyDeps = Agg(
-  ivy"com.softinio::duck4s::0.1.3",
-  ivy"com.softinio::duck4s-cats-effect::0.1.3"
+  ivy"com.softinio::duck4s::0.1.4",
+  ivy"com.softinio::duck4s-cats-effect::0.1.4"
 )
 ```
 
@@ -169,6 +169,129 @@ result match
     println(s"Failed operations: ${batchResult.failureCount}")
   case Left(error) =>
     println(s"Batch operation failed: $error")
+```
+
+### Supported Parameter Types
+
+Duck4s provides first-class support for all common DuckDB column types. The following types can be used with prepared statements (`setXxx` methods) and batch operations (`addBatch` tuples) without any manual conversion:
+
+| Scala / Java type | Setter method | DuckDB column type |
+|---|---|---|
+| `Int` | `setInt` | `INTEGER` |
+| `Long` | `setLong` | `BIGINT` |
+| `Double` | `setDouble` | `DOUBLE` |
+| `Float` | `setFloat` | `FLOAT` |
+| `Boolean` | `setBoolean` | `BOOLEAN` |
+| `String` | `setString` | `VARCHAR` |
+| `BigDecimal` | `setBigDecimal` | `DECIMAL` |
+| `java.sql.Date` | `setDate` | `DATE` |
+| `java.sql.Timestamp` | `setTimestamp` | `TIMESTAMP` |
+| `java.sql.Types.*` | `setNull` | any (NULL) |
+| `java.util.UUID` | `setObject` | `UUID` |
+| `java.time.LocalDate` | `setObject` | `DATE` |
+| `java.time.LocalDateTime` | `setObject` | `TIMESTAMP` |
+| `java.time.OffsetDateTime` | `setObject` | `TIMESTAMPTZ` |
+| `Array[Byte]` | `setBytes` | `BLOB` |
+| `Option[T]` | (any of the above) | nullable variant |
+
+The same types are available when reading results from a `DuckDBResultSet` via the corresponding `getXxx` methods. For BLOB columns, use `getBytes(columnLabel)` which internally wraps the DuckDB-specific `getBlob` implementation.
+
+```scala sc-compile-with:Imp.scala
+val result = DuckDBConnection.withConnection() { conn =>
+  for
+    _ <- conn.executeUpdate("""
+      CREATE TABLE events (
+        id       INTEGER,
+        name     VARCHAR,
+        score    FLOAT,
+        price    DECIMAL(10,2),
+        recorded DATE,
+        created  TIMESTAMP,
+        uid      UUID,
+        payload  BLOB
+      )
+    """)
+
+    ts    = java.sql.Timestamp.valueOf("2024-06-15 10:30:00")
+    date  = java.sql.Date.valueOf("2024-06-15")
+    uuid  = java.util.UUID.fromString("550e8400-e29b-41d4-a716-446655440000")
+    bytes = "hello".getBytes("UTF-8")
+
+    _ <- conn.withPreparedStatement("INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?)") { stmt =>
+      for
+        _ <- stmt.setInt(1, 1)
+        _ <- stmt.setString(2, "launch")
+        _ <- stmt.setFloat(3, 9.5f)
+        _ <- stmt.setBigDecimal(4, BigDecimal("19.99"))
+        _ <- stmt.setDate(5, date)
+        _ <- stmt.setTimestamp(6, ts)
+        _ <- stmt.setObject(7, uuid)
+        _ <- stmt.setBytes(8, bytes)
+        count <- stmt.executeUpdate()
+      yield count
+    }
+
+    rs <- conn.executeQuery("SELECT * FROM events WHERE id = 1")
+  yield
+    assert(rs.next())
+    val retrievedUuid  = rs.getObject("uid", classOf[java.util.UUID])
+    val retrievedBytes = rs.getBytes("payload")
+    rs.close()
+}
+```
+
+#### Batch operations with tuples
+
+`addBatch` accepts tuples of up to 6 elements, with any combination of the supported types:
+
+```scala sc-compile-with:Imp.scala
+val result = DuckDBConnection.withConnection() { conn =>
+  for
+    _ <- conn.executeUpdate("CREATE TABLE readings (id INTEGER, ts TIMESTAMP, uid UUID, val FLOAT, dec DECIMAL(10,2), data BLOB)")
+
+    batchResult <- conn.withBatch("INSERT INTO readings VALUES (?, ?, ?, ?, ?, ?)") { batch =>
+      val ts1   = java.sql.Timestamp.valueOf("2024-01-01 00:00:00")
+      val uuid1 = java.util.UUID.randomUUID()
+      for
+        _ <- batch.addBatch((1, ts1, uuid1, 1.5f, BigDecimal("9.99"), "a".getBytes("UTF-8")))
+        result <- batch.executeBatch()
+      yield result
+    }
+  yield batchResult
+}
+```
+
+#### Option support for nullable columns
+
+Wrap any supported type in `Option` to represent nullable columns — `Some(value)` binds the value and `None` inserts SQL NULL:
+
+```scala sc-compile-with:Imp.scala
+val result = DuckDBConnection.withConnection() { conn =>
+  for
+    _ <- conn.executeUpdate("CREATE TABLE contacts (id INTEGER, email VARCHAR)")
+    batchResult <- conn.withBatch("INSERT INTO contacts VALUES (?, ?)") { batch =>
+      for
+        _ <- batch.addBatch((1, Option("alice@example.com")))
+        _ <- batch.addBatch((2, Option.empty[String]))
+        r <- batch.executeBatch()
+      yield r
+    }
+  yield batchResult
+}
+```
+
+#### Custom ParameterBinder
+
+For types not covered by the built-in binders, implement the `ParameterBinder` type class:
+
+```scala sc-compile-with:Imp.scala
+import com.softinio.duck4s.algebra.{ParameterBinder, DuckDBPreparedStatement, DuckDBError}
+
+case class UserId(value: Long)
+
+given ParameterBinder[UserId] with
+  def bind(stmt: DuckDBPreparedStatement, index: Int, value: UserId): Either[DuckDBError, Unit] =
+    stmt.setLong(index, value.value).map(_ => ())
 ```
 
 ### Transactions
