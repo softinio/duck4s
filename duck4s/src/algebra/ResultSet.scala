@@ -95,7 +95,7 @@ case class DuckDBResultSet(
     * DuckDB JDBC does not implement the standard `getBytes` method; this wraps
     * `getBlob` internally.
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   def getBytes(columnLabel: String): Array[Byte] =
     val blob = underlying.getBlob(columnLabel)
@@ -110,7 +110,7 @@ case class DuckDBResultSet(
     * DuckDB JDBC does not implement the standard `getBytes` method; this wraps
     * `getBlob` internally.
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   def getBytes(columnIndex: Int): Array[Byte] =
     val blob = underlying.getBlob(columnIndex)

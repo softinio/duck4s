@@ -298,7 +298,7 @@ object BatchBinder:
 
   /** Implicit [[BatchBinder]] for 5-element tuples.
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   given batchBinder5[A, B, C, D, E](using
       ba: ParameterBinder[A],
@@ -324,7 +324,7 @@ object BatchBinder:
 
   /** Implicit [[BatchBinder]] for 6-element tuples.
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   given batchBinder6[A, B, C, D, E, F](using
       ba: ParameterBinder[A],
@@ -523,7 +523,7 @@ object ParameterBinder:
 
   /** Implicit [[ParameterBinder]] for `Float` values.
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   given floatBinder: ParameterBinder[Float] with
     def bind(
@@ -538,7 +538,7 @@ object ParameterBinder:
     * @example
     *   {{{batch.addBatch((java.sql.Date.valueOf("2024-06-15"), "event"))}}}
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   given dateBinder: ParameterBinder[java.sql.Date] with
     def bind(
@@ -553,7 +553,7 @@ object ParameterBinder:
     * @example
     *   {{{batch.addBatch((BigDecimal("123.45"), "item"))}}}
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   given bigDecimalBinder: ParameterBinder[BigDecimal] with
     def bind(
@@ -565,7 +565,7 @@ object ParameterBinder:
 
   /** Implicit [[ParameterBinder]] for `Array[Byte]` values (BLOB columns).
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   given bytesBinder: ParameterBinder[Array[Byte]] with
     def bind(
@@ -579,7 +579,7 @@ object ParameterBinder:
     *
     * Passed via `setObject`; DuckDB maps this to the `DATE` column type.
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   given localDateBinder: ParameterBinder[java.time.LocalDate] with
     def bind(
@@ -593,7 +593,7 @@ object ParameterBinder:
     *
     * Passed via `setObject`; DuckDB maps this to the `TIMESTAMP` column type.
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   given localDateTimeBinder: ParameterBinder[java.time.LocalDateTime] with
     def bind(
@@ -607,7 +607,7 @@ object ParameterBinder:
     *
     * Passed via `setObject`; DuckDB maps this to the `TIMESTAMPTZ` column type.
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   given offsetDateTimeBinder: ParameterBinder[java.time.OffsetDateTime] with
     def bind(
@@ -622,7 +622,7 @@ object ParameterBinder:
     * @example
     *   {{{batch.addBatch((java.sql.Timestamp.valueOf("2024-01-01 12:00:00"), "event"))}}}
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   given timestampBinder: ParameterBinder[java.sql.Timestamp] with
     def bind(
@@ -640,7 +640,7 @@ object ParameterBinder:
     * @example
     *   {{{batch.addBatch((java.util.UUID.randomUUID(), "label"))}}}
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   given uuidBinder: ParameterBinder[java.util.UUID] with
     def bind(

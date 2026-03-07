@@ -225,7 +225,7 @@ case class DuckDBPreparedStatement(
     * @example
     *   {{{stmt.setTimestamp(1, java.sql.Timestamp.valueOf("2024-01-01 12:00:00"))}}}
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   def setTimestamp(
       parameterIndex: Int,
@@ -259,7 +259,7 @@ case class DuckDBPreparedStatement(
     * @example
     *   {{{stmt.setObject(1, java.util.UUID.randomUUID())}}}
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   def setObject(
       parameterIndex: Int,
@@ -290,7 +290,7 @@ case class DuckDBPreparedStatement(
     * @example
     *   {{{stmt.setFloat(1, 3.14f)}}}
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   def setFloat(parameterIndex: Int, value: Float): Either[DuckDBError, Float] =
     try
@@ -318,7 +318,7 @@ case class DuckDBPreparedStatement(
     * @example
     *   {{{stmt.setDate(1, java.sql.Date.valueOf("2024-06-15"))}}}
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   def setDate(
       parameterIndex: Int,
@@ -349,7 +349,7 @@ case class DuckDBPreparedStatement(
     * @example
     *   {{{stmt.setBigDecimal(1, BigDecimal("123.45"))}}}
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   def setBigDecimal(
       parameterIndex: Int,
@@ -380,7 +380,7 @@ case class DuckDBPreparedStatement(
     * @example
     *   {{{stmt.setBytes(1, "hello".getBytes("UTF-8"))}}}
     *
-    * @since 0.2.0
+    * @since 0.1.4
     */
   def setBytes(
       parameterIndex: Int,
